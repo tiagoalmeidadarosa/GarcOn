@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarcOn.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,12 @@ namespace GarcOn
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            APIService apiService = new APIService();
+            await apiService.GetAdd();
         }
     }
 }

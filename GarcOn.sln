@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarcOn.Android", "GarcOn\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarcOn.iOS", "GarcOn\GarcOn.iOS\GarcOn.iOS.csproj", "{9460DCC0-694C-4F8A-81E4-F590786632E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarcOn", "GarcOn\GarcOn\GarcOn.csproj", "{D420EC98-BB7D-4D53-9B9B-ADE542422A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarcOn", "GarcOn\GarcOn\GarcOn.csproj", "{D420EC98-BB7D-4D53-9B9B-ADE542422A9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
