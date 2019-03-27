@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarcOn.Pages;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace GarcOn
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new BasketPage();
         }
 
         protected override void OnStart()

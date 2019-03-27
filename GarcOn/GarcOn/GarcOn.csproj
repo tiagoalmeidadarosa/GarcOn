@@ -35,4 +35,10 @@
   <ItemGroup>
     <Folder Include="Connected Services\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\BasketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

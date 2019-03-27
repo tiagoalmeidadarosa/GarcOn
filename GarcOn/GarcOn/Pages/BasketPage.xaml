@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GarcOn.Pages.BasketPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, .8"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Margin="0, 15, 0, 0">
+
+                <ListView x:Name="orders" SeparatorColor="{StaticResource grayPrimary}"
+                          RowHeight="100">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid StyleId="ordersRoot">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--imagecontrol:CircleImage WidthRequest="60" Margin="10"
+                                                                  BorderColor="{StaticResource grayPrimary}"
+                                                                  BorderThickness="1"
+                                                                  HeightRequest="60" Source="{Binding Food.Picture}"
+                                                                  HorizontalOptions="Center"
+                                                                  VerticalOptions="Center"
+                                                                  Aspect="AspectFill" />-->
+
+
+                                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                            <Label Text="{Binding Name}" FontSize="Small"
+                                                   LineBreakMode="TailTruncation"
+                                                   TextColor="{StaticResource asphaltPrimary}" />
+
+                                            <Label Text="{Binding Description}" FontSize="Micro"
+                                                   TextColor="{StaticResource grayPrimary}"
+                                                   Style="{StaticResource BasketFoodsDescriptionLabelStyle}" />
+
+                                            <Label Text="{Binding TotalPrice, StringFormat='Total: {0:C}'}"
+                                                   FontSize="Micro" TextColor="{StaticResource grayPrimary}"
+                                                   LineBreakMode="TailTruncation" />
+                                        </StackLayout>
+
+                                        <!--<views:VerticalStepperView Grid.Column="2" Margin="10" MinValue="0"
+                                                                   Value="{Binding Quantity}" />-->
+
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 0.2" 
+                         AbsoluteLayout.LayoutFlags="All"
+                         BackgroundColor="{StaticResource primaryColor}" Padding="20, 5, 20, 20">
+                <Label Text="Total Price:" FontSize="Large" TextColor="White"/>
+                <Label Text="{Binding TotalPrice}" FontSize="Medium" TextColor="White"/>
+            </StackLayout>
+
+            <!--<controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .16, 50, 50"
+                                           Command="{Binding CompleteOrder}"
+                                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                                           RippleColor="{StaticResource primaryColorLight}"
+                                           ButtonColor="{StaticResource accentColor}"
+                                           Image="check"/>-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
