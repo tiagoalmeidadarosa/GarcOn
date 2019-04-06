@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GarcOn.Controls"
+             xmlns:views="clr-namespace:GarcOn.Views"
+             x:Class="GarcOn.Pages.FoodDetailPage">
+    
+    <ContentPage.ToolbarItems>
+        <controls:BadgeToolbarItem Icon="ic_shopping_cart_white" Command="{Binding GoToBasket}"
+                                   BadgeColor="{StaticResource badgeColor}"
+                                   BadgePressedColor="{StaticResource badgeColor}"
+                                   BadgeText="{Binding BasketViewModel.OrdersCount}" />
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <Grid RowSpacing="0" ColumnSpacing="0"
+              AbsoluteLayout.LayoutBounds="0,0,1,.5"
+              AbsoluteLayout.LayoutFlags="All">
+                <Image HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Source="{Binding SelectedFood.Picture}"
+                   Aspect="AspectFill" />
+
+                <Grid Opacity=".5" BackgroundColor="{StaticResource asphaltDark}" HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand" />
+
+                <StackLayout Padding="10, 10, 10, 35" VerticalOptions="EndAndExpand">
+                    <StackLayout Spacing="0" Padding="10">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Um teste"
+                               FontSize="18"
+                               TextColor="White"
+                               Style="{StaticResource LabelContentTitle}">
+                            </Label>
+                            <Label Text="{Binding SelectedFood.Price}" FontSize="18"
+                               TextColor="{StaticResource grayLight}" VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+
+                        <StackLayout Padding="0, 8">
+                            <Label Text="Eu estou sempre testando"
+                               FontSize="12"
+                               TextColor="{StaticResource grayLight}"
+                               Style="{StaticResource LabelContentBody}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1,AutoSize"
+                     AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
+
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal"
+                         Margin="{StaticResource FoodDetailtPadding}">
+                    <Label TextColor="{StaticResource grayDark}" VerticalOptions="Center" HorizontalOptions="Center"
+                       FontSize="16" Text="Total price: " />
+                    <Label TextColor="{StaticResource grayDark}" VerticalOptions="Center" HorizontalOptions="Center"
+                       Text="{Binding CurrentBasketItem.TotalPriceAnimated}" FontSize="16" />
+                </StackLayout>
+
+                <controls:Divider />
+
+                <views:StepperView Margin="{StaticResource FoodDetailtPadding}" MinValue="0" HorizontalOptions="Center"
+                               Value="{Binding CurrentBasketItem.Quantity}" />
+
+                <controls:Divider />
+            </StackLayout>
+
+            <Button AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
+                    WidthRequest="300"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddToBasket}"
+                    VerticalOptions="EndAndExpand"
+                    Margin="0, 0, 0, 10"
+                    Text="Add to card" />
+
+            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .5, 50, 50"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       RippleColor="{StaticResource primaryColorLight}"
+                                       Image="heart_outline_white" />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

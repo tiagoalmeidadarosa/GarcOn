@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GarcOn.Pages.ConfigurationPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="IP DO SERVIDOR:" 
+                   Style="{StaticResource LabelMenu}"
+                   FontSize="20"
+                   TextColor="Black"/>
+            <Entry x:Name="txtIP" 
+                   IsEnabled="False"
+                   TextColor="Black"
+                   FontSize="30" />
+            <Button x:Name="btnAtualizacoes"
+                    AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
+                    WidthRequest="300"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddToBasket}"
+                    VerticalOptions="EndAndExpand"
+                    Margin="0, 0, 0, 10"
+                    Text="Buscar Atualizações"
+                    IsEnabled="False" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

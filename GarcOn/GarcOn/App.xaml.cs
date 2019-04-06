@@ -8,11 +8,13 @@ namespace GarcOn
 {
     public partial class App : Application
     {
+        public static bool _isAdmin { get; set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new BasketPage();
+            MainPage = new MenuPage();
         }
 
         protected override void OnStart()

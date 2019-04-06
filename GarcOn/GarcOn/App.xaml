@@ -5,17 +5,17 @@
              xmlns:effects="clr-namespace:GarcOn.Effects"
              x:Class="GarcOn.App">
     <Application.Resources>
-        <OnPlatform x:TypeArguments="Thickness" Android="12,8" iOS="0, 0, 0, 10" WinPhone="0,0,0,16"
+        <OnPlatform x:TypeArguments="Thickness" Android="12,8" iOS="0, 0, 0, 10"
                         x:Key="CardPadding" />
 
-        <OnPlatform x:TypeArguments="Thickness" Android="15" iOS="15" WinPhone="20" x:Key="FoodDetailtPadding" />
+        <OnPlatform x:TypeArguments="Thickness" Android="15" iOS="15" x:Key="FoodDetailtPadding" />
 
-        <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="0" WinPhone="0" x:Key="CardSpacing" />
+        <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="0" x:Key="CardSpacing" />
 
-        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="#EFEFF4" WinPhone="#EFEFF4"
+        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="#EFEFF4"
                         x:Key="WindowBackgroundTable" />
-        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="White" WinPhone="White" x:Key="WindowBackground" />
-        <OnPlatform x:TypeArguments="Color" Android="#ECECEC" iOS="#C8C7CC" WinPhone="#C8C7CC" x:Key="Divider" />
+        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="White" x:Key="WindowBackground" />
+        <OnPlatform x:TypeArguments="Color" Android="#ECECEC" iOS="#C8C7CC" x:Key="Divider" />
 
         <Color x:Key="asphaltPrimary">#365271</Color>
         <Color x:Key="asphaltLight">#889DB5</Color>
@@ -126,6 +126,36 @@
                         Value="True" />
             <Setter Property="effects:NumberOfLinesEffect.NumberOfLines"
                         Value="2" />
+        </Style>
+
+        <Style x:Key="LabelMenu" TargetType="Label">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <OnPlatform.Android>Oswald-Regular.ttf#Oswald-Regular</OnPlatform.Android>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LabelContentTitle" TargetType="Label">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <OnPlatform.Android>Roboto-Light.ttf#Roboto-Light</OnPlatform.Android>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LabelContentBody" TargetType="Label">
+            <Setter Property="FontFamily">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <OnPlatform.Android>Roboto-Medium.ttf#Roboto-Medium</OnPlatform.Android>
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>
