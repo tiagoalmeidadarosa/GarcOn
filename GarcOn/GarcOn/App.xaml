@@ -5,6 +5,14 @@
              xmlns:effects="clr-namespace:GarcOn.Effects"
              x:Class="GarcOn.App">
     <Application.Resources>
+        <Color x:Key="primaryColor">#361A11</Color>
+        
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource primaryColor}"/>
+            <Setter Property="BarTextColor" Value="White"/>
+            <Setter Property="Tint" Value="White"/>
+        </Style>
+        
         <OnPlatform x:TypeArguments="Thickness" Android="12,8" iOS="0, 0, 0, 10"
                         x:Key="CardPadding" />
 
@@ -22,7 +30,7 @@
         <Color x:Key="asphaltDark">#1C2B39</Color>
 
         <Color x:Key="primaryColorLight">#FFE0B2</Color>
-        <Color x:Key="primaryColor">#FF9800</Color>
+
         <Color x:Key="primaryDarkColor">#F57C00</Color>
         <Color x:Key="accentColor">#FF5252</Color>
         <Color x:Key="badgeColor">#4caf50</Color>

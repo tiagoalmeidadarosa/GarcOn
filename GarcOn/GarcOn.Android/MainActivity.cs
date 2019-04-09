@@ -10,13 +10,15 @@ using ImageCircle.Forms.Plugin.Droid;
 
 namespace GarcOn.Droid
 {
-    [Activity(Label = "GarcOn", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "GarcOn", Icon = "@drawable/garcon_icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            SetStatusBarColor(Android.Graphics.Color.Rgb(65, 28, 19));
 
             base.OnCreate(savedInstanceState);
 

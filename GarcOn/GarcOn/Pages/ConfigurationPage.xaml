@@ -12,6 +12,14 @@
                    IsEnabled="False"
                    TextColor="Black"
                    FontSize="30" />
+            <Label Text="NÚMERO DA MESA:" 
+                   Style="{StaticResource LabelMenu}"
+                   FontSize="20"
+                   TextColor="Black"/>
+            <Entry x:Name="txtNumeroMesa" 
+                   IsEnabled="False"
+                   TextColor="Black"
+                   FontSize="30" />
             <Button x:Name="btnAtualizacoes"
                     AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
                     WidthRequest="300"
@@ -20,7 +28,7 @@
                     Command="{Binding AddToBasket}"
                     VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
-                    Text="Buscar Atualizações"
+                    Text="Salvar e Buscar Atualizações"
                     IsEnabled="False" />
         </StackLayout>
     </ContentPage.Content>

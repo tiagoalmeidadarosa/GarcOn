@@ -21,8 +21,11 @@ namespace GarcOn.Pages
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MenuPageMenuItem;
-            if (item == null)
+            if (item == null || item.TargetType == null)
+            {
+                MasterPage.ListView.SelectedItem = null;
                 return;
+            }
 
             if(item.TargetType.Name == "ConfigurationPage") 
             {

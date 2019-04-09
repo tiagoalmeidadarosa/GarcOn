@@ -66,12 +66,12 @@
                 <Label Text="{Binding TotalPrice}" FontSize="Medium" TextColor="White"/>
             </StackLayout>
 
-            <!--<controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .16, 50, 50"
+            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .16, 50, 50"
                                            Command="{Binding CompleteOrder}"
                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                            RippleColor="{StaticResource primaryColorLight}"
                                            ButtonColor="{StaticResource accentColor}"
-                                           Image="check"/>-->
+                                           Image="check"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

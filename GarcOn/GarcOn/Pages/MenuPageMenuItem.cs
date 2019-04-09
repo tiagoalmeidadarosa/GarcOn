@@ -15,6 +15,9 @@ namespace GarcOn.Pages
         }
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Image { get; set; }
+
+        public string LabelVisible { get; set; }
 
         public Type TargetType { get; set; }
     }

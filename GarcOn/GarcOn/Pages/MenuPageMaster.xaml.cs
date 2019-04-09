@@ -33,10 +33,14 @@ namespace GarcOn.Pages
             {
                 MenuItems = new ObservableCollection<MenuPageMenuItem>(new[]
                 {
-                    new MenuPageMenuItem { Id = 0, Title = "FOODS PAGE", TargetType = typeof(FoodsPage) },
-                    new MenuPageMenuItem { Id = 1, Title = "FOOD DETAIL PAGE", TargetType = typeof(FoodDetailPage) },
-                    new MenuPageMenuItem { Id = 2, Title = "BASKET PAGE", TargetType = typeof(BasketPage) },
-                    new MenuPageMenuItem { Id = 3, Title = "CONFIGURATION PAGE", TargetType = typeof(ConfigurationPage) }
+                    new MenuPageMenuItem { Image = "header_salgados.png", TargetType = null, LabelVisible = "False" },
+                    new MenuPageMenuItem { Id = 0, Title = "FOODS PAGE", TargetType = typeof(FoodsPage), LabelVisible = "True" },
+                    new MenuPageMenuItem { Image = "header_bebidas.png", TargetType = null, LabelVisible = "False" },
+                    new MenuPageMenuItem { Id = 1, Title = "FOOD DETAIL PAGE", TargetType = typeof(FoodDetailPage), LabelVisible = "True" },
+                    new MenuPageMenuItem { Image = "header_doces.png", TargetType = null, LabelVisible = "False" },
+                    new MenuPageMenuItem { Id = 2, Title = "BASKET PAGE", TargetType = typeof(BasketPage), LabelVisible = "True" },
+                    new MenuPageMenuItem { Image = "header_configuracoes.png", TargetType = null, LabelVisible = "False" },
+                    new MenuPageMenuItem { Id = 3, Title = "CONFIGURATION PAGE", TargetType = typeof(ConfigurationPage), LabelVisible = "True" }
                 });
             }
             
