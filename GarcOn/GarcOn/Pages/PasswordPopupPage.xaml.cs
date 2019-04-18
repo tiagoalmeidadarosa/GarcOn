@@ -23,7 +23,7 @@ namespace GarcOn.Pages
         {
             if(txtPassword.Text == "GarcOnPass123")
             {
-                App._isAdmin = true;
+                App.IsAdmin = true;
                 MessagingCenter.Send<PasswordPopupPage>(this, "Refresh");
                 await PopupNavigation.Instance.PopAsync(true);
             }

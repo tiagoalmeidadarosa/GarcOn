@@ -4,7 +4,7 @@
              x:Class="GarcOn.Pages.ConfigurationPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Label Text="IP DO SERVIDOR:" 
+            <Label Text="IP/PORTA DO SERVIDOR:" 
                    Style="{StaticResource LabelMenu}"
                    FontSize="20"
                    TextColor="Black"/>
@@ -29,7 +29,8 @@
                     VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
                     Text="Salvar e Buscar Atualizações"
-                    IsEnabled="False" />
+                    IsEnabled="False"
+                    Clicked="OnSaveAndGetUpdate"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

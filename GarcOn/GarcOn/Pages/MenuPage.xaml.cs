@@ -29,7 +29,7 @@ namespace GarcOn.Pages
 
             if(item.TargetType.Name == "ConfigurationPage") 
             {
-                App._isAdmin = false;
+                App.IsAdmin = false;
             }
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;

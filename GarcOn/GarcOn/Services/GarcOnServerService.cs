@@ -15,8 +15,14 @@
 public interface IGarcOn
 {
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/Add", ReplyAction="http://tempuri.org/IGarcOn/AddResponse")]
-    double Add(double n1, double n2);
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/GetCategoriesAndProducts", ReplyAction="http://tempuri.org/IGarcOn/GetCategoriesAndProductsResponse")]
+    string GetCategoriesAndProducts();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddCategory", ReplyAction="http://tempuri.org/IGarcOn/AddCategoryResponse")]
+    void AddCategory(int tipo, string descricao);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddProduct", ReplyAction="http://tempuri.org/IGarcOn/AddProductResponse")]
+    void AddProduct(long idCategoria, string nome, string descricao, double valor);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -53,8 +59,18 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
     {
     }
     
-    public double Add(double n1, double n2)
+    public string GetCategoriesAndProducts()
     {
-        return base.Channel.Add(n1, n2);
+        return base.Channel.GetCategoriesAndProducts();
+    }
+    
+    public void AddCategory(int tipo, string descricao)
+    {
+        base.Channel.AddCategory(tipo, descricao);
+    }
+    
+    public void AddProduct(long idCategoria, string nome, string descricao, double valor)
+    {
+        base.Channel.AddProduct(idCategoria, nome, descricao, valor);
     }
 }

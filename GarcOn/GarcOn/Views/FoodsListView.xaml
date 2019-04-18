@@ -28,15 +28,6 @@
     <ListView.Header>
         <views:FoodsSearchView />
     </ListView.Header>
-    <ListView.Footer>
-        <!--<ActivityIndicator IsRunning="True">
-            <ActivityIndicator.Color>
-                <OnPlatform x:TypeArguments="Color">
-                    <On Platform="Android" Value="{StaticResource primaryColor}" />
-                </OnPlatform>
-            </ActivityIndicator.Color>
-        </ActivityIndicator>-->
-    </ListView.Footer>
 
     <ListView.ItemTemplate>
         <DataTemplate>
@@ -48,27 +39,15 @@
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                                 <Grid HeightRequest="120">
                                     <Image x:Name="photoImage" Source="{Binding Picture}" Aspect="AspectFill" />
-
-                                    <!--<ActivityIndicator VerticalOptions="Center"
-                                                       WidthRequest="25"
-                                                       HeightRequest="25"
-                                                       IsRunning="{Binding Source={x:Reference photoImage}, Path=IsLoading}"
-                                                       IsVisible="{Binding Source={x:Reference photoImage}, Path=IsLoading}">
-                                        <ActivityIndicator.Color>
-                                            <OnPlatform x:TypeArguments="Color">
-                                                <On Platform="Android" Value="{StaticResource primaryColor}" />
-                                            </OnPlatform>
-                                        </ActivityIndicator.Color>
-                                    </ActivityIndicator>-->
                                 </Grid>
 
                                 <StackLayout Padding="10, 10, 10, 3">
                                     <StackLayout>
-                                        <Label Text="{Binding Name}" FontSize="Medium"
+                                        <Label Text="{Binding Nome}" FontSize="Medium"
                                                TextColor="{StaticResource asphaltDark}"
                                                VerticalOptions="CenterAndExpand" />
 
-                                        <Label Text="{Binding Description}"
+                                        <Label Text="{Binding Descricao}"
                                                Style="{StaticResource FoodsListDescriptionLabelStyle}"
                                                FontSize="Micro"
                                                TextColor="{StaticResource grayPrimary}" />
@@ -87,13 +66,13 @@
                                                    TextColor="{StaticResource asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand" />
 
-                                            <Label Text="{Binding Price}"
+                                            <Label Text="{Binding Valor}"
                                                    FontSize="Small"
                                                    TextColor="{StaticResource  asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
 
-                                        <controls:AnimatedImage
+                                        <!--<controls:AnimatedImage
                                             Margin="10"
                                             Source="{Binding IsFavorite, Converter={StaticResource IsFilledIconConverter}, ConverterParameter='like'}"
                                             Grid.Column="1"
@@ -103,7 +82,7 @@
                                                 <TapGestureRecognizer 
                                                     Command="{Binding FavoriteCommand}" />
                                             </controls:AnimatedImage.GestureRecognizers>
-                                        </controls:AnimatedImage>
+                                        </controls:AnimatedImage>-->
                                     </Grid>
 
                                 </StackLayout>

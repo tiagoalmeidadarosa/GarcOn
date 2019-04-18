@@ -1,11 +1,5 @@
 ﻿using Plugin.Connectivity;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Net.Sockets;
 using System.ServiceModel;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace GarcOn.Services
@@ -14,13 +8,18 @@ namespace GarcOn.Services
     {
         GarcOnClient _garconClient = null;
 
-        public APIService()
+        public APIService(string ipServidor)
         {
-            //Todo: Trocar para um parâmetro do app
-            var address = new EndpointAddress("http://192.168.0.6:8001/GarcOnService");
+            var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService"); //192.168.0.6:8001
             BasicHttpBinding bind = new BasicHttpBinding();
 
             _garconClient = new GarcOnClient(bind, address);
+        }
+
+        public async Task<string> GetCategoriesAndProducts()
+        {
+            //Todo: Tratar exceções de conexão
+            return _garconClient.GetCategoriesAndProducts();
         }
 
         // verify status network
@@ -32,15 +31,6 @@ namespace GarcOn.Services
             }
 
             return false;
-        }
-
-        public async Task<bool> GetAdd()
-        {
-            //Todo: Tratar exceções de conexão
-
-            var response = _garconClient.Add(1, 2);
-
-            return true;
         }
     }
 }
