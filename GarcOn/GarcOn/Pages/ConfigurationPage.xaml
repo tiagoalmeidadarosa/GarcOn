@@ -31,6 +31,9 @@
                     Text="Salvar e Buscar Atualizações"
                     IsEnabled="False"
                     Clicked="OnSaveAndGetUpdate"/>
+            <ActivityIndicator x:Name="actInd"
+                             IsRunning="{Binding IsLoading}"
+                             IsVisible="{Binding IsLoading}" Color="Red"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
