@@ -9,7 +9,7 @@
                     <On Platform="Android" Value="{StaticResource primaryColor}"/>
                 </OnPlatform>
             </StackLayout.BackgroundColor>
-            <SearchBar x:Name="SearchBar" Placeholder="Pesquisar">
+            <!--<SearchBar x:Name="SearchBar" Placeholder="Pesquisar">
                 <SearchBar.BackgroundColor>
                     <OnPlatform x:TypeArguments="Color">
                         <On Platform="iOS" Value="White"/>
@@ -37,7 +37,7 @@
                         <On Platform="Android" Value="White" />
                     </OnPlatform>
                 </SearchBar.TextColor>
-            </SearchBar>
+            </SearchBar>-->
         </StackLayout>
     </ContentView.Content>
 </ContentView>

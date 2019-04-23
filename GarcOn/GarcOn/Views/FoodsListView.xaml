@@ -38,18 +38,19 @@
                         <controls:CardView>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                                 <Grid HeightRequest="120">
-                                    <Image x:Name="photoImage" Source="{Binding Picture}" Aspect="AspectFill" />
+                                    <Image x:Name="photoImage" Source="{Binding Foto}" Aspect="AspectFill" />
                                 </Grid>
 
                                 <StackLayout Padding="10, 10, 10, 3">
                                     <StackLayout>
-                                        <Label Text="{Binding Nome}" FontSize="Medium"
+                                        <Label Text="{Binding Nome}" 
+                                               FontSize="Medium"
                                                TextColor="{StaticResource asphaltDark}"
                                                VerticalOptions="CenterAndExpand" />
 
                                         <Label Text="{Binding Descricao}"
                                                Style="{StaticResource FoodsListDescriptionLabelStyle}"
-                                               FontSize="Micro"
+                                               FontSize="Small"
                                                TextColor="{StaticResource grayPrimary}" />
                                     </StackLayout>
 
@@ -66,13 +67,13 @@
                                                    TextColor="{StaticResource asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand" />
 
-                                            <Label Text="{Binding Valor}"
+                                            <Label Text="{Binding Valor, StringFormat='{0:N}'}"
                                                    FontSize="Small"
                                                    TextColor="{StaticResource  asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
 
-                                        <!--<controls:AnimatedImage
+                                        <controls:AnimatedImage
                                             Margin="10"
                                             Source="{Binding IsFavorite, Converter={StaticResource IsFilledIconConverter}, ConverterParameter='like'}"
                                             Grid.Column="1"
@@ -82,7 +83,7 @@
                                                 <TapGestureRecognizer 
                                                     Command="{Binding FavoriteCommand}" />
                                             </controls:AnimatedImage.GestureRecognizers>
-                                        </controls:AnimatedImage>-->
+                                        </controls:AnimatedImage>
                                     </Grid>
 
                                 </StackLayout>

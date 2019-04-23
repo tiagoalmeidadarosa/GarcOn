@@ -18,7 +18,6 @@ namespace GarcOn.Services
 
         public async Task<string> GetCategoriesAndProducts()
         {
-            //Todo: Tratar exceções de conexão
             return _garconClient.GetCategoriesAndProducts();
         }
 

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace GarcOn.Pages
 {
-
     public class MenuPageMenuItem
     {
         public MenuPageMenuItem()

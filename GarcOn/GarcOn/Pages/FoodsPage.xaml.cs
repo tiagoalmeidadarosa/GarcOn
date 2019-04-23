@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using GarcOn.Models;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,19 +21,19 @@ namespace GarcOn.Pages
                 var categoria = App.Categorias.FirstOrDefault(c => c.ID == idCategoria);
                 if (categoria != null)
                 {
-                    FoodsList.ItemsSource = categoria.Produtos;
+                    FoodsList.ItemsSource = categoria.Produtos.ToList();
                 }
             }
             else
             {
-                FoodsList.ItemsSource = App.Categorias.Select(c => c.Produtos);
-            }
-
-            /*FoodsList.ItemsSource = new[]
+                var produtos = new List<Produto>();
+                foreach (var categoria in App.Categorias)
                 {
-                    new MenuPageMenuItem { Id = 0, Title = "Burguer", TargetType = typeof(BasketPage) },
-                    new MenuPageMenuItem { Id = 1, Title = "Baião de 2" }
-                };*/
+                    produtos.AddRange(categoria.Produtos.ToList());
+                }
+
+                FoodsList.ItemsSource = produtos;
+            }
         }
     }
 }

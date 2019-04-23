@@ -31,7 +31,7 @@ namespace GarcOn.Pages
             {
                 App.IsAdmin = false;
             }
-            var page = (Page)Activator.CreateInstance(item.TargetType);
+            var page = (Page)Activator.CreateInstance(item.TargetType/*, new object[] { ID_Categoria = 0 }*/);
             page.Title = item.Title;
 
             Detail = new NavigationPage(page);
