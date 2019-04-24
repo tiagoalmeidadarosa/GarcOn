@@ -78,31 +78,31 @@ namespace GarcOn.Pages
                         App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonCategoriesAndProducts);
                         await SecureStorage.SetAsync("categorias_e_produtos", jsonCategoriesAndProducts);
 
-                        await DisplayAlert("Atualização concluída", "Informações carregadas com sucesso!", "Cancelar");
+                        await DisplayAlert("Atualização concluída", "Informações carregadas com sucesso!", "Fechar");
                     }
                 }
                 catch (Exception ex)
                 {
                     if (ex != null)
                     {
-                        await DisplayAlert("Não foi possível obter as informações", "Ocorreu um erro: " + ex.Message, "Cancelar");
+                        await DisplayAlert("Não foi possível obter as informações", "Ocorreu um erro: " + ex.Message, "Fechar");
                     }
                 }
             }
             else
             {
-                await DisplayAlert("Não foi possível salvar", "É necessário o preenchimento de todos os campos.", "Cancelar");
+                await DisplayAlert("Não foi possível salvar", "É necessário o preenchimento de todos os campos.", "Fechar");
             }
 
             HideActivityIndicator();
         }
 
-        public async void ShowActivityIndicator()
+        public void ShowActivityIndicator()
         {
             IsLoading = true;
         }
 
-        public async void HideActivityIndicator()
+        public void HideActivityIndicator()
         {
             IsLoading = false;
         }

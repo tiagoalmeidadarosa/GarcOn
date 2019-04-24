@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarcOn.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -31,17 +32,21 @@ namespace GarcOn.Pages
             
             public MenuPageMasterViewModel()
             {
-                MenuItems = new ObservableCollection<MenuPageMenuItem>(new[]
-                {
-                    new MenuPageMenuItem { Image = "header_salgados.png", TargetType = null, LabelVisible = "False" },
-                    new MenuPageMenuItem { Id = 0, Title = "FOODS PAGE", TargetType = typeof(FoodsPage), LabelVisible = "True" },
-                    new MenuPageMenuItem { Image = "header_bebidas.png", TargetType = null, LabelVisible = "False" },
-                    new MenuPageMenuItem { Id = 1, Title = "FOOD DETAIL PAGE", TargetType = typeof(FoodDetailPage), LabelVisible = "True" },
-                    new MenuPageMenuItem { Image = "header_doces.png", TargetType = null, LabelVisible = "False" },
-                    new MenuPageMenuItem { Id = 2, Title = "BASKET PAGE", TargetType = typeof(BasketPage), LabelVisible = "True" },
-                    new MenuPageMenuItem { Image = "header_configuracoes.png", TargetType = null, LabelVisible = "False" },
-                    new MenuPageMenuItem { Id = 3, Title = "CONFIGURATION PAGE", TargetType = typeof(ConfigurationPage), LabelVisible = "True" }
-                });
+                var menuPageMenuItems = new List<MenuPageMenuItem>();
+
+                menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_salgados.png", TargetType = null, LabelVisible = "False" });
+                menuPageMenuItems.AddRange(GetCategories(CategoryType.Salgado));
+
+                menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_bebidas.png", TargetType = null, LabelVisible = "False" });
+                menuPageMenuItems.AddRange(GetCategories(CategoryType.Bebida));
+
+                menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_doces.png", TargetType = null, LabelVisible = "False" });
+                menuPageMenuItems.AddRange(GetCategories(CategoryType.Doce));
+
+                menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_configuracoes.png", TargetType = null, LabelVisible = "False" });
+                menuPageMenuItems.Add(new MenuPageMenuItem { Title = "Configurações", TargetType = typeof(ConfigurationPage), LabelVisible = "True" });
+
+                MenuItems = new ObservableCollection<MenuPageMenuItem>(menuPageMenuItems);
             }
             
             #region INotifyPropertyChanged Implementation
@@ -54,6 +59,27 @@ namespace GarcOn.Pages
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+
+            private List<MenuPageMenuItem> GetCategories(CategoryType tipo)
+            {
+                var menuPageMenuItems = new List<MenuPageMenuItem>();
+
+                foreach (var categoria in App.Categorias.Where(c => c.Tipo == (int)tipo))
+                {
+                    menuPageMenuItems
+                        .Add(
+                            new MenuPageMenuItem
+                            {
+                                Id = categoria.ID,
+                                Title = categoria.Descricao,
+                                TargetType = typeof(FoodsPage),
+                                LabelVisible = "True"
+                            }
+                        );
+                }
+
+                return menuPageMenuItems;
+            }
         }
     }
 }
