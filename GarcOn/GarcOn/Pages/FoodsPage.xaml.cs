@@ -1,4 +1,5 @@
 ﻿using GarcOn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Forms;
@@ -11,10 +12,12 @@ namespace GarcOn.Pages
     {
         public FoodsPage()
         {
-            //Todo: Fazer o idCategoria virar um parâmetro, algo bem complexo
-            long idCategoria = 0;
-
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            long idCategoria = string.IsNullOrEmpty(this.ClassId) ? 0 : Convert.ToInt64(ClassId);
 
             if (idCategoria > 0)
             {
