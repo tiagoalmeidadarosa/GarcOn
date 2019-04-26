@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label Text="IP/PORTA DO SERVIDOR:" 
-                   Style="{StaticResource LabelMenu}"
+                   Style="{StaticResource MenuLabelStyle}"
                    FontSize="20"
                    TextColor="Black"/>
             <Entry x:Name="txtIP" 
@@ -13,7 +13,7 @@
                    TextColor="Black"
                    FontSize="30" />
             <Label Text="NÚMERO DA MESA:" 
-                   Style="{StaticResource LabelMenu}"
+                   Style="{StaticResource MenuLabelStyle}"
                    FontSize="20"
                    TextColor="Black"/>
             <Entry x:Name="txtNumeroMesa" 

@@ -9,12 +9,13 @@
           xmlns:controls="clr-namespace:GarcOn.Controls"
           xmlns:converters="clr-namespace:GarcOn.Converters"
           x:Class="GarcOn.Views.FoodsListView"
-          x:Name="list"
+          x:Name="FoodsList"
           IsRefreshing="{Binding IsBusy, Mode=OneWay}"
           IsPullToRefreshEnabled="False"
           SeparatorVisibility="None"
           HasUnevenRows="True"
-          StyleId="foodsList">
+          StyleId="foodsList"
+          ItemSelected="FoodsList_ItemSelected">
     <ListView.Resources>
         <ResourceDictionary>
             <converters:IsFilledIconConverter x:Key="IsFilledIconConverter" />
@@ -46,12 +47,13 @@
                                         <Label Text="{Binding Nome}" 
                                                FontSize="Medium"
                                                TextColor="{StaticResource asphaltDark}"
-                                               VerticalOptions="CenterAndExpand" />
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource FoodsListTitleLabelStyle}" />
 
                                         <Label Text="{Binding Descricao}"
-                                               Style="{StaticResource FoodsListDescriptionLabelStyle}"
                                                FontSize="Small"
-                                               TextColor="{StaticResource grayPrimary}" />
+                                               TextColor="{StaticResource grayPrimary}"
+                                               Style="{StaticResource FoodsListDescriptionLabelStyle}" />
                                     </StackLayout>
 
                                     <controls:HeaderDivider />
@@ -65,12 +67,14 @@
                                             <Label Text="R$ "
                                                    FontSize="Small"
                                                    TextColor="{StaticResource asphaltPrimary}"
-                                                   VerticalOptions="CenterAndExpand" />
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Style="{StaticResource FoodsListValueLabelStyle}" />
 
                                             <Label Text="{Binding Valor, StringFormat='{0:N}'}"
                                                    FontSize="Small"
                                                    TextColor="{StaticResource  asphaltPrimary}"
-                                                   VerticalOptions="CenterAndExpand" />
+                                                   VerticalOptions="CenterAndExpand"
+                                                   Style="{StaticResource FoodsListValueLabelStyle}" />
                                         </StackLayout>
 
                                         <controls:AnimatedImage

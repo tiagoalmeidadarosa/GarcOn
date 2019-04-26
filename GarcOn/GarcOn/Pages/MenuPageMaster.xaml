@@ -5,7 +5,7 @@
              Title="Master">
   <StackLayout>
         <ListView x:Name="MenuItemsListView"
-                  SeparatorVisibility="Default"
+                  SeparatorVisibility="None"
                   HasUnevenRows="true"
                   ItemsSource="{Binding MenuItems}">
           <ListView.Header>
@@ -35,7 +35,7 @@
                         Text="{Binding Title}" 
                         FontSize="16"
                         TextColor="Black"
-                        Style="{StaticResource LabelMenu}"
+                        Style="{StaticResource MenuLabelStyle}"
                         IsVisible="{Binding LabelVisible}"/>
                 </StackLayout>
               </ViewCell>
