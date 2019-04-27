@@ -43,9 +43,6 @@ namespace GarcOn.Pages
                 menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_doces.png", TargetType = null, LabelVisible = "False" });
                 menuPageMenuItems.AddRange(GetCategories(CategoryType.Doce));
 
-                menuPageMenuItems.Add(new MenuPageMenuItem { Image = "header_configuracoes.png", TargetType = null, LabelVisible = "False" });
-                menuPageMenuItems.Add(new MenuPageMenuItem { Title = "Configurações", TargetType = typeof(ConfigurationPage), LabelVisible = "True" });
-
                 MenuItems = new ObservableCollection<MenuPageMenuItem>(menuPageMenuItems);
             }
             

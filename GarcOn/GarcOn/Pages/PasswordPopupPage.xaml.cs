@@ -24,7 +24,7 @@ namespace GarcOn.Pages
             if(txtPassword.Text == "GarcOnPass123")
             {
                 App.IsAdmin = true;
-                MessagingCenter.Send<PasswordPopupPage>(this, "Refresh");
+                MessagingCenter.Send(this, "Refresh");
                 await PopupNavigation.Instance.PopAsync(true);
             }
             else
@@ -33,9 +33,10 @@ namespace GarcOn.Pages
             }
         }
 
-        private async void OnBackButton(object sender, EventArgs e)
+        private async void OnJumpAndInitApplicationButton(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync(true);
+            App.Current.MainPage = new MenuPage();
         }
     }
 }

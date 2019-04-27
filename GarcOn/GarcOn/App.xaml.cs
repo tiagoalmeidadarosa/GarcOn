@@ -39,7 +39,7 @@ namespace GarcOn
 #if DEBUG
             HotReloader.Current.Start(this);
 #endif
-            MainPage = new MenuPage();
+            MainPage = new ConfigurationPage();
         }
 
         protected override async void OnStart()

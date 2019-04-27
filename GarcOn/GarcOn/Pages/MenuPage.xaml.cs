@@ -27,10 +27,6 @@ namespace GarcOn.Pages
                 return;
             }
 
-            if(item.TargetType.Name == "ConfigurationPage") 
-            {
-                App.IsAdmin = false;
-            }
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
             page.ClassId = item.Id.ToString();

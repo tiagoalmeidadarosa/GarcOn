@@ -79,6 +79,7 @@ namespace GarcOn.Pages
                         await SecureStorage.SetAsync("categorias_e_produtos", jsonCategoriesAndProducts);
 
                         await DisplayAlert("Atualização concluída", "Informações carregadas com sucesso!", "Fechar");
+                        App.Current.MainPage = new MenuPage();
                     }
                 }
                 catch (Exception ex)
