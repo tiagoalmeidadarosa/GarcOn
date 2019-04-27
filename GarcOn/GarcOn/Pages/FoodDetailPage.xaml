@@ -58,6 +58,11 @@
                 <StackLayout HorizontalOptions="Center" 
                              Orientation="Horizontal"
                              Margin="{StaticResource FoodDetailtPadding}">
+                    <Label Text="Preço total: "
+                           TextColor="{StaticResource grayDark}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center"
+                           FontSize="16" />
                     <Label x:Name="lblTotalPrice"
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 

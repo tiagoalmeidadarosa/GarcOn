@@ -63,16 +63,10 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="R$ "
+                                        <StackLayout Orientation="Horizontal">                                          
+                                            <Label Text="{Binding Valor, StringFormat='{0:C}'}"
                                                    FontSize="Small"
                                                    TextColor="{StaticResource asphaltPrimary}"
-                                                   VerticalOptions="CenterAndExpand"
-                                                   Style="{StaticResource FoodsListValueLabelStyle}" />
-
-                                            <Label Text="{Binding Valor, StringFormat='{0:N}'}"
-                                                   FontSize="Small"
-                                                   TextColor="{StaticResource  asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand"
                                                    Style="{StaticResource FoodsListValueLabelStyle}" />
                                         </StackLayout>

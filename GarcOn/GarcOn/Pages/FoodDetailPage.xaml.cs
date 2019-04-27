@@ -1,9 +1,5 @@
 ﻿using GarcOn.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,12 +17,11 @@ namespace GarcOn.Pages
 			InitializeComponent();
 
             lblTitle.Text = produto.Nome;
-            lblPrice.Text = "R$ " + produto.Valor.ToString("N2");
+            lblPrice.Text = string.Format("{0:C}", produto.Valor);
             lblDescription.Text = produto.Descricao;
 
             lblQtd.Text = MinValue.ToString();
-
-            CalculateTotalPrice(produto.Valor, MinValue);
+            lblTotalPrice.Text = string.Format("{0:C}", produto.Valor * MinValue);
         }
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
@@ -43,9 +38,9 @@ namespace GarcOn.Pages
                     await lblQtd.ScaleTo(1, 100);
 
                     var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
-                    CalculateTotalPrice(valor, quantidade);
+                    lblTotalPrice.Text = string.Format("{0:C}", valor * quantidade);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // ignored
                 }
@@ -66,18 +61,13 @@ namespace GarcOn.Pages
                     await lblQtd.ScaleTo(1, 100);
 
                     var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
-                    CalculateTotalPrice(valor, quantidade);
+                    lblTotalPrice.Text = string.Format("{0:C}", valor * quantidade);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // ignored
                 }
             }
-        }
-
-        private void CalculateTotalPrice(double value, int quantity)
-        {
-            lblTotalPrice.Text = "Preço total: R$ " + (value * quantity).ToString("N2");
         }
     }
 }

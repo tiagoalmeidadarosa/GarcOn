@@ -2,6 +2,7 @@
 using GarcOn.Pages;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -18,6 +19,9 @@ namespace GarcOn
         public App()
         {
             InitializeComponent();
+
+            //Set default culture to get correct currency format
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 
             Task.Run(async () => {
 
