@@ -12,9 +12,13 @@ namespace GarcOn.Pages
         const int MinValue = 1;
         const int MaxValue = 50;
 
+        public Produto Produto;
+
 		public FoodDetailPage(Produto produto)
 		{
 			InitializeComponent();
+
+            this.Produto = produto;
 
             lblTitle.Text = produto.Nome;
             lblPrice.Text = string.Format("{0:C}", produto.Valor);
@@ -26,7 +30,7 @@ namespace GarcOn.Pages
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
         {
-            var quantidade = Convert.ToInt16(lblQtd.Text);
+            var quantidade = Convert.ToInt32(lblQtd.Text);
             quantidade++;
 
             if (quantidade <= MaxValue)
@@ -49,7 +53,7 @@ namespace GarcOn.Pages
 
         private async void MinusButton_OnClicked(object sender, EventArgs e)
         {
-            var quantidade = Convert.ToInt16(lblQtd.Text);
+            var quantidade = Convert.ToInt32(lblQtd.Text);
             quantidade--;
 
             if (quantidade >= MinValue)
@@ -68,6 +72,21 @@ namespace GarcOn.Pages
                     // ignored
                 }
             }
+        }
+
+        private async void AddToBasketButton_Clicked(object sender, EventArgs e)
+        {
+            var quantidade = Convert.ToInt32(lblQtd.Text);
+
+            if (App.ItensPedido.ContainsKey(Produto))
+            {
+                quantidade += App.ItensPedido[Produto];
+                App.ItensPedido.Remove(Produto);
+            }
+
+            App.ItensPedido.Add(Produto, quantidade);
+
+            await Navigation.PushAsync(new BasketPage());
         }
     }
 }

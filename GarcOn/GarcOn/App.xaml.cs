@@ -16,6 +16,8 @@ namespace GarcOn
         public static bool IsAdmin { get; set; }
         public static List<Categoria> Categorias { get; set; }
 
+        public static Dictionary<Produto, int> ItensPedido { get; set; }
+
         public App()
         {
             InitializeComponent();
@@ -36,6 +38,9 @@ namespace GarcOn
                 }
 
             }).Wait();
+
+            ItensPedido = new Dictionary<Produto, int>();
+
 #if DEBUG
             HotReloader.Current.Start(this);
 #endif

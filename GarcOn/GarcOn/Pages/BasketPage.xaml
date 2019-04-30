@@ -5,7 +5,7 @@
              xmlns:controls="clr-namespace:GarcOn.Controls"
              xmlns:views="clr-namespace:GarcOn.Views"
              x:Class="GarcOn.Pages.BasketPage"
-             NavigationPage.HasNavigationBar="False">
+             Title="Itens do Pedido">
     <ContentPage.Content>
         <AbsoluteLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, .8"
@@ -62,8 +62,8 @@
                          AbsoluteLayout.LayoutFlags="All"
                          BackgroundColor="{StaticResource primaryColor}" 
                          Padding="20, 20, 20, 20">
-                <Label Text="Total Price:" FontSize="Large" TextColor="White"/>
-                <Label Text="{Binding TotalPrice}" FontSize="Medium" TextColor="White"/>
+                <Label Text="Preço Total:" FontSize="Large" TextColor="White"/>
+                <Label x:Name="lblTotalPrice" FontSize="Medium" TextColor="White"/>
             </StackLayout>
 
             <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .16, 50, 50"

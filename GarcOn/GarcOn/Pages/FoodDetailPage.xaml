@@ -110,6 +110,7 @@
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     HorizontalOptions="Center"
                     Command="{Binding AddToBasket}"
+                    Clicked="AddToBasketButton_Clicked"
                     VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
                     Text="Adicionar ao pedido" />
