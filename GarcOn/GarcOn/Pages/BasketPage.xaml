@@ -34,17 +34,22 @@
                                                                   Aspect="AspectFill" />
 
                                         <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                            <Label Text="{Binding Name}" FontSize="Medium"
+                                            <Label Text="{Binding Name}" 
+                                                   FontSize="Medium"
                                                    LineBreakMode="TailTruncation"
-                                                   TextColor="{StaticResource asphaltPrimary}" />
+                                                   TextColor="{StaticResource asphaltPrimary}"
+                                                   Style="{StaticResource BasketFoodsTitleLabelStyle}" />
 
-                                            <Label Text="{Binding Description}" FontSize="Small"
+                                            <Label Text="{Binding Description}" 
+                                                   FontSize="Small"
                                                    TextColor="{StaticResource grayPrimary}"
                                                    Style="{StaticResource BasketFoodsDescriptionLabelStyle}" />
 
                                             <Label Text="{Binding TotalPrice, StringFormat='Total: {0:C}'}"
-                                                   FontSize="Small" TextColor="{StaticResource grayPrimary}"
-                                                   LineBreakMode="TailTruncation" />
+                                                   FontSize="Small" 
+                                                   TextColor="{StaticResource grayPrimary}"
+                                                   LineBreakMode="TailTruncation"
+                                                   Style="{StaticResource BasketFoodsValueLabelStyle}" />
                                         </StackLayout>
 
                                         <views:VerticalStepperView Grid.Column="2" Margin="10" MinValue="0"

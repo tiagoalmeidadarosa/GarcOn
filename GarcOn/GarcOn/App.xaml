@@ -147,6 +147,7 @@
             <Setter Property="FontFamily"
                         Value="Roboto-Regular.ttf#Roboto-Regular" />
         </Style>
+        
 
         <Style x:Key="FoodDetailTitleLabelStyle" TargetType="Label">
             <Setter Property="FontFamily"
@@ -168,11 +169,22 @@
                         Value="Roboto-Medium.ttf#Roboto-Medium" />
         </Style>
 
+
+        <Style x:Key="BasketFoodsTitleLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily"
+                        Value="Roboto-Regular.ttf#Roboto-Regular" />
+        </Style>
+
         <Style x:Key="BasketFoodsDescriptionLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="effects:NumberOfLinesEffect.ApplyNumberOfLines"
                         Value="True" />
             <Setter Property="effects:NumberOfLinesEffect.NumberOfLines"
                         Value="2" />
+        </Style>
+
+        <Style x:Key="BasketFoodsValueLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily"
+                        Value="Roboto-Regular.ttf#Roboto-Regular" />
         </Style>
     </Application.Resources>
 </Application>
