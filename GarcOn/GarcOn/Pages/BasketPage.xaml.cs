@@ -28,7 +28,8 @@ namespace GarcOn.Pages
                 Produto produto = itemPedido.Key;
                 int quantidade = itemPedido.Value;
 
-                OrderItem orderItem = new OrderItem(produto.Nome, 
+                OrderItem orderItem = new OrderItem(produto.ID,
+                                                    produto.Nome, 
                                                     produto.Descricao,
                                                     produto.Valor,
                                                     quantidade,
@@ -51,13 +52,35 @@ namespace GarcOn.Pages
             var b = (Button)sender;
             var ob = b.CommandParameter as OrderItem;
 
-            if (ob != null)
+            if (ob == null)
+            {
+                return;
+            }
+            else
             {
                 if (MaxValue > ob.Quantity)
                     ob.Quantity += 1;
 
                 ob.TotalPrice = ob.UnitPrice * ob.Quantity;
             }
+
+            List<OrderItem> orderItems = new List<OrderItem>();
+            foreach (var item in (List<OrderItem>)orders.ItemsSource)
+            {
+                if (item.Id == ob.Id)
+                {
+                    //Se for o que está sendo alterado, deve usar o objeto que contém os valores corretos
+                    orderItems.Add(ob);
+                }
+                else
+                {
+                    orderItems.Add(new OrderItem(item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
+                }
+            }
+
+            orders.ItemsSource = orderItems;
+
+            lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
         }
 
         private void ButtonDown_OnClicked(object sender, EventArgs e)
@@ -65,25 +88,49 @@ namespace GarcOn.Pages
             var b = (Button)sender;
             var ob = b.CommandParameter as OrderItem;
 
-            if (ob != null)
+            if (ob == null)
+            {
+                return;
+            }
+            else
             {
                 if (MinValue < ob.Quantity)
                     ob.Quantity -= 1;
 
                 ob.TotalPrice = ob.UnitPrice * ob.Quantity;
             }
+
+            List<OrderItem> orderItems = new List<OrderItem>();
+            foreach (var item in (List<OrderItem>)orders.ItemsSource)
+            {
+                if (item.Id == ob.Id)
+                {
+                    //Se for o que está sendo alterado, deve usar o objeto que contém os valores corretos
+                    orderItems.Add(ob);
+                }
+                else
+                {
+                    orderItems.Add(new OrderItem(item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
+                }
+            }
+
+            orders.ItemsSource = orderItems;
+
+            lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
         }
 
         public class OrderItem
         {
+            public long Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
             public double UnitPrice { get; set; }
             public int Quantity { get; set; }
             public double TotalPrice { get; set; }
 
-            public OrderItem(string name, string description, double unitPrice, int quantity, double totalPrice)
+            public OrderItem(long id, string name, string description, double unitPrice, int quantity, double totalPrice)
             {
+                this.Id = id;
                 this.Name = name;
                 this.Description = description;
                 this.UnitPrice = unitPrice;
