@@ -73,7 +73,7 @@
 
                 <controls:Divider />
 
-                <!-- /* StepperView -->
+                <!-- StepperView -->
                 <StackLayout Orientation="Horizontal"
                              Margin="{StaticResource FoodDetailtPadding}"
                              HorizontalOptions="Center">
@@ -100,7 +100,7 @@
                                          BackgroundColor="Transparent"
                                          Clicked="PlusButton_OnClicked" />
                 </StackLayout>
-                <!-- StepperView */ -->
+                <!-- StepperView -->
 
                 <controls:Divider />
             </StackLayout>
