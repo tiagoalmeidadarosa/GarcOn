@@ -93,8 +93,10 @@ namespace GarcOn.Pages
             App.ItensPedido.Add(ob.Produto, ob.Quantity);
         }
 
-        private void ButtonDown_OnClicked(object sender, EventArgs e)
+        private async void ButtonDown_OnClicked(object sender, EventArgs e)
         {
+            var remove = false;
+
             var b = (Button)sender;
             var ob = b.CommandParameter as OrderItem;
 
@@ -105,7 +107,13 @@ namespace GarcOn.Pages
             else
             {
                 if (MinValue < ob.Quantity)
+                {
                     ob.Quantity -= 1;
+                }
+                else
+                {
+                    remove = await DisplayAlert("Remover Item", "Deseja realmente remover o produto?", "Sim", "Não");
+                }
 
                 ob.TotalPrice = ob.UnitPrice * ob.Quantity;
             }
@@ -115,7 +123,8 @@ namespace GarcOn.Pages
             {
                 if (item.Id == ob.Id)
                 {
-                    orderItems.Add(ob);
+                    if(!remove)
+                        orderItems.Add(ob);
                 }
                 else
                 {
@@ -134,7 +143,8 @@ namespace GarcOn.Pages
                 App.ItensPedido.Remove(ob.Produto);
             }
 
-            App.ItensPedido.Add(ob.Produto, ob.Quantity);
+            if (!remove)
+                App.ItensPedido.Add(ob.Produto, ob.Quantity);
         }
 
         private async void CompleteOrder_OnClicked(object sender, EventArgs e)
