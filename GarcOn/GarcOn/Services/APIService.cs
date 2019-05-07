@@ -1,4 +1,6 @@
-﻿using Plugin.Connectivity;
+﻿using GarcOn.Models;
+using Plugin.Connectivity;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
 
@@ -16,11 +18,6 @@ namespace GarcOn.Services
             _garconClient = new GarcOnClient(bind, address);
         }
 
-        public async Task<string> GetCategoriesAndProducts()
-        {
-            return _garconClient.GetCategoriesAndProducts();
-        }
-
         // verify status network
         public static bool IsInternet()
         {
@@ -30,6 +27,16 @@ namespace GarcOn.Services
             }
 
             return false;
+        }
+
+        public string GetData()
+        {
+            return _garconClient.GetData();
+        }
+
+        public string AddOrder(int numeroMesa, double valorTotal, Dictionary<long, int> itensPedido)
+        {
+            return _garconClient.AddOrder(numeroMesa, valorTotal, itensPedido);
         }
     }
 }

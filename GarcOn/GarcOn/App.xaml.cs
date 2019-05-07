@@ -25,16 +25,16 @@ namespace GarcOn
             //Set default culture to get correct currency format
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 
-            Task.Run(async () => {
-
-                var jsonCategoriesAndProducts = await SecureStorage.GetAsync("categorias_e_produtos");
-                if (string.IsNullOrEmpty(jsonCategoriesAndProducts))
+            Task.Run(async () => 
+            {
+                var jsonData = await SecureStorage.GetAsync("categorias_e_produtos");
+                if (string.IsNullOrEmpty(jsonData))
                 {
                     Categorias = new List<Categoria>();
                 }
                 else
                 {
-                    Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonCategoriesAndProducts);
+                    Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
                 }
 
             }).Wait();

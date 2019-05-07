@@ -115,10 +115,10 @@
                     Margin="0, 0, 0, 10"
                     Text="Adicionar ao pedido" />
 
-            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .5, 50, 50"
+            <!--<controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .5, 50, 50"
                                        AbsoluteLayout.LayoutFlags="PositionProportional"
                                        RippleColor="{StaticResource primaryColorLight}"
-                                       Image="heart_outline_white" />
+                                       Image="heart_outline_white" />-->
 
         </AbsoluteLayout>
     </ContentPage.Content>

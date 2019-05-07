@@ -1,10 +1,11 @@
 ﻿using GarcOn.Models;
+using GarcOn.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,7 +29,8 @@ namespace GarcOn.Pages
                 Produto produto = itemPedido.Key;
                 int quantidade = itemPedido.Value;
 
-                OrderItem orderItem = new OrderItem(produto.ID,
+                OrderItem orderItem = new OrderItem(produto,
+                                                    produto.ID,
                                                     produto.Nome, 
                                                     produto.Descricao,
                                                     produto.Valor,
@@ -69,18 +71,26 @@ namespace GarcOn.Pages
             {
                 if (item.Id == ob.Id)
                 {
-                    //Se for o que está sendo alterado, deve usar o objeto que contém os valores corretos
                     orderItems.Add(ob);
                 }
                 else
                 {
-                    orderItems.Add(new OrderItem(item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
+                    orderItems.Add(new OrderItem(item.Produto, item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
                 }
             }
 
             orders.ItemsSource = orderItems;
 
+            //Altera preço total na tela
             lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
+
+            //Altera quantidade na variável global
+            if (App.ItensPedido.ContainsKey(ob.Produto))
+            {
+                App.ItensPedido.Remove(ob.Produto);
+            }
+
+            App.ItensPedido.Add(ob.Produto, ob.Quantity);
         }
 
         private void ButtonDown_OnClicked(object sender, EventArgs e)
@@ -105,22 +115,64 @@ namespace GarcOn.Pages
             {
                 if (item.Id == ob.Id)
                 {
-                    //Se for o que está sendo alterado, deve usar o objeto que contém os valores corretos
                     orderItems.Add(ob);
                 }
                 else
                 {
-                    orderItems.Add(new OrderItem(item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
+                    orderItems.Add(new OrderItem(item.Produto, item.Id, item.Name, item.Description, item.UnitPrice, item.Quantity, item.TotalPrice));
                 }
             }
 
             orders.ItemsSource = orderItems;
 
+            //Altera preço total na tela
             lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
+
+            //Altera quantidade na variável global
+            if (App.ItensPedido.ContainsKey(ob.Produto))
+            {
+                App.ItensPedido.Remove(ob.Produto);
+            }
+
+            App.ItensPedido.Add(ob.Produto, ob.Quantity);
+        }
+
+        private async void CompleteOrder_OnClicked(object sender, EventArgs e)
+        {
+            var completeOrder = await DisplayAlert("Finalizar Pedido", "Deseja realmente finalizar o seu pedido?", "Sim", "Não");
+
+            if (completeOrder)
+            {
+                var ip = await SecureStorage.GetAsync("ip_servidor");
+                var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
+                var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
+
+                Dictionary<long, int> itensPedido = new Dictionary<long, int>();
+                foreach (var itemPedido in App.ItensPedido)
+                {
+                    itensPedido.Add(itemPedido.Key.ID, itemPedido.Value);
+                }
+
+                APIService apiService = new APIService(ip);
+                var errorMessage = apiService.AddOrder(numeroMesa, valorTotal, itensPedido);
+
+                if (string.IsNullOrEmpty(errorMessage))
+                {
+                    await DisplayAlert("Confirmação do Pedido", "Seu pedido foi cadastrado com sucesso.", "Fechar");
+
+                    App.ItensPedido = new Dictionary<Produto, int>();
+                    App.Current.MainPage = new MenuPage();
+                }
+                else
+                {
+                    await DisplayAlert("Erro na Confirmação do Pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente daqui alguns segundos. Erro: " + errorMessage, "Fechar");
+                }
+            }
         }
 
         public class OrderItem
         {
+            public Produto Produto { get; set; }
             public long Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
@@ -128,8 +180,9 @@ namespace GarcOn.Pages
             public int Quantity { get; set; }
             public double TotalPrice { get; set; }
 
-            public OrderItem(long id, string name, string description, double unitPrice, int quantity, double totalPrice)
+            public OrderItem(Produto produto, long id, string name, string description, double unitPrice, int quantity, double totalPrice)
             {
+                this.Produto = produto;
                 this.Id = id;
                 this.Name = name;
                 this.Description = description;

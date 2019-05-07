@@ -71,12 +71,12 @@ namespace GarcOn.Pages
 
                     //Buscar atualizações
                     APIService apiService = new APIService(txtIP.Text);
-                    var jsonCategoriesAndProducts = await apiService.GetCategoriesAndProducts();
+                    var jsonData = apiService.GetData();
 
-                    if (!string.IsNullOrEmpty(jsonCategoriesAndProducts))
+                    if (!string.IsNullOrEmpty(jsonData))
                     {
-                        App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonCategoriesAndProducts);
-                        await SecureStorage.SetAsync("categorias_e_produtos", jsonCategoriesAndProducts);
+                        App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
+                        await SecureStorage.SetAsync("categorias_e_produtos", jsonData);
 
                         await DisplayAlert("Atualização concluída", "Informações carregadas com sucesso!", "Fechar");
                         App.Current.MainPage = new MenuPage();
