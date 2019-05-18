@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GarcOn.Pages.FoodsPage"
              xmlns:views="clr-namespace:GarcOn.Views"
-             xmlns:controls="clr-namespace:GarcOn.Controls"
              xmlns:converters="clr-namespace:GarcOn.Converters"
              BackgroundColor="{StaticResource WindowBackgroundTable}"
              Icon="restaurant"
-             Title="Todas as categorias">
+             Title="Todas as categorias"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,21 +16,17 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <controls:BadgeToolbarItem Icon="ic_shopping_cart_white"
-                                   Command="{Binding GoToBasket}"
-                                   BadgeText="{Binding BasketViewModel.OrdersCount}"
-                                   BadgeColor="{StaticResource badgeColor}"
-                                   BadgePressedColor="{StaticResource badgeColor}" />
-    </ContentPage.ToolbarItems>
-
     <ContentPage.Content>
-        <Grid>
-            <views:FoodsListView ItemsSource="{Binding Foods}"
-                                 IsVisible="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
-                                 SelectedItem="{Binding SelectedFood}"
-                                 x:Name="FoodsList" />
-        </Grid>
+        <StackLayout Spacing="0">
+            <views:NavigationBarView x:Name="NavigationBarView" />
+            
+            <Grid>
+                <views:FoodsListView ItemsSource="{Binding Foods}"
+                                     IsVisible="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                                     SelectedItem="{Binding SelectedFood}"
+                                     x:Name="FoodsList" />
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 
 </ContentPage>

@@ -15,8 +15,12 @@ namespace GarcOn.Pages
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
+            NavigationBarView.Back = false;
+            NavigationBarView.Title = this.Title;
+            NavigationBarView.BasketValue = App.ItensPedido.Count.ToString();
+
             long idCategoria = string.IsNullOrEmpty(this.ClassId) ? 0 : Convert.ToInt64(ClassId);
 
             if (idCategoria > 0)
@@ -37,6 +41,11 @@ namespace GarcOn.Pages
 
                 FoodsList.ItemsSource = produtos;
             }
+        }
+
+        private async void BadgeToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new BasketPage());
         }
     }
 }

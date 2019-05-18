@@ -16,7 +16,10 @@ namespace GarcOn.Pages
 
 		public FoodDetailPage(Produto produto)
 		{
-			InitializeComponent();
+            InitializeComponent();
+
+            NavigationBarView.Title = produto.Nome;
+            NavigationBarView.Color = Color.Transparent;
 
             this.Produto = produto;
 
@@ -26,6 +29,11 @@ namespace GarcOn.Pages
 
             lblQtd.Text = MinValue.ToString();
             lblTotalPrice.Text = string.Format("{0:C}", produto.Valor * MinValue);
+        }
+
+        protected override void OnAppearing()
+        {
+            NavigationBarView.BasketValue = App.ItensPedido.Count.ToString();
         }
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
@@ -86,6 +94,11 @@ namespace GarcOn.Pages
 
             App.ItensPedido.Add(Produto, quantidade);
 
+            await Navigation.PushAsync(new BasketPage());
+        }
+
+        private async void BadgeToolbarItem_Clicked(object sender, EventArgs e)
+        {
             await Navigation.PushAsync(new BasketPage());
         }
     }

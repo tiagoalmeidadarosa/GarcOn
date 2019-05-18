@@ -132,7 +132,6 @@
             <Setter Property="FontFamily"
                         Value="Roboto-Regular.ttf#Roboto-Regular" />
         </Style>
-
         <Style x:Key="FoodsListDescriptionLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="effects:NumberOfLinesEffect.ApplyNumberOfLines"
                         Value="True" />
@@ -142,18 +141,16 @@
                         Value="Roboto-Regular.ttf#Roboto-Regular">
             </Setter>
         </Style>
-
         <Style x:Key="FoodsListValueLabelStyle" TargetType="Label">
             <Setter Property="FontFamily"
                         Value="Roboto-Regular.ttf#Roboto-Regular" />
         </Style>
-        
+
 
         <Style x:Key="FoodDetailTitleLabelStyle" TargetType="Label">
             <Setter Property="FontFamily"
                         Value="Roboto-Light.ttf#Roboto-Light" />
         </Style>
-
         <Style x:Key="FoodDetailDescriptionLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="effects:NumberOfLinesEffect.ApplyNumberOfLines"
                         Value="True" />
@@ -163,7 +160,6 @@
                         Value="Roboto-Regular.ttf#Roboto-Regular">
             </Setter>
         </Style>
-
         <Style x:Key="FoodDetailValueLabelStyle" TargetType="Label">
             <Setter Property="FontFamily"
                         Value="Roboto-Medium.ttf#Roboto-Medium" />
@@ -174,17 +170,20 @@
             <Setter Property="FontFamily"
                         Value="Roboto-Regular.ttf#Roboto-Regular" />
         </Style>
-
         <Style x:Key="BasketFoodsDescriptionLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="effects:NumberOfLinesEffect.ApplyNumberOfLines"
                         Value="True" />
             <Setter Property="effects:NumberOfLinesEffect.NumberOfLines"
                         Value="2" />
         </Style>
-
         <Style x:Key="BasketFoodsValueLabelStyle" TargetType="Label">
             <Setter Property="FontFamily"
                         Value="Roboto-Regular.ttf#Roboto-Regular" />
+        </Style>
+
+        <Style x:Key="NavigationBarViewTitlePage" TargetType="Label">
+            <Setter Property="FontFamily"
+                        Value="Roboto-Medium.ttf#Roboto-Medium" />
         </Style>
     </Application.Resources>
 </Application>

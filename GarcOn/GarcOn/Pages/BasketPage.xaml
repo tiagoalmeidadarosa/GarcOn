@@ -5,12 +5,14 @@
              xmlns:controls="clr-namespace:GarcOn.Controls"
              xmlns:views="clr-namespace:GarcOn.Views"
              x:Class="GarcOn.Pages.BasketPage"
-             Title="Itens do Pedido">
+             Title="Itens do Pedido"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <AbsoluteLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1, 1, 1, .8"
                          AbsoluteLayout.LayoutFlags="All"
-                         Margin="0, 15, 0, 0">
+                         Margin="0, 40, 0, 0">
 
                 <ListView x:Name="orders" SeparatorColor="{StaticResource grayPrimary}"
                           RowHeight="100">
@@ -80,21 +82,29 @@
                 </ListView>
             </StackLayout>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 0.2" 
+            <StackLayout AbsoluteLayout.LayoutBounds=".5, 0, 1, 0.25" 
                          AbsoluteLayout.LayoutFlags="All"
                          BackgroundColor="{StaticResource primaryColor}" 
-                         Padding="20, 20, 20, 20">
+                         Padding="20, 20, 20, 20"
+                         Margin="0, 30, 0, 0">
                 <Label Text="Preço total:" FontSize="Large" TextColor="White"/>
                 <Label x:Name="lblTotalPrice" FontSize="Medium" TextColor="White"/>
             </StackLayout>
 
-            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .16, 50, 50"
+            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .22, 50, 50"
                                            Clicked="CompleteOrder_OnClicked"
                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                            BackgroundColor="{StaticResource accentColor}"
                                            Image="check"/><!--
                                            RippleColor="{StaticResource primaryColorLight}"
                                            ButtonColor="{StaticResource accentColor}"-->
+
+            <views:NavigationBarView x:Name="NavigationBarView"
+                                     AbsoluteLayout.LayoutBounds=".5, 0, AutoSize, AutoSize" 
+                                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                                     Title="Itens do Pedido"
+                                     Basket="False" />
+            
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
