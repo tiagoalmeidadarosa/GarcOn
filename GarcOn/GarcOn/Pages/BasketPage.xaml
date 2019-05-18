@@ -14,8 +14,9 @@
                          AbsoluteLayout.LayoutFlags="All"
                          Margin="0, 40, 0, 0">
 
-                <ListView x:Name="orders" SeparatorColor="{StaticResource grayPrimary}"
-                          RowHeight="100">
+                <ListView x:Name="Orders" SeparatorColor="{StaticResource grayPrimary}"
+                          RowHeight="100"
+                          ItemSelected="Orders_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

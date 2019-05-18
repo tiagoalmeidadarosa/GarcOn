@@ -44,7 +44,7 @@ namespace GarcOn.Pages
                 orderItems.Add(orderItem);
             }
             
-            orders.ItemsSource = orderItems;
+            Orders.ItemsSource = orderItems;
 
             lblTotalPrice.Text = string.Format("{0:C}", valorTotal);
         }
@@ -67,7 +67,7 @@ namespace GarcOn.Pages
             }
 
             List<OrderItem> orderItems = new List<OrderItem>();
-            foreach (var item in (List<OrderItem>)orders.ItemsSource)
+            foreach (var item in (List<OrderItem>)Orders.ItemsSource)
             {
                 if (item.Id == ob.Id)
                 {
@@ -79,7 +79,7 @@ namespace GarcOn.Pages
                 }
             }
 
-            orders.ItemsSource = orderItems;
+            Orders.ItemsSource = orderItems;
 
             //Altera preço total na tela
             lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
@@ -119,7 +119,7 @@ namespace GarcOn.Pages
             }
 
             List<OrderItem> orderItems = new List<OrderItem>();
-            foreach (var item in (List<OrderItem>)orders.ItemsSource)
+            foreach (var item in (List<OrderItem>)Orders.ItemsSource)
             {
                 if (item.Id == ob.Id)
                 {
@@ -132,7 +132,7 @@ namespace GarcOn.Pages
                 }
             }
 
-            orders.ItemsSource = orderItems;
+            Orders.ItemsSource = orderItems;
 
             //Altera preço total na tela
             lblTotalPrice.Text = string.Format("{0:C}", orderItems.Sum(o => o.TotalPrice));
@@ -178,6 +178,11 @@ namespace GarcOn.Pages
                     await DisplayAlert("Erro na Confirmação do Pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente daqui alguns segundos. Erro: " + errorMessage, "Fechar");
                 }
             }
+        }
+
+        private void Orders_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Orders.SelectedItem = null;
         }
 
         public class OrderItem
