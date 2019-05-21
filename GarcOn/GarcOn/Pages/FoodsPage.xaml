@@ -6,7 +6,7 @@
              xmlns:converters="clr-namespace:GarcOn.Converters"
              BackgroundColor="{StaticResource WindowBackgroundTable}"
              Icon="restaurant"
-             Title="Todas as categorias"
+             Title="TODAS AS CATEGORIAS"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
 

@@ -18,7 +18,7 @@ namespace GarcOn.Pages
 		{
             InitializeComponent();
 
-            NavigationBarView.Title = produto.Nome;
+            NavigationBarView.Title = produto.Nome.ToUpper();
             NavigationBarView.Color = Color.Transparent;
 
             this.Produto = produto;

@@ -5,7 +5,6 @@
              xmlns:controls="clr-namespace:GarcOn.Controls"
              xmlns:views="clr-namespace:GarcOn.Views"
              x:Class="GarcOn.Pages.BasketPage"
-             Title="Itens do Pedido"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
     <ContentPage.Content>
@@ -103,7 +102,7 @@
             <views:NavigationBarView x:Name="NavigationBarView"
                                      AbsoluteLayout.LayoutBounds=".5, 0, AutoSize, AutoSize" 
                                      AbsoluteLayout.LayoutFlags="PositionProportional"
-                                     Title="Itens do Pedido"
+                                     Title="ITENS DO PEDIDO"
                                      Basket="False" />
             
         </AbsoluteLayout>

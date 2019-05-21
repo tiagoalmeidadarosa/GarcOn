@@ -68,7 +68,7 @@ namespace GarcOn.Pages
                             new MenuPageMenuItem
                             {
                                 Id = categoria.ID,
-                                Title = categoria.Descricao,
+                                Title = categoria.Descricao.ToUpper(),
                                 TargetType = typeof(FoodsPage),
                                 LabelVisible = "True"
                             }
