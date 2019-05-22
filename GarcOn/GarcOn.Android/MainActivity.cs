@@ -18,7 +18,7 @@ namespace GarcOn.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            SetStatusBarColor(Android.Graphics.Color.Rgb(65, 28, 19));
+            SetStatusBarColor(Android.Graphics.Color.Rgb(25, 25, 19));
 
             base.OnCreate(savedInstanceState);
 

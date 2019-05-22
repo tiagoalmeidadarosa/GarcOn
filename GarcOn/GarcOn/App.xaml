@@ -5,7 +5,7 @@
              xmlns:effects="clr-namespace:GarcOn.Effects"
              x:Class="GarcOn.App">
     <Application.Resources>
-        <Color x:Key="primaryColor">#361A11</Color>
+        <Color x:Key="primaryColor">#191913</Color>
         
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor" Value="{StaticResource primaryColor}"/>

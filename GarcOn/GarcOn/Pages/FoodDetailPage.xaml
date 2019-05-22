@@ -14,8 +14,9 @@
 
                 <Image HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    Source="{Binding Picture}"
+                    Source="https://i.imgur.com/vAVUGtZm.jpg"
                     Aspect="AspectFill" />
+                    <!-- Source="{Binding Picture}" acima -->
 
                 <Grid Opacity=".5" BackgroundColor="{StaticResource asphaltDark}" HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand" />

@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="NativeDependency\ProgressDialog.cs" />
+    <Compile Include="Renderers\CustomViewCellRenderer.cs" />
     <Compile Include="Renderers\FlatButtonRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -383,9 +384,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\header_salgados.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\header_configuracoes.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\header_doces.png" />

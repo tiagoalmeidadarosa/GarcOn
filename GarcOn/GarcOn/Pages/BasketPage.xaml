@@ -30,10 +30,12 @@
                                         <imagecontrol:CircleImage WidthRequest="60" Margin="10"
                                                                   BorderColor="{StaticResource grayPrimary}"
                                                                   BorderThickness="1"
-                                                                  HeightRequest="60" Source="{Binding Food.Picture}"
+                                                                  HeightRequest="60" 
+                                                                  Source="https://i.imgur.com/vAVUGtZm.jpg"
                                                                   HorizontalOptions="Center"
                                                                   VerticalOptions="Center"
                                                                   Aspect="AspectFill" />
+                                                                  <!-- Source="{Binding Food.Picture}" acima -->
 
                                         <StackLayout Grid.Column="1" VerticalOptions="Center">
                                             <Label Text="{Binding Name}" 

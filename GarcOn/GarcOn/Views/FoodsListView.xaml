@@ -39,7 +39,8 @@
                         <controls:CardView>
                             <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
                                 <Grid HeightRequest="120">
-                                    <Image x:Name="photoImage" Source="{Binding Foto}" Aspect="AspectFill" />
+                                    <Image x:Name="photoImage" Source="https://i.imgur.com/vAVUGtZm.jpg" Aspect="AspectFill" />
+                                        <!-- Source="{Binding Foto}" acima -->
                                 </Grid>
 
                                 <StackLayout Padding="10, 10, 10, 3">

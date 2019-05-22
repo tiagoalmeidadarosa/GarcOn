@@ -58,7 +58,7 @@ namespace GarcOn.Views
                 "Color",
                 typeof(Color),
                 typeof(NavigationBarView),
-                Color.FromHex("#361A11"),
+                Color.FromHex("#191913"),
                 propertyChanged: OnColorPropertyChanged
             );
 

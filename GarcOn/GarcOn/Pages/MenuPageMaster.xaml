@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GarcOn.Controls"
              x:Class="GarcOn.Pages.MenuPageMaster"
              Title="Master"
-             BackgroundColor="White">
+             BackgroundColor="{StaticResource primaryColor}">
   <StackLayout>
         <ListView x:Name="MenuItemsListView"
                   SeparatorVisibility="None"
                   HasUnevenRows="true"
                   ItemsSource="{Binding MenuItems}">
           <ListView.Header>
-            <Grid BackgroundColor="Red">
+            <Grid BackgroundColor="Red" Margin="0, 0, 0, 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="*"/>
@@ -35,7 +36,7 @@
                         VerticalTextAlignment="Center" 
                         Text="{Binding Title}" 
                         FontSize="16"
-                        TextColor="Black"
+                        TextColor="White"
                         Style="{StaticResource MenuLabelStyle}"
                         IsVisible="{Binding LabelVisible}"/>
                 </StackLayout>
