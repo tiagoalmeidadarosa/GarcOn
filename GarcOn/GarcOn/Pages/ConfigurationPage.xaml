@@ -21,19 +21,24 @@
                    TextColor="Black"
                    FontSize="30" />
             <Button x:Name="btnAtualizacoes"
-                    AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
                     WidthRequest="300"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    HorizontalOptions="Center"
-                    Command="{Binding AddToBasket}"
-                    VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
                     Text="Salvar e Buscar Atualizações"
                     IsEnabled="False"
-                    Clicked="OnSaveAndGetUpdate"/>
+                    Clicked="OnSaveAndGetUpdate"
+                    BackgroundColor="{StaticResource primaryColor}"
+                    TextColor="White"/>
+            <Button WidthRequest="300"
+                    Margin="0, 0, 0, 10"
+                    Text="Iniciar Aplicação"
+                    Clicked="OnJumpAndInitApplicationButton"
+                    BackgroundColor="White"
+                    TextColor="Black"/>
+            
             <ActivityIndicator x:Name="actInd"
-                             IsRunning="{Binding IsLoading}"
-                             IsVisible="{Binding IsLoading}" Color="Red"/>
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}" 
+                               Color="Red"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

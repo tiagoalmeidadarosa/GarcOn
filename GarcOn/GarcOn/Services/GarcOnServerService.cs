@@ -26,6 +26,9 @@ public interface IGarcOn
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
     string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<long, int> itensPedido);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAccountRequest", ReplyAction="http://tempuri.org/IGarcOn/AddAccountRequestResponse")]
+    string AddAccountRequest(int mesa, double valorTotal);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -80,5 +83,10 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
     public string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<long, int> itensPedido)
     {
         return base.Channel.AddOrder(mesa, valorTotal, itensPedido);
+    }
+    
+    public string AddAccountRequest(int mesa, double valorTotal)
+    {
+        return base.Channel.AddAccountRequest(mesa, valorTotal);
     }
 }

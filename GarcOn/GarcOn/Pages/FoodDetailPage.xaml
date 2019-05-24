@@ -100,14 +100,16 @@
             </StackLayout>
 
             <Button AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
-                    WidthRequest="300"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                    WidthRequest="300"
                     HorizontalOptions="Center"
                     Command="{Binding AddToBasket}"
                     Clicked="AddToBasketButton_Clicked"
                     VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
-                    Text="Adicionar ao pedido" />
+                    Text="Adicionar ao pedido"
+                    TextColor="White"
+                    BackgroundColor="{StaticResource accentColor}"/>
 
             <views:NavigationBarView x:Name="NavigationBarView"
                                      AbsoluteLayout.LayoutBounds=".5, 0, AutoSize, AutoSize" 

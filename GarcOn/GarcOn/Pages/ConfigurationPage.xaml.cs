@@ -98,6 +98,11 @@ namespace GarcOn.Pages
             HideActivityIndicator();
         }
 
+        private void OnJumpAndInitApplicationButton(object sender, EventArgs e)
+        {
+            App.Current.MainPage = new MenuPage();
+        }
+
         public void ShowActivityIndicator()
         {
             IsLoading = true;

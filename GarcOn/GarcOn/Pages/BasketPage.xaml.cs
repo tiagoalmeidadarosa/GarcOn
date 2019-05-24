@@ -175,7 +175,7 @@ namespace GarcOn.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Erro na Confirmação do Pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente daqui alguns segundos. Erro: " + errorMessage, "Fechar");
+                    await DisplayAlert("Erro na Confirmação do Pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
                 }
             }
         }

@@ -5,44 +5,59 @@
              x:Class="GarcOn.Pages.MenuPageMaster"
              Title="Master"
              BackgroundColor="{StaticResource primaryColor}">
-  <StackLayout>
+    <RelativeLayout>
         <ListView x:Name="MenuItemsListView"
                   SeparatorVisibility="None"
                   HasUnevenRows="true"
-                  ItemsSource="{Binding MenuItems}">
-          <ListView.Header>
-            <Grid BackgroundColor="Red" Margin="0, 0, 0, 20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="10"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="80"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
+                  ItemsSource="{Binding MenuItems}"
+                  Margin="0, 0, 0, 60"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+            <ListView.Header>
+                <Grid BackgroundColor="Red" Margin="0, 0, 0, 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
             
-                <Image Source="capa_buteco.png" HorizontalOptions="Fill" Aspect="AspectFill" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
-            </Grid>
-          </ListView.Header>
-          <ListView.ItemTemplate>
-            <DataTemplate>
-              <ViewCell>
-                <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                  <Image Source="{Binding Image}"></Image>
-                  <Label VerticalOptions="FillAndExpand" 
-                        VerticalTextAlignment="Center" 
-                        Text="{Binding Title}" 
-                        FontSize="16"
-                        TextColor="White"
-                        Style="{StaticResource MenuLabelStyle}"
-                        IsVisible="{Binding LabelVisible}"/>
-                </StackLayout>
-              </ViewCell>
-            </DataTemplate>
-          </ListView.ItemTemplate>
+                    <Image Source="capa_buteco.png" HorizontalOptions="Fill" Aspect="AspectFill" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+
+                            <Image Source="{Binding Image}"></Image>
+
+                            <Label VerticalOptions="FillAndExpand" 
+                                VerticalTextAlignment="Center" 
+                                Text="{Binding Title}" 
+                                FontSize="16"
+                                TextColor="White"
+                                Style="{StaticResource MenuLabelStyle}"
+                                IsVisible="{Binding LabelVisible}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
-  </StackLayout>
+
+        <controls:FloatingActionButton AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       WidthRequest="300"
+                                       HeightRequest="40"
+                                       BackgroundColor="{StaticResource accentColor}"
+                                       TextColor="White"
+                                       Text="Pedir a conta"
+                                       Clicked="FinalizeAccountButton_Clicked"
+                                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-310}"
+                                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}" />
+    </RelativeLayout>
 </ContentPage>

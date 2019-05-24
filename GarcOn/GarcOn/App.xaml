@@ -32,7 +32,7 @@
         <Color x:Key="primaryColorLight">#FFE0B2</Color>
 
         <Color x:Key="primaryDarkColor">#F57C00</Color>
-        <Color x:Key="accentColor">#FF5252</Color>
+        <Color x:Key="accentColor">Red</Color>
         <Color x:Key="badgeColor">#4caf50</Color>
 
 
