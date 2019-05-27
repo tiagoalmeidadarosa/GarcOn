@@ -22,6 +22,37 @@
                  BackgroundColor="White"
                  HorizontalOptions="Center"
                  VerticalOptions="Center">
+        <Grid x:Name="gridNavigationBar" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{StaticResource primaryColor}" Margin="0, 0, 0, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="44"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <ContentView Grid.Row="0" Grid.Column="0" x:Name="contentBack">
+                <Image Source="back.png"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        HorizontalOptions="Center" VerticalOptions="Center"/>
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"  />
+                </ContentView.GestureRecognizers>
+            </ContentView>
+
+            <ContentView Grid.Row="0" Grid.Column="1">
+                <Label x:Name="lblTitlePage"
+                       Text="Solicitar a conta"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"
+                       Style="{StaticResource FoodDetailValueLabelStyle}"/>
+            </ContentView>
+        </Grid>
+
         <Grid x:Name="gridItens" Margin="0, 0, 0, 10" ColumnSpacing="20" />
 
         <Label Text="* Caso sinta-se à vontade deixe uma sugestão:" TextColor="Black" FontSize="Small" />

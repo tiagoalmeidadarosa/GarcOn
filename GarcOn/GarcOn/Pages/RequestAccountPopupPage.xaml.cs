@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +70,11 @@ namespace GarcOn.Pages
             labelValorTotal.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             labelValorTotal.Text = string.Format("{0:C}", App.ItensPedido.Sum(i => i.Value * i.Key.Valor));
             gridItens.Children.Add(labelValorTotal, 2, count + 1);
+        }
+
+        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync(true);
         }
 
         private void CancelButton_Clicked(object sender, EventArgs e)
