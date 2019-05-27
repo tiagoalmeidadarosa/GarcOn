@@ -1,5 +1,6 @@
 ﻿using GarcOn.Models;
 using GarcOn.Services;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -86,31 +87,33 @@ namespace GarcOn.Pages
 
             if (completeAccount)
             {
-                var ip = await SecureStorage.GetAsync("ip_servidor");
-                var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
-                double valorTotal = 0;
-                /*var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
+                await PopupNavigation.Instance.PushAsync(new RequestAccountPopupPage());
 
-                Dictionary<long, int> itensPedido = new Dictionary<long, int>();
-                foreach (var itemPedido in App.ItensPedido)
-                {
-                    itensPedido.Add(itemPedido.Key.ID, itemPedido.Value);
-                }*/
+                //var ip = await SecureStorage.GetAsync("ip_servidor");
+                //var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
+                //var valorTotal = App.ItensPedido.Sum(i => i.Key.Valor * i.Value);
+                ///*var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
 
-                APIService apiService = new APIService(ip);
-                var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
+                //Dictionary<long, int> itensPedido = new Dictionary<long, int>();
+                //foreach (var itemPedido in App.ItensPedido)
+                //{
+                //    itensPedido.Add(itemPedido.Key.ID, itemPedido.Value);
+                //}*/
 
-                if (string.IsNullOrEmpty(errorMessage))
-                {
-                    await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+                //APIService apiService = new APIService(ip);
+                //var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
 
-                    //App.ItensPedido = new Dictionary<Produto, int>();
-                    App.Current.MainPage = new MenuPage();
-                }
-                else
-                {
-                    await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns segundos. Erro: " + errorMessage, "Fechar");
-                }
+                //if (string.IsNullOrEmpty(errorMessage))
+                //{
+                //    await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+
+                //    //App.ItensPedido = new Dictionary<Produto, int>();
+                //    App.Current.MainPage = new MenuPage();
+                //}
+                //else
+                //{
+                //    await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns segundos. Erro: " + errorMessage, "Fechar");
+                //}
             }
         }
     }

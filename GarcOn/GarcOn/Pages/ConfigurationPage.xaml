@@ -26,7 +26,7 @@
                     Text="Salvar e Buscar Atualizações"
                     IsEnabled="False"
                     Clicked="OnSaveAndGetUpdate"
-                    BackgroundColor="{StaticResource primaryColor}"
+                    BackgroundColor="Red"
                     TextColor="White"/>
             <Button WidthRequest="300"
                     Margin="0, 0, 0, 10"
