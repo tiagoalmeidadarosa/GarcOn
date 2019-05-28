@@ -168,6 +168,20 @@ namespace GarcOn.Pages
 
                 if (string.IsNullOrEmpty(errorMessage))
                 {
+                    foreach (var itemPedido in App.ItensPedido)
+                    {
+                        var produto = itemPedido.Key;
+                        var quantidade = itemPedido.Value;
+
+                        if (App.ItensPedidosFinalizados.ContainsKey(produto))
+                        {
+                            quantidade += App.ItensPedidosFinalizados[produto];
+                            App.ItensPedidosFinalizados.Remove(produto);
+                        }
+
+                        App.ItensPedidosFinalizados.Add(produto, quantidade);
+                    }
+
                     await DisplayAlert("Confirmação do Pedido", "Seu pedido foi cadastrado com sucesso.", "Fechar");
 
                     App.ItensPedido = new Dictionary<Produto, int>();

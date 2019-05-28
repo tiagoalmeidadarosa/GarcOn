@@ -1,11 +1,11 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using GarcOn.Models;
+using GarcOn.Services;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,7 +26,7 @@ namespace GarcOn.Pages
             }
 
             var count = 0;
-            foreach (var item in App.ItensPedido)
+            foreach (var item in App.ItensPedidosFinalizados)
             {
                 var produto = item.Key;
                 var quantidade = item.Value;
@@ -48,6 +48,7 @@ namespace GarcOn.Pages
                             label.Text = quantidade + " x " + string.Format("{0:C}", produto.Valor);
                             break;
                         case 2:
+                            label.HorizontalTextAlignment = TextAlignment.End;
                             label.Text = string.Format("{0:C}", quantidade * produto.Valor);
                             break;
                     }
@@ -66,10 +67,23 @@ namespace GarcOn.Pages
             gridItens.Children.Add(labelTotal, 1, count + 1);
 
             var labelValorTotal = new Label();
+            labelValorTotal.HorizontalTextAlignment = TextAlignment.End;
             labelValorTotal.TextColor = Color.Black;
             labelValorTotal.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-            labelValorTotal.Text = string.Format("{0:C}", App.ItensPedido.Sum(i => i.Value * i.Key.Valor));
+            labelValorTotal.Text = string.Format("{0:C}", App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
             gridItens.Children.Add(labelValorTotal, 2, count + 1);
+        }
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                lblConsumosMesa.Text = "Consumos da mesa " + await SecureStorage.GetAsync("numero_mesa") + ":";
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
@@ -77,14 +91,26 @@ namespace GarcOn.Pages
             await PopupNavigation.Instance.PopAsync(true);
         }
 
-        private void CancelButton_Clicked(object sender, EventArgs e)
+        private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
+            var ip = await SecureStorage.GetAsync("ip_servidor");
+            var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
+            var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
 
-        }
+            APIService apiService = new APIService(ip);
+            var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
 
-        private void ConfirmButton_Clicked(object sender, EventArgs e)
-        {
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
 
+                App.ItensPedidosFinalizados = new Dictionary<Produto, int>();
+                App.Current.MainPage = new MenuPage();
+            }
+            else
+            {
+                await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+            }
         }
     }
 }

@@ -22,6 +22,7 @@
                  BackgroundColor="White"
                  HorizontalOptions="Center"
                  VerticalOptions="Center">
+
         <Grid x:Name="gridNavigationBar" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{StaticResource primaryColor}" Margin="0, 0, 0, 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="44"></RowDefinition>
@@ -53,20 +54,16 @@
             </ContentView>
         </Grid>
 
+        <Label x:Name="lblConsumosMesa" TextColor="Black" FontSize="Small" FontAttributes="Bold"/>
+
         <Grid x:Name="gridItens" Margin="0, 0, 0, 10" ColumnSpacing="20" />
 
         <Label Text="* Caso sinta-se à vontade deixe uma sugestão:" TextColor="Black" FontSize="Small" />
         <Editor HeightRequest="100" FontSize="Small" />
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Button BackgroundColor="White"
-                    Text="Cancelar"
-                    TextColor="Black"
-                    Clicked="CancelButton_Clicked"/>
-            <Button BackgroundColor="Red"
-                    Text="Confirmar"
-                    TextColor="White"
-                    Clicked="ConfirmButton_Clicked"/>
-        </StackLayout>
+        <Button BackgroundColor="Red"
+                Text="Confirmar"
+                TextColor="White"
+                Clicked="ConfirmButton_Clicked"/>
     </StackLayout>
 </pages:PopupPage>

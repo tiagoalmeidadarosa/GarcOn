@@ -17,6 +17,7 @@ namespace GarcOn
         public static List<Categoria> Categorias { get; set; }
 
         public static Dictionary<Produto, int> ItensPedido { get; set; }
+        public static Dictionary<Produto, int> ItensPedidosFinalizados { get; set; }
 
         public App()
         {
@@ -40,6 +41,7 @@ namespace GarcOn
             }).Wait();
 
             ItensPedido = new Dictionary<Produto, int>();
+            ItensPedidosFinalizados = new Dictionary<Produto, int>();
 
 #if DEBUG
             HotReloader.Current.Start(this);

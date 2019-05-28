@@ -98,7 +98,7 @@
                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                            BackgroundColor="{StaticResource accentColor}"
                                            Image="check"
-                                           Text="Finalizar Pedido"
+                                           Text="Finalizar pedido"
                                            TextColor="White"/>
                                            <!--
                                            RippleColor="{StaticResource primaryColorLight}"

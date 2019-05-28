@@ -50,7 +50,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <controls:FloatingActionButton AbsoluteLayout.LayoutFlags="PositionProportional"
+        <controls:FloatingActionButton x:Name="btnFinalizeAccount"
+                                       IsVisible="False"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
                                        WidthRequest="300"
                                        HeightRequest="40"
                                        BackgroundColor="{StaticResource accentColor}"
