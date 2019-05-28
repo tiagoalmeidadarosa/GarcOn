@@ -34,10 +34,16 @@ namespace GarcOn.Pages
         {
             try
             {
-                txtIP.Text = await SecureStorage.GetAsync("ip_servidor");
-                txtNumeroMesa.Text = await SecureStorage.GetAsync("numero_mesa");
+                var ip = await SecureStorage.GetAsync("ip_servidor");
+                var numeroMesa = await SecureStorage.GetAsync("numero_mesa");
+
+                txtIP.Text = ip;
+                txtNumeroMesa.Text = numeroMesa;
             }
-            catch (Exception ex) { }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Busca de valores salvos", "Não foi possível obter os valores salvos de ip do servidor e número da mesa.", "Cancelar");
+            }
         }
 
         private void RefreshProperties()
@@ -98,9 +104,16 @@ namespace GarcOn.Pages
             HideActivityIndicator();
         }
 
-        private void OnJumpAndInitApplicationButton(object sender, EventArgs e)
+        private async void OnJumpAndInitApplicationButton(object sender, EventArgs e)
         {
-            App.Current.MainPage = new MenuPage();
+            if (App.IsAdmin || (!string.IsNullOrEmpty(txtIP.Text) && !string.IsNullOrEmpty(txtNumeroMesa.Text)))
+            {
+                App.Current.MainPage = new MenuPage();
+            }
+            else
+            {
+                await DisplayAlert("Não foi possível prosseguir", "É necessário o preenchimento de todos os campos.", "Fechar");
+            }
         }
 
         public void ShowActivityIndicator()

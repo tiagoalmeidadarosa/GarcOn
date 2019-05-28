@@ -93,13 +93,15 @@
                 <Label x:Name="lblTotalPrice" FontSize="Medium" TextColor="White"/>
             </StackLayout>
 
-            <controls:FloatingActionButton AbsoluteLayout.LayoutBounds=".9, .22, 150, 60"
+            <controls:FloatingActionButton x:Name="btnFinalizeOrder"
+                                           AbsoluteLayout.LayoutBounds=".9, .22, 150, 60"
                                            Clicked="CompleteOrder_OnClicked"
                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                            BackgroundColor="{StaticResource accentColor}"
                                            Image="check"
                                            Text="Finalizar pedido"
-                                           TextColor="White"/>
+                                           TextColor="White"
+                                           IsVisible="False"/>
                                            <!--
                                            RippleColor="{StaticResource primaryColorLight}"
                                            ButtonColor="{StaticResource accentColor}"-->

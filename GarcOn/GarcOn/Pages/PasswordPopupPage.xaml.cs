@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,9 +14,9 @@ namespace GarcOn.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PasswordPopupPage : PopupPage
 	{
-		public PasswordPopupPage ()
+		public PasswordPopupPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
 
         private async void OnLoginButton(object sender, EventArgs e)
@@ -33,10 +33,9 @@ namespace GarcOn.Pages
             }
         }
 
-        private async void OnJumpAndInitApplicationButton(object sender, EventArgs e)
+        private async void OnCancelButton(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync(true);
-            App.Current.MainPage = new MenuPage();
         }
     }
 }

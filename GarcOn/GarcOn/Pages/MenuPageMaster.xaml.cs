@@ -95,12 +95,7 @@ namespace GarcOn.Pages
 
         private async void FinalizeAccountButton_Clicked(object sender, EventArgs e)
         {
-            var completeAccount = await DisplayAlert("Fechar conta", "Deseja realmente solicitar a conta?", "Sim", "Não");
-
-            if (completeAccount)
-            {
-                await PopupNavigation.Instance.PushAsync(new RequestAccountPopupPage());
-            }
+            await PopupNavigation.Instance.PushAsync(new RequestAccountPopupPage());
         }
     }
 }

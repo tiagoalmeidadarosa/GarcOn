@@ -93,23 +93,30 @@ namespace GarcOn.Pages
 
         private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
-            var ip = await SecureStorage.GetAsync("ip_servidor");
-            var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
-            var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
+            var completeAccount = await DisplayAlert("Fechar conta", "Deseja realmente solicitar a conta?", "Sim", "Não");
 
-            APIService apiService = new APIService(ip);
-            var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
-
-            if (string.IsNullOrEmpty(errorMessage))
+            if (completeAccount)
             {
-                await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+                var ip = await SecureStorage.GetAsync("ip_servidor");
+                var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
+                var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
 
-                App.ItensPedidosFinalizados = new Dictionary<Produto, int>();
-                App.Current.MainPage = new MenuPage();
-            }
-            else
-            {
-                await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+                APIService apiService = new APIService(ip);
+                var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
+
+                if (string.IsNullOrEmpty(errorMessage))
+                {
+                    await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+
+                    App.ItensPedidosFinalizados = new Dictionary<Produto, int>();
+                    App.Current.MainPage = new MenuPage();
+
+                    await PopupNavigation.Instance.PopAsync(true);
+                }
+                else
+                {
+                    await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+                }
             }
         }
     }

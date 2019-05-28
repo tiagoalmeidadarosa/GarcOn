@@ -49,6 +49,18 @@ namespace GarcOn.Pages
             lblTotalPrice.Text = string.Format("{0:C}", valorTotal);
         }
 
+        protected override void OnAppearing()
+        {
+            if(App.ItensPedido.Count > 0)
+            {
+                btnFinalizeOrder.IsVisible = true;
+            }
+            else
+            {
+                btnFinalizeOrder.IsVisible = false;
+            }
+        }
+
         private void ButtonUp_OnClicked(object sender, EventArgs e)
         {
             var b = (Button)sender;
@@ -112,7 +124,7 @@ namespace GarcOn.Pages
                 }
                 else
                 {
-                    remove = await DisplayAlert("Remover Item", "Deseja realmente remover o produto?", "Sim", "Não");
+                    remove = await DisplayAlert("Remover item", "Deseja realmente remover o produto?", "Sim", "Não");
                 }
 
                 ob.TotalPrice = ob.UnitPrice * ob.Quantity;
@@ -145,11 +157,14 @@ namespace GarcOn.Pages
 
             if (!remove)
                 App.ItensPedido.Add(ob.Produto, ob.Quantity);
+
+            //Refaz OnAppearing da página
+            OnAppearing();
         }
 
         private async void CompleteOrder_OnClicked(object sender, EventArgs e)
         {
-            var completeOrder = await DisplayAlert("Finalizar Pedido", "Deseja realmente finalizar o seu pedido?", "Sim", "Não");
+            var completeOrder = await DisplayAlert("Finalizar pedido", "Deseja realmente enviar o seu pedido para a cozinha?", "Sim", "Não");
 
             if (completeOrder)
             {
@@ -182,14 +197,14 @@ namespace GarcOn.Pages
                         App.ItensPedidosFinalizados.Add(produto, quantidade);
                     }
 
-                    await DisplayAlert("Confirmação do Pedido", "Seu pedido foi cadastrado com sucesso.", "Fechar");
+                    await DisplayAlert("Confirmação do pedido", "Seu pedido foi cadastrado com sucesso.", "Fechar");
 
                     App.ItensPedido = new Dictionary<Produto, int>();
                     App.Current.MainPage = new MenuPage();
                 }
                 else
                 {
-                    await DisplayAlert("Erro na Confirmação do Pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+                    await DisplayAlert("Erro na confirmação do pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
                 }
             }
         }
