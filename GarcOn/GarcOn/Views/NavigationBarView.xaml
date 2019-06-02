@@ -33,7 +33,7 @@
 
             <ContentView Grid.Row="0" Grid.Column="1">
                 <Label x:Name="lblTitlePage"
-                       Text="Title da Página"
+                       Text="Título da Página"
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
