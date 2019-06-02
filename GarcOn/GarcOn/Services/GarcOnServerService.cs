@@ -28,7 +28,10 @@ public interface IGarcOn
     string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<long, int> itensPedido);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAccountRequest", ReplyAction="http://tempuri.org/IGarcOn/AddAccountRequestResponse")]
-    string AddAccountRequest(int mesa, double valorTotal);
+    string AddAccountRequest(int mesa, double valorTotal, string sugestao);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddKitchenOrder", ReplyAction="http://tempuri.org/IGarcOn/AddKitchenOrderResponse")]
+    string AddKitchenOrder(long idPedido, int status);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -85,8 +88,13 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
         return base.Channel.AddOrder(mesa, valorTotal, itensPedido);
     }
     
-    public string AddAccountRequest(int mesa, double valorTotal)
+    public string AddAccountRequest(int mesa, double valorTotal, string sugestao)
     {
-        return base.Channel.AddAccountRequest(mesa, valorTotal);
+        return base.Channel.AddAccountRequest(mesa, valorTotal, sugestao);
+    }
+    
+    public string AddKitchenOrder(long idPedido, int status)
+    {
+        return base.Channel.AddKitchenOrder(idPedido, status);
     }
 }

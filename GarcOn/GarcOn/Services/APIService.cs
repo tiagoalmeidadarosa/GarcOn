@@ -39,9 +39,9 @@ namespace GarcOn.Services
             return _garconClient.AddOrder(numeroMesa, valorTotal, itensPedido);
         }
 
-        public string AddAccountRequest(int numeroMesa, double valorTotal)
+        public string AddAccountRequest(int numeroMesa, double valorTotal, string sugestao)
         {
-            return _garconClient.AddAccountRequest(numeroMesa, valorTotal);
+            return _garconClient.AddAccountRequest(numeroMesa, valorTotal, sugestao);
         }
     }
 }

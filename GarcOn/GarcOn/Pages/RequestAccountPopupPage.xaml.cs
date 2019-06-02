@@ -100,9 +100,10 @@ namespace GarcOn.Pages
                 var ip = await SecureStorage.GetAsync("ip_servidor");
                 var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
                 var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
+                var sugestao = editorSugestao.Text;
 
                 APIService apiService = new APIService(ip);
-                var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal);
+                var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal, sugestao);
 
                 if (string.IsNullOrEmpty(errorMessage))
                 {

@@ -58,8 +58,8 @@
 
         <Grid x:Name="gridItens" Margin="0, 0, 0, 10" ColumnSpacing="20" />
 
-        <Label Text="* Caso sinta-se à vontade deixe uma sugestão:" TextColor="Black" FontSize="Small" />
-        <Editor HeightRequest="100" FontSize="Small" />
+        <Label Text="- Caso sinta-se à vontade deixe uma sugestão:" TextColor="Black" FontSize="Small" />
+        <Editor x:Name="editorSugestao" HeightRequest="100" FontSize="Small" />
 
         <Button BackgroundColor="Red"
                 Text="Confirmar"
