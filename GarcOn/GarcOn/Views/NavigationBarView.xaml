@@ -8,16 +8,24 @@
                 <RowDefinition Height="44"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="44"></ColumnDefinition>
-                <ColumnDefinition Width="620"></ColumnDefinition>
+                <ColumnDefinition Width="88"></ColumnDefinition>
+                <ColumnDefinition Width="576"></ColumnDefinition>
                 <ColumnDefinition Width="44"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
             <ContentView Grid.Row="0" Grid.Column="0" x:Name="contentBack">
-                <Image Source="back.png"
-                        WidthRequest="30"
-                        HeightRequest="30"
-                        HorizontalOptions="Center" VerticalOptions="Center"/>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="back.png"
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Label Text="VOLTAR"
+                           TextColor="White"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           FontSize="Small"
+                           Style="{StaticResource FoodDetailValueLabelStyle}"/>
+                </StackLayout>
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"  />
                 </ContentView.GestureRecognizers>
@@ -30,7 +38,8 @@
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"
-                       Style="{StaticResource FoodDetailValueLabelStyle}"/>
+                       Style="{StaticResource FoodDetailValueLabelStyle}"
+                       Margin="0, 0, 44, 0"/>
             </ContentView>
 
             <ContentView Grid.Row="0" Grid.Column="2" Margin="0,5,5,0" x:Name="contentBasket">
