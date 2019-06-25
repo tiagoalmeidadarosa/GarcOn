@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -96,6 +97,33 @@ namespace GarcOn.Pages
         private async void FinalizeAccountButton_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new RequestAccountPopupPage());
+        }
+
+        Stopwatch stopWatch = new Stopwatch();
+        public int countClick = 0;
+
+        private async void CoverImage_TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            countClick++;
+
+            if (countClick == 1)
+            {
+                stopWatch.Start();
+                return;
+            }
+
+            if(countClick == 5 && stopWatch.Elapsed <= TimeSpan.FromSeconds(5))
+            {
+                countClick = 0;
+                stopWatch.Reset();
+
+                await PopupNavigation.Instance.PushAsync(new RequestAccountPopupPage(true));
+            }
+            else if (stopWatch.Elapsed > TimeSpan.FromSeconds(5))
+            {
+                countClick = 0;
+                stopWatch.Reset();
+            }
         }
     }
 }

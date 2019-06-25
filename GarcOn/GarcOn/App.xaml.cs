@@ -18,6 +18,7 @@ namespace GarcOn
 
         public static Dictionary<Produto, int> ItensPedido { get; set; }
         public static Dictionary<Produto, int> ItensPedidosFinalizados { get; set; }
+        public static Dictionary<Produto, int> ItensPedidosFinalizadosUltimaConta { get; set; }
 
         public App()
         {
@@ -42,6 +43,7 @@ namespace GarcOn
 
             ItensPedido = new Dictionary<Produto, int>();
             ItensPedidosFinalizados = new Dictionary<Produto, int>();
+            ItensPedidosFinalizadosUltimaConta = new Dictionary<Produto, int>();
 
 #if DEBUG
             HotReloader.Current.Start(this);

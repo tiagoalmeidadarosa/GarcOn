@@ -26,8 +26,12 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-            
-                    <Image Source="capa_buteco.png" HorizontalOptions="Fill" Aspect="AspectFill" Grid.RowSpan="5" Grid.ColumnSpan="4"/>
+
+                    <Image Source="capa_buteco.png" HorizontalOptions="Fill" Aspect="AspectFill" Grid.RowSpan="5" Grid.ColumnSpan="4">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CoverImage_TapGestureRecognizer_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>

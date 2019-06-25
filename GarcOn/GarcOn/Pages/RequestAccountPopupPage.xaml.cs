@@ -5,6 +5,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,9 +15,21 @@ namespace GarcOn.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class RequestAccountPopupPage : PopupPage
     {
-		public RequestAccountPopupPage ()
+		public RequestAccountPopupPage(bool onlyView = false)
 		{
 			InitializeComponent();
+
+            var itensPedidosFinalizados = App.ItensPedidosFinalizados;
+
+            if (onlyView)
+            {
+                btnConfirm.IsVisible = false;
+                lblSugestao.IsVisible = false;
+                editorSugestao.IsVisible = false;
+
+                lblTitlePage.Text = "VISUALIZAR CONTA";
+                itensPedidosFinalizados = App.ItensPedidosFinalizadosUltimaConta;
+            }
 
             for (int i = 0; i < 3; i++)
             {
@@ -26,7 +39,7 @@ namespace GarcOn.Pages
             }
 
             var count = 0;
-            foreach (var item in App.ItensPedidosFinalizados)
+            foreach (var item in itensPedidosFinalizados)
             {
                 var produto = item.Key;
                 var quantidade = item.Value;
@@ -36,7 +49,7 @@ namespace GarcOn.Pages
                     var label = new Label();
                     label.TextColor = Color.Black;
                     label.HorizontalTextAlignment = TextAlignment.Start;
-                    label.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                    label.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
 
                     switch(i)
                     {
@@ -62,15 +75,15 @@ namespace GarcOn.Pages
             var labelTotal = new Label();
             labelTotal.HorizontalTextAlignment = TextAlignment.End;
             labelTotal.TextColor = Color.Black;
-            labelTotal.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            labelTotal.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             labelTotal.Text = "Total: ";
             gridItens.Children.Add(labelTotal, 1, count + 1);
 
             var labelValorTotal = new Label();
             labelValorTotal.HorizontalTextAlignment = TextAlignment.End;
             labelValorTotal.TextColor = Color.Black;
-            labelValorTotal.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-            labelValorTotal.Text = string.Format("{0:C}", App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
+            labelValorTotal.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            labelValorTotal.Text = string.Format("{0:C}", itensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
             gridItens.Children.Add(labelValorTotal, 2, count + 1);
         }
 
@@ -86,7 +99,7 @@ namespace GarcOn.Pages
             }
         }
 
-        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        private async void CloseImage_TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync(true);
         }
@@ -108,6 +121,8 @@ namespace GarcOn.Pages
                 if (string.IsNullOrEmpty(errorMessage))
                 {
                     await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+
+                    App.ItensPedidosFinalizadosUltimaConta = App.ItensPedidosFinalizados;
 
                     App.ItensPedidosFinalizados = new Dictionary<Produto, int>();
                     App.Current.MainPage = new MenuPage();

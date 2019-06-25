@@ -17,63 +17,74 @@
                                    ScaleOut="0.8" />
     </pages:PopupPage.Animation>
 
-    <StackLayout Margin="12"
-                 Padding="24"
-                 BackgroundColor="White"
-                 HorizontalOptions="Center"
-                 VerticalOptions="Center">
+    <ScrollView
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <AbsoluteLayout>
+            <Frame
+                x:Name="FrameContainer"
+                Margin="12"
+                Padding="24"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BackgroundColor="White"
+                HasShadow="False">
 
-        <Grid x:Name="gridNavigationBar" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{StaticResource primaryColor}" Margin="0, 0, 0, 10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="44"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="88"></ColumnDefinition>
-                <ColumnDefinition Width="225"></ColumnDefinition>
-                <ColumnDefinition Width="44"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Grid x:Name="gridNavigationBar" RowSpacing="0" ColumnSpacing="0" BackgroundColor="{StaticResource primaryColor}" Margin="0, 0, 0, 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="44"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="88"></ColumnDefinition>
+                            <ColumnDefinition Width="225"></ColumnDefinition>
+                            <ColumnDefinition Width="44"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            <ContentView Grid.Row="0" Grid.Column="0" x:Name="contentBack">
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="back.png"
-                           WidthRequest="30"
-                           HeightRequest="30"
-                           HorizontalOptions="Center" VerticalOptions="Center"/>
-                    <Label Text="VOLTAR"
-                           TextColor="White"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           FontSize="Small"
-                           Style="{StaticResource FoodDetailValueLabelStyle}"/>
+                        <ContentView Grid.Row="0" Grid.Column="1">
+                            <Label x:Name="lblTitlePage"
+                                   Text="SOLICITAR A CONTA"
+                                   TextColor="White"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"
+                                   FontSize="Medium"
+                                   Style="{StaticResource FoodDetailValueLabelStyle}"
+                                   Margin="0, 0, 44, 0"/>
+                        </ContentView>
+                    </Grid>
+
+                    <Label x:Name="lblConsumosMesa" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+
+                    <Grid x:Name="gridItens" Margin="0, 0, 0, 10" ColumnSpacing="20" />
+
+                    <Label x:Name="lblSugestao" 
+                           Text="- Caso sinta-se à vontade deixe uma sugestão:" 
+                           TextColor="Black" 
+                           FontSize="Medium" />
+                    <Editor x:Name="editorSugestao" HeightRequest="100" FontSize="Medium" />
+
+                    <Button x:Name="btnConfirm"
+                            BackgroundColor="Red"
+                            Text="Confirmar"
+                            TextColor="White"
+                            Clicked="ConfirmButton_Clicked"/>
+
                 </StackLayout>
-                
+            </Frame>
+
+            <ContentView
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="1, 0, -1, -1">
                 <ContentView.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"  />
+                    <TapGestureRecognizer Tapped="CloseImage_TapGestureRecognizer_Tapped"/>
                 </ContentView.GestureRecognizers>
+
+                <Image x:Name="CloseImage"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            Source="close_circle_button.png">
+                </Image>
             </ContentView>
-
-            <ContentView Grid.Row="0" Grid.Column="1">
-                <Label x:Name="lblTitlePage"
-                       Text="Solicitar a conta"
-                       TextColor="White"
-                       HorizontalOptions="CenterAndExpand"
-                       VerticalOptions="CenterAndExpand"
-                       FontSize="Medium"
-                       Style="{StaticResource FoodDetailValueLabelStyle}"
-                       Margin="0, 0, 44, 0"/>
-            </ContentView>
-        </Grid>
-
-        <Label x:Name="lblConsumosMesa" TextColor="Black" FontSize="Small" FontAttributes="Bold"/>
-
-        <Grid x:Name="gridItens" Margin="0, 0, 0, 10" ColumnSpacing="20" />
-
-        <Label Text="- Caso sinta-se à vontade deixe uma sugestão:" TextColor="Black" FontSize="Small" />
-        <Editor x:Name="editorSugestao" HeightRequest="100" FontSize="Small" />
-
-        <Button BackgroundColor="Red"
-                Text="Confirmar"
-                TextColor="White"
-                Clicked="ConfirmButton_Clicked"/>
-    </StackLayout>
+        </AbsoluteLayout>
+    </ScrollView>
 </pages:PopupPage>
