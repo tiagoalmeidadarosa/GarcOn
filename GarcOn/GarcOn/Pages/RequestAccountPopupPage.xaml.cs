@@ -26,6 +26,7 @@ namespace GarcOn.Pages
                 btnConfirm.IsVisible = false;
                 lblSugestao.IsVisible = false;
                 editorSugestao.IsVisible = false;
+                stkLytSugestao.IsVisible = false;
 
                 lblTitlePage.Text = "VISUALIZAR CONTA";
                 itensPedidosFinalizados = App.ItensPedidosFinalizadosUltimaConta;
