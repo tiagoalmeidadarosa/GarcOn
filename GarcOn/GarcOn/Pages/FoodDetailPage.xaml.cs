@@ -1,8 +1,10 @@
 ﻿using GarcOn.Models;
+using Plugin.InputKit.Shared.Controls;
 using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Plugin.InputKit.Shared.Controls.CheckBox;
 
 namespace GarcOn.Pages
 {
@@ -23,6 +25,18 @@ namespace GarcOn.Pages
 
             this.Produto = produto;
 
+            foreach (var adicional in produto.Adicionais)
+            {
+                var checkBox = new CheckBox();
+                checkBox.Type = CheckType.Check;
+                checkBox.Color = Color.Red;
+                checkBox.Text = adicional.Descricao + " (+ " + string.Format("{0:C}", adicional.Valor) + ")";
+                checkBox.Key = Convert.ToInt32(adicional.ID);
+                checkBox.CheckChanged += CheckBox_CheckChanged;
+
+                stkLytAdicionais.Children.Add(checkBox);
+            }
+
             lblTitle.Text = produto.Nome;
             lblPrice.Text = string.Format("{0:C}", produto.Valor);
             lblDescription.Text = produto.Descricao;
@@ -34,6 +48,11 @@ namespace GarcOn.Pages
         protected override void OnAppearing()
         {
             NavigationBarView.BasketValue = App.ItensPedido.Count.ToString();
+        }
+
+        private void CheckBox_CheckChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
