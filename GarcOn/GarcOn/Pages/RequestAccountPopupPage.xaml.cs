@@ -107,7 +107,7 @@ namespace GarcOn.Pages
 
         private async void ConfirmButton_Clicked(object sender, EventArgs e)
         {
-            var completeAccount = await DisplayAlert("Fechar conta", "Deseja realmente solicitar a conta?", "Sim", "Não");
+            var completeAccount = await DisplayAlert("FECHAR CONTA", "Deseja realmente solicitar a conta?", "SIM", "NÃO");
 
             if (completeAccount)
             {
@@ -121,7 +121,7 @@ namespace GarcOn.Pages
 
                 if (string.IsNullOrEmpty(errorMessage))
                 {
-                    await DisplayAlert("Confirmação de fechamento de conta", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "Fechar");
+                    await DisplayAlert("CONFIRMAÇÃO DE FECHAMENTO DE CONTA", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "FECHAR");
 
                     App.ItensPedidosFinalizadosUltimaConta = App.ItensPedidosFinalizados;
 
@@ -132,7 +132,7 @@ namespace GarcOn.Pages
                 }
                 else
                 {
-                    await DisplayAlert("Erro no fechamento da conta", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+                    await DisplayAlert("ERRO NO FECHAMENTO DA CONTA", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
                 }
             }
         }

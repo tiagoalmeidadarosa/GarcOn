@@ -20,8 +20,7 @@
 
         <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="0" x:Key="CardSpacing" />
 
-        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="#EFEFF4"
-                        x:Key="WindowBackgroundTable" />
+        <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="#EFEFF4" x:Key="WindowBackgroundTable" />
         <OnPlatform x:TypeArguments="Color" Android="#F5F5F5" iOS="White" x:Key="WindowBackground" />
         <OnPlatform x:TypeArguments="Color" Android="#ECECEC" iOS="#C8C7CC" x:Key="Divider" />
 

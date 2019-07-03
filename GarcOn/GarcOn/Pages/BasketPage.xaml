@@ -39,18 +39,18 @@
 
                                         <StackLayout Grid.Column="1" VerticalOptions="Center">
                                             <Label Text="{Binding Name}" 
-                                                   FontSize="Medium"
+                                                   FontSize="20"
                                                    LineBreakMode="TailTruncation"
                                                    TextColor="{StaticResource asphaltPrimary}"
                                                    Style="{StaticResource BasketFoodsTitleLabelStyle}" />
 
                                             <Label Text="{Binding Description}" 
-                                                   FontSize="Small"
+                                                   FontSize="16"
                                                    TextColor="{StaticResource grayPrimary}"
                                                    Style="{StaticResource BasketFoodsDescriptionLabelStyle}" />
 
                                             <Label Text="{Binding TotalPrice, StringFormat='Total: {0:C}'}"
-                                                   FontSize="Small" 
+                                                   FontSize="16" 
                                                    TextColor="{StaticResource grayPrimary}"
                                                    LineBreakMode="TailTruncation"
                                                    Style="{StaticResource BasketFoodsValueLabelStyle}" />
@@ -67,7 +67,7 @@
                                                            AbsoluteLayout.LayoutBounds=".5, .5, AutoSize, AutoSize"
                                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                                            Text="{Binding Quantity}"
-                                                           FontSize="12" />
+                                                           FontSize="16" />
                                                 </AbsoluteLayout>
                                             </StackLayout>
 
@@ -94,12 +94,13 @@
             </StackLayout>
 
             <controls:FloatingActionButton x:Name="btnFinalizeOrder"
-                                           AbsoluteLayout.LayoutBounds=".9, .22, 150, 60"
+                                           AbsoluteLayout.LayoutBounds=".8, .22, 200, 60"
                                            Clicked="CompleteOrder_OnClicked"
                                            AbsoluteLayout.LayoutFlags="PositionProportional"
                                            BackgroundColor="{StaticResource accentColor}"
                                            Image="check"
                                            Text="Finalizar pedido"
+                                           FontSize="16"
                                            TextColor="White"
                                            IsVisible="False"/>
                                            <!--

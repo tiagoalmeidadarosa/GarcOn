@@ -29,7 +29,7 @@ namespace GarcOn.Pages
             }
             else
             {
-                await DisplayAlert("Não foi possível conectar", "Senha incorreta!", "Cancelar");
+                await DisplayAlert("NÃO FOI POSSÍVEL CONECTAR", "Senha incorreta!", "CANCELAR");
             }
         }
 

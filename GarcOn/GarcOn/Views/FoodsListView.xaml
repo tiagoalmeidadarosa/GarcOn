@@ -46,14 +46,14 @@
                                 <StackLayout Padding="10, 10, 10, 3">
                                     <StackLayout>
                                         <Label Text="{Binding Nome}" 
-                                               FontSize="Medium"
+                                               FontSize="20"
                                                TextColor="{StaticResource asphaltDark}"
                                                VerticalOptions="CenterAndExpand"
                                                Style="{StaticResource FoodsListTitleLabelStyle}" />
 
                                         <Label Text="{Binding Descricao}"
-                                               FontSize="Small"
-                                               TextColor="{StaticResource grayPrimary}"
+                                               FontSize="16"
+                                               TextColor="{StaticResource grayMedium}"
                                                Style="{StaticResource FoodsListDescriptionLabelStyle}" />
                                     </StackLayout>
 
@@ -66,7 +66,7 @@
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Orientation="Horizontal">                                          
                                             <Label Text="{Binding Valor, StringFormat='{0:C}'}"
-                                                   FontSize="Small"
+                                                   FontSize="16"
                                                    TextColor="{StaticResource asphaltPrimary}"
                                                    VerticalOptions="CenterAndExpand"
                                                    Style="{StaticResource FoodsListValueLabelStyle}" />

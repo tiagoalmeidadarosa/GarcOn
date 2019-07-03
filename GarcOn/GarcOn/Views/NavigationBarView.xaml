@@ -8,9 +8,9 @@
                 <RowDefinition Height="44"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="88"></ColumnDefinition>
-                <ColumnDefinition Width="576"></ColumnDefinition>
-                <ColumnDefinition Width="44"></ColumnDefinition>
+                <ColumnDefinition Width="110"></ColumnDefinition>
+                <ColumnDefinition Width="480"></ColumnDefinition>
+                <ColumnDefinition Width="52"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
             <ContentView Grid.Row="0" Grid.Column="0" x:Name="contentBack">
@@ -18,12 +18,11 @@
                     <Image Source="back.png"
                            WidthRequest="30"
                            HeightRequest="30"
-                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                           VerticalOptions="Center"/>
                     <Label Text="VOLTAR"
                            TextColor="White"
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           FontSize="Small"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
                            Style="{StaticResource FoodDetailValueLabelStyle}"/>
                 </StackLayout>
                 <ContentView.GestureRecognizers>
@@ -37,12 +36,12 @@
                        TextColor="White"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
-                       FontSize="Medium"
+                       FontSize="Large"
                        Style="{StaticResource FoodDetailValueLabelStyle}"
-                       Margin="0, 0, 44, 0"/>
+                       Margin="0, 0, 54, 0"/>
             </ContentView>
 
-            <ContentView Grid.Row="0" Grid.Column="2" Margin="0,5,5,0" x:Name="contentBasket">
+            <ContentView Grid.Row="0" Grid.Column="2" Margin="0, 5, 5, 0" x:Name="contentBasket">
                 <RelativeLayout>
                     <Image Source="ic_shopping_cart_white.png" 
                            HeightRequest="30" 

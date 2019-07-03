@@ -42,7 +42,7 @@ namespace GarcOn.Pages
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Busca de valores salvos", "Não foi possível obter os valores salvos de ip do servidor e número da mesa.", "Cancelar");
+                await DisplayAlert("BUSCA DE VALORES SALVOS", "Não foi possível obter os valores salvos de ip do servidor e número da mesa.", "CANCELAR");
             }
         }
 
@@ -84,7 +84,7 @@ namespace GarcOn.Pages
                         App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
                         await SecureStorage.SetAsync("categorias_e_produtos", jsonData);
 
-                        await DisplayAlert("Atualização concluída", "Informações carregadas com sucesso!", "Fechar");
+                        await DisplayAlert("ATUALIZAÇÃO CONCLUÍDA", "Informações carregadas com sucesso!", "FECHAR");
                         App.Current.MainPage = new MenuPage();
                     }
                 }
@@ -92,13 +92,13 @@ namespace GarcOn.Pages
                 {
                     if (ex != null)
                     {
-                        await DisplayAlert("Não foi possível obter as informações", "Ocorreu um erro: " + ex.Message, "Fechar");
+                        await DisplayAlert("NÃO FOI POSSÍVEL OBTER AS INFORMAÇÕES", "Ocorreu um erro: " + ex.Message, "FECHAR");
                     }
                 }
             }
             else
             {
-                await DisplayAlert("Não foi possível salvar", "É necessário o preenchimento de todos os campos.", "Fechar");
+                await DisplayAlert("NÃO FOI POSSÍVEL SALVAR", "É necessário o preenchimento de todos os campos.", "FECHAR");
             }
 
             HideActivityIndicator();
@@ -112,7 +112,7 @@ namespace GarcOn.Pages
             }
             else
             {
-                await DisplayAlert("Não foi possível prosseguir", "É necessário o preenchimento de todos os campos.", "Fechar");
+                await DisplayAlert("NÃO FOI POSSÍVEL PROSSEGUIR", "É necessário o preenchimento de todos os campos.", "FECHAR");
             }
         }
 

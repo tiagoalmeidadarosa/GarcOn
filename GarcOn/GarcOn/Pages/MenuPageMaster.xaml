@@ -44,7 +44,7 @@
                             <Label VerticalOptions="FillAndExpand" 
                                 VerticalTextAlignment="Center" 
                                 Text="{Binding Title}" 
-                                FontSize="16"
+                                FontSize="20"
                                 TextColor="White"
                                 Style="{StaticResource MenuLabelStyle}"
                                 IsVisible="{Binding LabelVisible}"/>
@@ -58,10 +58,13 @@
                                        IsVisible="False"
                                        AbsoluteLayout.LayoutFlags="PositionProportional"
                                        WidthRequest="300"
-                                       HeightRequest="40"
+                                       HeightRequest="45"
                                        BackgroundColor="{StaticResource accentColor}"
                                        TextColor="White"
                                        Text="Pedir a conta"
+                                       Image="accounting.png"
+                                       Padding="10, 0, 45, 0"
+                                       FontSize="16"
                                        Clicked="FinalizeAccountButton_Clicked"
                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-310}"
                                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-50}" />

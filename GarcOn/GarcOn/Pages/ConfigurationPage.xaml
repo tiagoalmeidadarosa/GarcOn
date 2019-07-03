@@ -35,7 +35,7 @@
                     Margin="0, 0, 0, 5"
                     Text="Iniciar Aplicação"
                     Clicked="OnJumpAndInitApplicationButton"
-                    BackgroundColor="White"
+                    BackgroundColor="Transparent"
                     TextColor="Black"
                     Style="{StaticResource MenuLabelStyle}"/>
             

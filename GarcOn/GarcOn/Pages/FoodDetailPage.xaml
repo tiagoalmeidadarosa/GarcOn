@@ -25,12 +25,12 @@
                     <StackLayout Spacing="0" Padding="10">
                         <StackLayout Orientation="Horizontal">
                             <Label x:Name="lblTitle"
-                                   FontSize="18"
+                                   FontSize="24"
                                    TextColor="White"
                                    Style="{StaticResource FoodDetailTitleLabelStyle}">
                             </Label>
                             <Label x:Name="lblPrice"
-                                   FontSize="18"
+                                   FontSize="24"
                                    TextColor="{StaticResource grayLight}" 
                                    VerticalOptions="CenterAndExpand"
                                    Style="{StaticResource FoodDetailValueLabelStyle}" />
@@ -38,7 +38,7 @@
 
                         <StackLayout Padding="0, 8">
                             <Label x:Name="lblDescription"
-                                   FontSize="12"
+                                   FontSize="18"
                                    TextColor="{StaticResource grayLight}"
                                    Style="{StaticResource FoodDetailDescriptionLabelStyle}"/>
                         </StackLayout>
@@ -56,12 +56,12 @@
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center"
-                           FontSize="16" />
+                           FontSize="18" />
                     <Label x:Name="lblTotalPrice"
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center"
-                           FontSize="16" />
+                           FontSize="18" />
 
                 </StackLayout>
 
@@ -84,7 +84,7 @@
                                OutlineColor="Transparent" WidthRequest="30" />
 
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <Label TextColor="Black" x:Name="lblQtd" FontSize="15" />
+                            <Label TextColor="Black" x:Name="lblQtd" FontSize="18" />
                         </StackLayout>
                     </Grid>
 
@@ -109,6 +109,7 @@
                     Margin="0, 0, 0, 10"
                     Text="Adicionar ao pedido"
                     TextColor="White"
+                    FontSize="16"
                     BackgroundColor="{StaticResource accentColor}"/>
 
             <views:NavigationBarView x:Name="NavigationBarView"

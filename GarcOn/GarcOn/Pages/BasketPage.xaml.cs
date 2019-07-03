@@ -27,12 +27,13 @@ namespace GarcOn.Pages
             foreach (var itemPedido in App.ItensPedido)
             {
                 Produto produto = itemPedido.Key;
-                int quantidade = itemPedido.Value;
+                var quantidade = itemPedido.Value;
+                var descricao = produto.Descricao.Length > 60 ? produto.Descricao.Substring(0, 60) + "..." : produto.Descricao;
 
                 OrderItem orderItem = new OrderItem(produto,
                                                     produto.ID,
-                                                    produto.Nome, 
-                                                    produto.Descricao,
+                                                    produto.Nome,
+                                                    descricao,
                                                     produto.Valor,
                                                     quantidade,
                                                     produto.Valor * quantidade
@@ -124,7 +125,7 @@ namespace GarcOn.Pages
                 }
                 else
                 {
-                    remove = await DisplayAlert("Remover item", "Deseja realmente remover o produto?", "Sim", "Não");
+                    remove = await DisplayAlert("REMOVER ITEM", "Deseja realmente remover o produto?", "SIM", "NÃO");
                 }
 
                 ob.TotalPrice = ob.UnitPrice * ob.Quantity;
@@ -164,7 +165,7 @@ namespace GarcOn.Pages
 
         private async void CompleteOrder_OnClicked(object sender, EventArgs e)
         {
-            var completeOrder = await DisplayAlert("Finalizar pedido", "Deseja realmente enviar o seu pedido para a cozinha?", "Sim", "Não");
+            var completeOrder = await DisplayAlert("FINALIZAR PEDIDO", "Deseja realmente enviar o seu pedido para a cozinha?", "SIM", "NÃO");
 
             if (completeOrder)
             {
@@ -197,14 +198,14 @@ namespace GarcOn.Pages
                         App.ItensPedidosFinalizados.Add(produto, quantidade);
                     }
 
-                    await DisplayAlert("Confirmação do pedido", "Seu pedido foi cadastrado com sucesso.", "Fechar");
+                    await DisplayAlert("CONFIRMAÇÃO DO PEDIDO", "Seu pedido foi cadastrado com sucesso.", "FECHAR");
 
                     App.ItensPedido = new Dictionary<Produto, int>();
                     App.Current.MainPage = new MenuPage();
                 }
                 else
                 {
-                    await DisplayAlert("Erro na confirmação do pedido", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "Fechar");
+                    await DisplayAlert("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
                 }
             }
         }
