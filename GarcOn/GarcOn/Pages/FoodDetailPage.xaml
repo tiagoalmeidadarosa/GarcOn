@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:GarcOn.Controls"
              xmlns:views="clr-namespace:GarcOn.Views"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="GarcOn.Pages.FoodDetailPage"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
@@ -16,7 +17,7 @@
                     VerticalOptions="FillAndExpand"
                     Source="https://i.imgur.com/vAVUGtZm.jpg"
                     Aspect="AspectFill" />
-                    <!-- Source="{Binding Picture}" acima -->
+                <!-- Source="{Binding Picture}" acima -->
 
                 <Grid Opacity=".5" BackgroundColor="{StaticResource asphaltDark}" HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand" />
@@ -46,12 +47,20 @@
                 </StackLayout>
             </Grid>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1,AutoSize"
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1, AutoSize"
                          AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
 
+                <StackLayout x:Name="stkLytAdicionais"
+                             HorizontalOptions="Center" 
+                             Orientation="Horizontal">
+
+                    <!--<input:CheckBox Text="Gelo (+ R$ 2,00)" Type="Check"/>-->
+
+                </StackLayout>
+
                 <StackLayout HorizontalOptions="Center" 
-                             Orientation="Horizontal"
-                             Margin="{StaticResource FoodDetailtPadding}">
+                             Orientation="Horizontal">
+                    
                     <Label Text="Preço total: "
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 
