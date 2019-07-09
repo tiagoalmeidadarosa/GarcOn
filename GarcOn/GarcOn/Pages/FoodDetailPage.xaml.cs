@@ -1,7 +1,9 @@
 ﻿using GarcOn.Models;
+using GarcOn.ViewModels;
 using Plugin.InputKit.Shared.Controls;
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Plugin.InputKit.Shared.Controls.CheckBox;
@@ -15,6 +17,7 @@ namespace GarcOn.Pages
         const int MaxValue = 50;
 
         public Produto Produto;
+        public List<Adicional> AdicionaisSelecionados;
 
 		public FoodDetailPage(Produto produto)
 		{
@@ -24,10 +27,17 @@ namespace GarcOn.Pages
             NavigationBarView.Color = Color.Transparent;
 
             this.Produto = produto;
+            this.AdicionaisSelecionados = new List<Adicional>();
+
+            if (produto.Adicionais.Count > 0)
+            {
+                lblAdicionais.IsVisible = true;
+            }
 
             foreach (var adicional in produto.Adicionais)
             {
                 var checkBox = new CheckBox();
+                checkBox.AutomationId = adicional.ID.ToString();
                 checkBox.Type = CheckType.Check;
                 checkBox.Color = Color.Red;
                 checkBox.Text = adicional.Descricao + " (+ " + string.Format("{0:C}", adicional.Valor) + ")";
@@ -50,9 +60,45 @@ namespace GarcOn.Pages
             NavigationBarView.BasketValue = App.ItensPedido.Count.ToString();
         }
 
+        #region Methods
+
+        private void CalculateTotalPrice()
+        {
+            var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
+            var quantidade = Convert.ToInt32(lblQtd.Text);
+
+            double valorTotal = 0;
+            foreach (var adicionalSelecionado in AdicionaisSelecionados)
+            {
+                valorTotal += adicionalSelecionado.Valor * quantidade;
+            }
+
+            valorTotal += valor * quantidade;
+            lblTotalPrice.Text = string.Format("{0:C}", valorTotal);
+        }
+
+        #endregion
+
+        #region Events
+
         private void CheckBox_CheckChanged(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            var checkBox = (CheckBox)sender;
+
+            var adicional = Produto.Adicionais.FirstOrDefault(a => a.ID == Convert.ToInt64(checkBox.AutomationId));
+            if(adicional != null)
+            {
+                if(checkBox.IsChecked)
+                {
+                    AdicionaisSelecionados.Add(adicional);
+                }
+                else
+                {
+                    AdicionaisSelecionados.Remove(adicional);
+                }
+            }
+
+            CalculateTotalPrice();
         }
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
@@ -68,8 +114,7 @@ namespace GarcOn.Pages
                     lblQtd.Text = quantidade.ToString();
                     await lblQtd.ScaleTo(1, 100);
 
-                    var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
-                    lblTotalPrice.Text = string.Format("{0:C}", valor * quantidade);
+                    CalculateTotalPrice();
                 }
                 catch (Exception ex)
                 {
@@ -91,8 +136,7 @@ namespace GarcOn.Pages
                     lblQtd.Text = quantidade.ToString();
                     await lblQtd.ScaleTo(1, 100);
 
-                    var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
-                    lblTotalPrice.Text = string.Format("{0:C}", valor * quantidade);
+                    CalculateTotalPrice();
                 }
                 catch (Exception ex)
                 {
@@ -105,13 +149,27 @@ namespace GarcOn.Pages
         {
             var quantidade = Convert.ToInt32(lblQtd.Text);
 
-            if (App.ItensPedido.ContainsKey(Produto))
+            var descricao = "Sem adicionais";
+            if (AdicionaisSelecionados.Count > 0)
             {
-                quantidade += App.ItensPedido[Produto];
-                App.ItensPedido.Remove(Produto);
+                var adicionais = string.Join(", ", AdicionaisSelecionados.Select(a => a.Descricao));
+                descricao = adicionais.Length > 60 ? adicionais.Substring(0, 57) + "..." : adicionais;
             }
+            
+            var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
 
-            App.ItensPedido.Add(Produto, quantidade);
+            OrderItem orderItem = new OrderItem(Guid.NewGuid(),
+                                                Produto.ID,
+                                                Produto.Nome,
+                                                descricao,
+                                                Produto.Valor,
+                                                quantidade,
+                                                valorTotal,
+                                                AdicionaisSelecionados.ToList()
+                                                //, Todo: Adicionar também a foto
+                                                );
+
+            App.ItensPedido.Add(orderItem);
 
             await Navigation.PushAsync(new BasketPage());
         }
@@ -120,5 +178,7 @@ namespace GarcOn.Pages
         {
             await Navigation.PushAsync(new BasketPage());
         }
+
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GarcOn.Models;
 using GarcOn.Pages;
+using GarcOn.ViewModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,9 +17,9 @@ namespace GarcOn
         public static bool IsAdmin { get; set; }
         public static List<Categoria> Categorias { get; set; }
 
-        public static Dictionary<Produto, int> ItensPedido { get; set; }
-        public static Dictionary<Produto, int> ItensPedidosFinalizados { get; set; }
-        public static Dictionary<Produto, int> ItensPedidosFinalizadosUltimaConta { get; set; }
+        public static List<OrderItem> ItensPedido { get; set; }
+        public static List<OrderItem> ItensPedidosFinalizados { get; set; }
+        public static List<OrderItem> ItensPedidosFinalizadosUltimaConta { get; set; }
 
         public App()
         {
@@ -41,9 +42,9 @@ namespace GarcOn
 
             }).Wait();
 
-            ItensPedido = new Dictionary<Produto, int>();
-            ItensPedidosFinalizados = new Dictionary<Produto, int>();
-            ItensPedidosFinalizadosUltimaConta = new Dictionary<Produto, int>();
+            ItensPedido = new List<OrderItem>();
+            ItensPedidosFinalizados = new List<OrderItem>();
+            ItensPedidosFinalizadosUltimaConta = new List<OrderItem>();
 
 #if DEBUG
             HotReloader.Current.Start(this);

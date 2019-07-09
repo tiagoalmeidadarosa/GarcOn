@@ -34,7 +34,7 @@ namespace GarcOn.Services
             return _garconClient.GetData();
         }
 
-        public string AddOrder(int numeroMesa, double valorTotal, Dictionary<long, int> itensPedido)
+        public string AddOrder(int numeroMesa, double valorTotal, string itensPedido)
         {
             return _garconClient.AddOrder(numeroMesa, valorTotal, itensPedido);
         }

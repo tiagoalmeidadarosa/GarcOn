@@ -16,7 +16,7 @@
         <OnPlatform x:TypeArguments="Thickness" Android="12,8" iOS="0, 0, 0, 10"
                         x:Key="CardPadding" />
 
-        <OnPlatform x:TypeArguments="Thickness" Android="15" iOS="15" x:Key="FoodDetailtPadding" />
+        <OnPlatform x:TypeArguments="Thickness" Android="5" iOS="5" x:Key="FoodDetailPadding" />
 
         <OnPlatform x:TypeArguments="x:Double" Android="14" iOS="0" x:Key="CardSpacing" />
 

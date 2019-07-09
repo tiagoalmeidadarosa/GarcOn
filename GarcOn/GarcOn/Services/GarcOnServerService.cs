@@ -22,16 +22,19 @@ public interface IGarcOn
     void AddCategory(int tipo, string descricao);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddProduct", ReplyAction="http://tempuri.org/IGarcOn/AddProductResponse")]
-    void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto);
+    void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
-    string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<long, int> itensPedido);
+    string AddOrder(int mesa, double valorTotal, string itensPedido);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAccountRequest", ReplyAction="http://tempuri.org/IGarcOn/AddAccountRequestResponse")]
     string AddAccountRequest(int mesa, double valorTotal, string sugestao);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddKitchenOrder", ReplyAction="http://tempuri.org/IGarcOn/AddKitchenOrderResponse")]
     string AddKitchenOrder(long idPedido, int status);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAditional", ReplyAction="http://tempuri.org/IGarcOn/AddAditionalResponse")]
+    void AddAditional(string descricao, double valor);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -78,12 +81,12 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
         base.Channel.AddCategory(tipo, descricao);
     }
     
-    public void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto)
+    public void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais)
     {
-        base.Channel.AddProduct(idCategoria, nome, descricao, valor, foto);
+        base.Channel.AddProduct(idCategoria, nome, descricao, valor, foto, adicionais);
     }
     
-    public string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<long, int> itensPedido)
+    public string AddOrder(int mesa, double valorTotal, string itensPedido)
     {
         return base.Channel.AddOrder(mesa, valorTotal, itensPedido);
     }
@@ -96,5 +99,10 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
     public string AddKitchenOrder(long idPedido, int status)
     {
         return base.Channel.AddKitchenOrder(idPedido, status);
+    }
+    
+    public void AddAditional(string descricao, double valor)
+    {
+        base.Channel.AddAditional(descricao, valor);
     }
 }

@@ -1,4 +1,4 @@
-﻿using GarcOn.Models;
+﻿using GarcOn.ViewModels;
 using GarcOn.Services;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -42,9 +42,6 @@ namespace GarcOn.Pages
             var count = 0;
             foreach (var item in itensPedidosFinalizados)
             {
-                var produto = item.Key;
-                var quantidade = item.Value;
-
                 for (int i = 0; i < 3; i++)
                 {
                     var label = new Label();
@@ -55,15 +52,15 @@ namespace GarcOn.Pages
                     switch(i)
                     {
                         case 0:
-                            label.Text = produto.Nome;
+                            label.Text = item.Name;
                             break;
                         case 1:
                             label.HorizontalTextAlignment = TextAlignment.End;
-                            label.Text = quantidade + " x " + string.Format("{0:C}", produto.Valor);
+                            label.Text = item.Quantity + " x " + string.Format("{0:C}", item.UnitPrice + item.SelectedAditionals.Sum(a => a.Valor));
                             break;
                         case 2:
                             label.HorizontalTextAlignment = TextAlignment.End;
-                            label.Text = string.Format("{0:C}", quantidade * produto.Valor);
+                            label.Text = string.Format("{0:C}", item.TotalPrice);
                             break;
                     }
 
@@ -84,7 +81,7 @@ namespace GarcOn.Pages
             labelValorTotal.HorizontalTextAlignment = TextAlignment.End;
             labelValorTotal.TextColor = Color.Black;
             labelValorTotal.FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
-            labelValorTotal.Text = string.Format("{0:C}", itensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
+            labelValorTotal.Text = string.Format("{0:C}", itensPedidosFinalizados.Sum(i => i.TotalPrice));
             gridItens.Children.Add(labelValorTotal, 2, count + 1);
         }
 
@@ -113,7 +110,7 @@ namespace GarcOn.Pages
             {
                 var ip = await SecureStorage.GetAsync("ip_servidor");
                 var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
-                var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.Value * i.Key.Valor));
+                var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.TotalPrice));
                 var sugestao = editorSugestao.Text;
 
                 APIService apiService = new APIService(ip);
@@ -125,7 +122,7 @@ namespace GarcOn.Pages
 
                     App.ItensPedidosFinalizadosUltimaConta = App.ItensPedidosFinalizados;
 
-                    App.ItensPedidosFinalizados = new Dictionary<Produto, int>();
+                    App.ItensPedidosFinalizados = new List<OrderItem>();
                     App.Current.MainPage = new MenuPage();
 
                     await PopupNavigation.Instance.PopAsync(true);

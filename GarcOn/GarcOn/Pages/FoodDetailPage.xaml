@@ -50,9 +50,18 @@
             <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1, AutoSize"
                          AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
 
+                <Label x:Name="lblAdicionais"
+                       Text="Adicionais:"
+                       FontSize="18"
+                       TextColor="Black"
+                       Margin="20, 5, 0, 0"
+                       IsVisible="False"
+                       Style="{StaticResource FoodDetailDescriptionLabelStyle}"/>
+
                 <StackLayout x:Name="stkLytAdicionais"
                              HorizontalOptions="Center" 
-                             Orientation="Horizontal">
+                             Orientation="Horizontal"
+                             Margin="5, 0, 5, 0">
 
                     <!--<input:CheckBox Text="Gelo (+ R$ 2,00)" Type="Check"/>-->
 
@@ -78,7 +87,7 @@
 
                 <!-- StepperView -->
                 <StackLayout Orientation="Horizontal"
-                             Margin="{StaticResource FoodDetailtPadding}"
+                             Margin="{StaticResource FoodDetailPadding}"
                              HorizontalOptions="Center">
                     <controls:FlatButton Image="minus" 
                                          WidthRequest="30" 
