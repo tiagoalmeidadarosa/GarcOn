@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<application android:label="GarcOn.Android" android:icon="@drawable/garcon_icon"></application>
+	<application android:label="GarçOn" android:icon="@drawable/garcon_icon"></application>
 </manifest>
