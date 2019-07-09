@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.ServiceModel;
+using GarcOn.NativeDependency;
 
 namespace GarcOn.Pages
 {
@@ -87,14 +89,7 @@ namespace GarcOn.Pages
 
         protected async override void OnAppearing()
         {
-            try
-            {
-                lblConsumosMesa.Text = "Consumos da mesa " + await SecureStorage.GetAsync("numero_mesa") + ":";
-            }
-            catch(Exception ex)
-            {
-
-            }
+            lblConsumosMesa.Text = "Consumos da mesa " + await SecureStorage.GetAsync("numero_mesa") + ":";
         }
 
         private async void CloseImage_TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -108,30 +103,59 @@ namespace GarcOn.Pages
 
             if (completeAccount)
             {
-                var ip = await SecureStorage.GetAsync("ip_servidor");
+                //Executa loading
+                DependencyService.Get<IProgressDialog>().LoadingShow();
+
+                var ipServidor = await SecureStorage.GetAsync("ip_servidor");
                 var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
                 var valorTotal = Convert.ToDouble(App.ItensPedidosFinalizados.Sum(i => i.TotalPrice));
                 var sugestao = editorSugestao.Text;
 
-                APIService apiService = new APIService(ip);
-                var errorMessage = apiService.AddAccountRequest(numeroMesa, valorTotal, sugestao);
+                var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
+                BasicHttpBinding bind = new BasicHttpBinding();
 
-                if (string.IsNullOrEmpty(errorMessage))
-                {
-                    await DisplayAlert("CONFIRMAÇÃO DE FECHAMENTO DE CONTA", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "FECHAR");
-
-                    App.ItensPedidosFinalizadosUltimaConta = App.ItensPedidosFinalizados;
-
-                    App.ItensPedidosFinalizados = new List<OrderItem>();
-                    App.Current.MainPage = new MenuPage();
-
-                    await PopupNavigation.Instance.PopAsync(true);
-                }
-                else
-                {
-                    await DisplayAlert("ERRO NO FECHAMENTO DA CONTA", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
-                }
+                //Buscar atualizações
+                var garconClient = new GarcOnClient(bind, address);
+                garconClient.AddAccountRequestCompleted += new EventHandler<AddAccountRequestCompletedEventArgs>(GarconClient_AddAccountRequestCompleted);
+                garconClient.AddAccountRequest(numeroMesa, valorTotal, sugestao);
             }
+        }
+
+        private async void GarconClient_AddAccountRequestCompleted(object sender, AddAccountRequestCompletedEventArgs e)
+        {
+            var errorMessage = e.Result;
+            if (e.Error != null)
+            {
+                errorMessage = e.Error.Message;
+            }
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                App.ItensPedidosFinalizadosUltimaConta = App.ItensPedidosFinalizados;
+                App.ItensPedidosFinalizados = new List<OrderItem>();
+
+                DisplayAlertOnMainThread("CONFIRMAÇÃO DE FECHAMENTO DE CONTA", "Sua solicitação foi cadastrada com sucesso, aguarde um momento que alguém irá atendê-lo. :)", "FECHAR");
+
+                await PopupNavigation.Instance.PopAsync(true);
+
+                App.Current.MainPage = new MenuPage();
+            }
+            else
+            {
+                DisplayAlertOnMainThread("ERRO NO FECHAMENTO DA CONTA", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
+            }
+
+            //Retira barra de loading
+            Device.BeginInvokeOnMainThread(() => {
+                DependencyService.Get<IProgressDialog>().LoadingHide();
+            });
+        }
+
+        private void DisplayAlertOnMainThread(string title, string message, string cancel)
+        {
+            Device.BeginInvokeOnMainThread(() => {
+                DisplayAlert(title, message, cancel);
+            });
         }
     }
 }

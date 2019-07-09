@@ -6,6 +6,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ServiceModel;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -64,44 +65,57 @@ namespace GarcOn.Pages
 
         private async void OnSaveAndGetUpdate(object sender, EventArgs e)
         {
-            ShowActivityIndicator();
-
-            await Task.Delay(2000);
-
             if (!string.IsNullOrEmpty(txtIP.Text) && !string.IsNullOrEmpty(txtNumeroMesa.Text))
             {
-                try
-                {
-                    await SecureStorage.SetAsync("ip_servidor", txtIP.Text);
-                    await SecureStorage.SetAsync("numero_mesa", txtNumeroMesa.Text);
+                ShowActivityIndicator();
 
-                    //Buscar atualizações
-                    APIService apiService = new APIService(txtIP.Text);
-                    var jsonData = apiService.GetData();
+                var ipServidor = txtIP.Text;
+                await SecureStorage.SetAsync("ip_servidor", ipServidor);
+                await SecureStorage.SetAsync("numero_mesa", txtNumeroMesa.Text);
 
-                    if (!string.IsNullOrEmpty(jsonData))
-                    {
-                        App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
-                        await SecureStorage.SetAsync("categorias_e_produtos", jsonData);
+                var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
+                BasicHttpBinding bind = new BasicHttpBinding();
 
-                        await DisplayAlert("ATUALIZAÇÃO CONCLUÍDA", "Informações carregadas com sucesso!", "FECHAR");
-                        App.Current.MainPage = new MenuPage();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (ex != null)
-                    {
-                        await DisplayAlert("NÃO FOI POSSÍVEL OBTER AS INFORMAÇÕES", "Ocorreu um erro: " + ex.Message, "FECHAR");
-                    }
-                }
+                //Buscar atualizações
+                var garconClient = new GarcOnClient(bind, address);
+                garconClient.GetDataCompleted += GarconClient_GetDataCompleted;
+                garconClient.GetDataAsync();
             }
             else
             {
                 await DisplayAlert("NÃO FOI POSSÍVEL SALVAR", "É necessário o preenchimento de todos os campos.", "FECHAR");
             }
+        }
+
+        private async void GarconClient_GetDataCompleted(object sender, GetDataCompletedEventArgs e)
+        {
+            if(e.Error == null)
+            {
+                var jsonData = e.Result;
+
+                if (!string.IsNullOrEmpty(jsonData))
+                {
+                    App.Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
+                    await SecureStorage.SetAsync("categorias_e_produtos", jsonData);
+
+                    DisplayAlertOnMainThread("ATUALIZAÇÃO CONCLUÍDA", "Informações carregadas com sucesso!", "FECHAR");
+
+                    App.Current.MainPage = new MenuPage();
+                }
+            }
+            else
+            {
+                DisplayAlertOnMainThread("NÃO FOI POSSÍVEL OBTER AS INFORMAÇÕES", "Ocorreu um erro: " + e.Error.Message, "FECHAR");
+            }
 
             HideActivityIndicator();
+        }
+
+        private void DisplayAlertOnMainThread(string title, string message, string cancel)
+        {
+            Device.BeginInvokeOnMainThread(() => {
+                DisplayAlert(title, message, cancel);
+            });
         }
 
         private async void OnJumpAndInitApplicationButton(object sender, EventArgs e)

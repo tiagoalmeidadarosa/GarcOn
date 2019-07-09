@@ -8,6 +8,329 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+namespace GarcOnServer.Model.Models
+{
+    using System.Runtime.Serialization;
+    
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemPedido", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
+    public partial class ItemPedido : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private GarcOnServer.Model.Models.Adicional[] AdicionaisSelecionadosField;
+        
+        private long IDField;
+        
+        private long ID_PedidoField;
+        
+        private long ID_ProdutoField;
+        
+        private int QuantidadeField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GarcOnServer.Model.Models.Adicional[] AdicionaisSelecionados
+        {
+            get
+            {
+                return this.AdicionaisSelecionadosField;
+            }
+            set
+            {
+                this.AdicionaisSelecionadosField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID
+        {
+            get
+            {
+                return this.IDField;
+            }
+            set
+            {
+                this.IDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID_Pedido
+        {
+            get
+            {
+                return this.ID_PedidoField;
+            }
+            set
+            {
+                this.ID_PedidoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID_Produto
+        {
+            get
+            {
+                return this.ID_ProdutoField;
+            }
+            set
+            {
+                this.ID_ProdutoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantidade
+        {
+            get
+            {
+                return this.QuantidadeField;
+            }
+            set
+            {
+                this.QuantidadeField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Adicional", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
+    public partial class Adicional : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string DescricaoField;
+        
+        private long IDField;
+        
+        private GarcOnServer.Model.Models.ItemPedido[] ItemPedidoAdicionalField;
+        
+        private GarcOnServer.Model.Models.Produto[] ProdutosAdicionalField;
+        
+        private double ValorField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descricao
+        {
+            get
+            {
+                return this.DescricaoField;
+            }
+            set
+            {
+                this.DescricaoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID
+        {
+            get
+            {
+                return this.IDField;
+            }
+            set
+            {
+                this.IDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GarcOnServer.Model.Models.ItemPedido[] ItemPedidoAdicional
+        {
+            get
+            {
+                return this.ItemPedidoAdicionalField;
+            }
+            set
+            {
+                this.ItemPedidoAdicionalField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GarcOnServer.Model.Models.Produto[] ProdutosAdicional
+        {
+            get
+            {
+                return this.ProdutosAdicionalField;
+            }
+            set
+            {
+                this.ProdutosAdicionalField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Valor
+        {
+            get
+            {
+                return this.ValorField;
+            }
+            set
+            {
+                this.ValorField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Produto", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
+    public partial class Produto : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private GarcOnServer.Model.Models.Adicional[] AdicionaisField;
+        
+        private string DescricaoField;
+        
+        private byte[] FotoField;
+        
+        private long IDField;
+        
+        private long ID_CategoriaField;
+        
+        private string NomeField;
+        
+        private double ValorField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GarcOnServer.Model.Models.Adicional[] Adicionais
+        {
+            get
+            {
+                return this.AdicionaisField;
+            }
+            set
+            {
+                this.AdicionaisField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Descricao
+        {
+            get
+            {
+                return this.DescricaoField;
+            }
+            set
+            {
+                this.DescricaoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Foto
+        {
+            get
+            {
+                return this.FotoField;
+            }
+            set
+            {
+                this.FotoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID
+        {
+            get
+            {
+                return this.IDField;
+            }
+            set
+            {
+                this.IDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long ID_Categoria
+        {
+            get
+            {
+                return this.ID_CategoriaField;
+            }
+            set
+            {
+                this.ID_CategoriaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nome
+        {
+            get
+            {
+                return this.NomeField;
+            }
+            set
+            {
+                this.NomeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Valor
+        {
+            get
+            {
+                return this.ValorField;
+            }
+            set
+            {
+                this.ValorField = value;
+            }
+        }
+    }
+}
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -18,23 +341,58 @@ public interface IGarcOn
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/GetData", ReplyAction="http://tempuri.org/IGarcOn/GetDataResponse")]
     string GetData();
     
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/GetData", ReplyAction="http://tempuri.org/IGarcOn/GetDataResponse")]
+    System.IAsyncResult BeginGetData(System.AsyncCallback callback, object asyncState);
+    
+    string EndGetData(System.IAsyncResult result);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddCategory", ReplyAction="http://tempuri.org/IGarcOn/AddCategoryResponse")]
     void AddCategory(int tipo, string descricao);
+    
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddCategory", ReplyAction="http://tempuri.org/IGarcOn/AddCategoryResponse")]
+    System.IAsyncResult BeginAddCategory(int tipo, string descricao, System.AsyncCallback callback, object asyncState);
+    
+    void EndAddCategory(System.IAsyncResult result);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddProduct", ReplyAction="http://tempuri.org/IGarcOn/AddProductResponse")]
     void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais);
     
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddProduct", ReplyAction="http://tempuri.org/IGarcOn/AddProductResponse")]
+    System.IAsyncResult BeginAddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais, System.AsyncCallback callback, object asyncState);
+    
+    void EndAddProduct(System.IAsyncResult result);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
-    string AddOrder(int mesa, double valorTotal, string itensPedido);
+    string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido);
+    
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
+    System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, System.AsyncCallback callback, object asyncState);
+    
+    string EndAddOrder(System.IAsyncResult result);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAccountRequest", ReplyAction="http://tempuri.org/IGarcOn/AddAccountRequestResponse")]
     string AddAccountRequest(int mesa, double valorTotal, string sugestao);
     
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddAccountRequest", ReplyAction="http://tempuri.org/IGarcOn/AddAccountRequestResponse")]
+    System.IAsyncResult BeginAddAccountRequest(int mesa, double valorTotal, string sugestao, System.AsyncCallback callback, object asyncState);
+    
+    string EndAddAccountRequest(System.IAsyncResult result);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddKitchenOrder", ReplyAction="http://tempuri.org/IGarcOn/AddKitchenOrderResponse")]
     string AddKitchenOrder(long idPedido, int status);
     
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddKitchenOrder", ReplyAction="http://tempuri.org/IGarcOn/AddKitchenOrderResponse")]
+    System.IAsyncResult BeginAddKitchenOrder(long idPedido, int status, System.AsyncCallback callback, object asyncState);
+    
+    string EndAddKitchenOrder(System.IAsyncResult result);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddAditional", ReplyAction="http://tempuri.org/IGarcOn/AddAditionalResponse")]
     void AddAditional(string descricao, double valor);
+    
+    [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddAditional", ReplyAction="http://tempuri.org/IGarcOn/AddAditionalResponse")]
+    System.IAsyncResult BeginAddAditional(string descricao, double valor, System.AsyncCallback callback, object asyncState);
+    
+    void EndAddAditional(System.IAsyncResult result);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -44,8 +402,142 @@ public interface IGarcOnChannel : IGarcOn, System.ServiceModel.IClientChannel
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+public partial class GetDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+{
+    
+    private object[] results;
+    
+    public GetDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState)
+    {
+        this.results = results;
+    }
+    
+    public string Result
+    {
+        get
+        {
+            base.RaiseExceptionIfNecessary();
+            return ((string)(this.results[0]));
+        }
+    }
+}
+
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+public partial class AddOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+{
+    
+    private object[] results;
+    
+    public AddOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState)
+    {
+        this.results = results;
+    }
+    
+    public string Result
+    {
+        get
+        {
+            base.RaiseExceptionIfNecessary();
+            return ((string)(this.results[0]));
+        }
+    }
+}
+
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+public partial class AddAccountRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+{
+    
+    private object[] results;
+    
+    public AddAccountRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState)
+    {
+        this.results = results;
+    }
+    
+    public string Result
+    {
+        get
+        {
+            base.RaiseExceptionIfNecessary();
+            return ((string)(this.results[0]));
+        }
+    }
+}
+
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+public partial class AddKitchenOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs
+{
+    
+    private object[] results;
+    
+    public AddKitchenOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+            base(exception, cancelled, userState)
+    {
+        this.results = results;
+    }
+    
+    public string Result
+    {
+        get
+        {
+            base.RaiseExceptionIfNecessary();
+            return ((string)(this.results[0]));
+        }
+    }
+}
+
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGarcOn
 {
+    
+    private BeginOperationDelegate onBeginGetDataDelegate;
+    
+    private EndOperationDelegate onEndGetDataDelegate;
+    
+    private System.Threading.SendOrPostCallback onGetDataCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddCategoryDelegate;
+    
+    private EndOperationDelegate onEndAddCategoryDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddCategoryCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddProductDelegate;
+    
+    private EndOperationDelegate onEndAddProductDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddProductCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddOrderDelegate;
+    
+    private EndOperationDelegate onEndAddOrderDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddOrderCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddAccountRequestDelegate;
+    
+    private EndOperationDelegate onEndAddAccountRequestDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddAccountRequestCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddKitchenOrderDelegate;
+    
+    private EndOperationDelegate onEndAddKitchenOrderDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddKitchenOrderCompletedDelegate;
+    
+    private BeginOperationDelegate onBeginAddAditionalDelegate;
+    
+    private EndOperationDelegate onEndAddAditionalDelegate;
+    
+    private System.Threading.SendOrPostCallback onAddAditionalCompletedDelegate;
     
     public GarcOnClient()
     {
@@ -71,9 +563,78 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
     {
     }
     
+    public event System.EventHandler<GetDataCompletedEventArgs> GetDataCompleted;
+    
+    public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> AddCategoryCompleted;
+    
+    public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> AddProductCompleted;
+    
+    public event System.EventHandler<AddOrderCompletedEventArgs> AddOrderCompleted;
+    
+    public event System.EventHandler<AddAccountRequestCompletedEventArgs> AddAccountRequestCompleted;
+    
+    public event System.EventHandler<AddKitchenOrderCompletedEventArgs> AddKitchenOrderCompleted;
+    
+    public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> AddAditionalCompleted;
+    
     public string GetData()
     {
         return base.Channel.GetData();
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginGetData(System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginGetData(callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public string EndGetData(System.IAsyncResult result)
+    {
+        return base.Channel.EndGetData(result);
+    }
+    
+    private System.IAsyncResult OnBeginGetData(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        return this.BeginGetData(callback, asyncState);
+    }
+    
+    private object[] OnEndGetData(System.IAsyncResult result)
+    {
+        string retVal = this.EndGetData(result);
+        return new object[] {
+                retVal};
+    }
+    
+    private void OnGetDataCompleted(object state)
+    {
+        if ((this.GetDataCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.GetDataCompleted(this, new GetDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void GetDataAsync()
+    {
+        this.GetDataAsync(null);
+    }
+    
+    public void GetDataAsync(object userState)
+    {
+        if ((this.onBeginGetDataDelegate == null))
+        {
+            this.onBeginGetDataDelegate = new BeginOperationDelegate(this.OnBeginGetData);
+        }
+        if ((this.onEndGetDataDelegate == null))
+        {
+            this.onEndGetDataDelegate = new EndOperationDelegate(this.OnEndGetData);
+        }
+        if ((this.onGetDataCompletedDelegate == null))
+        {
+            this.onGetDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDataCompleted);
+        }
+        base.InvokeAsync(this.onBeginGetDataDelegate, null, this.onEndGetDataDelegate, this.onGetDataCompletedDelegate, userState);
     }
     
     public void AddCategory(int tipo, string descricao)
@@ -81,14 +642,199 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
         base.Channel.AddCategory(tipo, descricao);
     }
     
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddCategory(int tipo, string descricao, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddCategory(tipo, descricao, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public void EndAddCategory(System.IAsyncResult result)
+    {
+        base.Channel.EndAddCategory(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddCategory(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        int tipo = ((int)(inValues[0]));
+        string descricao = ((string)(inValues[1]));
+        return this.BeginAddCategory(tipo, descricao, callback, asyncState);
+    }
+    
+    private object[] OnEndAddCategory(System.IAsyncResult result)
+    {
+        this.EndAddCategory(result);
+        return null;
+    }
+    
+    private void OnAddCategoryCompleted(object state)
+    {
+        if ((this.AddCategoryCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddCategoryCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddCategoryAsync(int tipo, string descricao)
+    {
+        this.AddCategoryAsync(tipo, descricao, null);
+    }
+    
+    public void AddCategoryAsync(int tipo, string descricao, object userState)
+    {
+        if ((this.onBeginAddCategoryDelegate == null))
+        {
+            this.onBeginAddCategoryDelegate = new BeginOperationDelegate(this.OnBeginAddCategory);
+        }
+        if ((this.onEndAddCategoryDelegate == null))
+        {
+            this.onEndAddCategoryDelegate = new EndOperationDelegate(this.OnEndAddCategory);
+        }
+        if ((this.onAddCategoryCompletedDelegate == null))
+        {
+            this.onAddCategoryCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddCategoryCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddCategoryDelegate, new object[] {
+                    tipo,
+                    descricao}, this.onEndAddCategoryDelegate, this.onAddCategoryCompletedDelegate, userState);
+    }
+    
     public void AddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais)
     {
         base.Channel.AddProduct(idCategoria, nome, descricao, valor, foto, adicionais);
     }
     
-    public string AddOrder(int mesa, double valorTotal, string itensPedido)
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddProduct(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddProduct(idCategoria, nome, descricao, valor, foto, adicionais, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public void EndAddProduct(System.IAsyncResult result)
+    {
+        base.Channel.EndAddProduct(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddProduct(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        long idCategoria = ((long)(inValues[0]));
+        string nome = ((string)(inValues[1]));
+        string descricao = ((string)(inValues[2]));
+        double valor = ((double)(inValues[3]));
+        byte[] foto = ((byte[])(inValues[4]));
+        long[] adicionais = ((long[])(inValues[5]));
+        return this.BeginAddProduct(idCategoria, nome, descricao, valor, foto, adicionais, callback, asyncState);
+    }
+    
+    private object[] OnEndAddProduct(System.IAsyncResult result)
+    {
+        this.EndAddProduct(result);
+        return null;
+    }
+    
+    private void OnAddProductCompleted(object state)
+    {
+        if ((this.AddProductCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddProductCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddProductAsync(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais)
+    {
+        this.AddProductAsync(idCategoria, nome, descricao, valor, foto, adicionais, null);
+    }
+    
+    public void AddProductAsync(long idCategoria, string nome, string descricao, double valor, byte[] foto, long[] adicionais, object userState)
+    {
+        if ((this.onBeginAddProductDelegate == null))
+        {
+            this.onBeginAddProductDelegate = new BeginOperationDelegate(this.OnBeginAddProduct);
+        }
+        if ((this.onEndAddProductDelegate == null))
+        {
+            this.onEndAddProductDelegate = new EndOperationDelegate(this.OnEndAddProduct);
+        }
+        if ((this.onAddProductCompletedDelegate == null))
+        {
+            this.onAddProductCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddProductCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddProductDelegate, new object[] {
+                    idCategoria,
+                    nome,
+                    descricao,
+                    valor,
+                    foto,
+                    adicionais}, this.onEndAddProductDelegate, this.onAddProductCompletedDelegate, userState);
+    }
+    
+    public string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido)
     {
         return base.Channel.AddOrder(mesa, valorTotal, itensPedido);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddOrder(mesa, valorTotal, itensPedido, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public string EndAddOrder(System.IAsyncResult result)
+    {
+        return base.Channel.EndAddOrder(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddOrder(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        int mesa = ((int)(inValues[0]));
+        double valorTotal = ((double)(inValues[1]));
+        System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido = ((System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int>)(inValues[2]));
+        return this.BeginAddOrder(mesa, valorTotal, itensPedido, callback, asyncState);
+    }
+    
+    private object[] OnEndAddOrder(System.IAsyncResult result)
+    {
+        string retVal = this.EndAddOrder(result);
+        return new object[] {
+                retVal};
+    }
+    
+    private void OnAddOrderCompleted(object state)
+    {
+        if ((this.AddOrderCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddOrderCompleted(this, new AddOrderCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddOrderAsync(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido)
+    {
+        this.AddOrderAsync(mesa, valorTotal, itensPedido, null);
+    }
+    
+    public void AddOrderAsync(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, object userState)
+    {
+        if ((this.onBeginAddOrderDelegate == null))
+        {
+            this.onBeginAddOrderDelegate = new BeginOperationDelegate(this.OnBeginAddOrder);
+        }
+        if ((this.onEndAddOrderDelegate == null))
+        {
+            this.onEndAddOrderDelegate = new EndOperationDelegate(this.OnEndAddOrder);
+        }
+        if ((this.onAddOrderCompletedDelegate == null))
+        {
+            this.onAddOrderCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddOrderCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddOrderDelegate, new object[] {
+                    mesa,
+                    valorTotal,
+                    itensPedido}, this.onEndAddOrderDelegate, this.onAddOrderCompletedDelegate, userState);
     }
     
     public string AddAccountRequest(int mesa, double valorTotal, string sugestao)
@@ -96,13 +842,191 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
         return base.Channel.AddAccountRequest(mesa, valorTotal, sugestao);
     }
     
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddAccountRequest(int mesa, double valorTotal, string sugestao, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddAccountRequest(mesa, valorTotal, sugestao, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public string EndAddAccountRequest(System.IAsyncResult result)
+    {
+        return base.Channel.EndAddAccountRequest(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddAccountRequest(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        int mesa = ((int)(inValues[0]));
+        double valorTotal = ((double)(inValues[1]));
+        string sugestao = ((string)(inValues[2]));
+        return this.BeginAddAccountRequest(mesa, valorTotal, sugestao, callback, asyncState);
+    }
+    
+    private object[] OnEndAddAccountRequest(System.IAsyncResult result)
+    {
+        string retVal = this.EndAddAccountRequest(result);
+        return new object[] {
+                retVal};
+    }
+    
+    private void OnAddAccountRequestCompleted(object state)
+    {
+        if ((this.AddAccountRequestCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddAccountRequestCompleted(this, new AddAccountRequestCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddAccountRequestAsync(int mesa, double valorTotal, string sugestao)
+    {
+        this.AddAccountRequestAsync(mesa, valorTotal, sugestao, null);
+    }
+    
+    public void AddAccountRequestAsync(int mesa, double valorTotal, string sugestao, object userState)
+    {
+        if ((this.onBeginAddAccountRequestDelegate == null))
+        {
+            this.onBeginAddAccountRequestDelegate = new BeginOperationDelegate(this.OnBeginAddAccountRequest);
+        }
+        if ((this.onEndAddAccountRequestDelegate == null))
+        {
+            this.onEndAddAccountRequestDelegate = new EndOperationDelegate(this.OnEndAddAccountRequest);
+        }
+        if ((this.onAddAccountRequestCompletedDelegate == null))
+        {
+            this.onAddAccountRequestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddAccountRequestCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddAccountRequestDelegate, new object[] {
+                    mesa,
+                    valorTotal,
+                    sugestao}, this.onEndAddAccountRequestDelegate, this.onAddAccountRequestCompletedDelegate, userState);
+    }
+    
     public string AddKitchenOrder(long idPedido, int status)
     {
         return base.Channel.AddKitchenOrder(idPedido, status);
     }
     
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddKitchenOrder(long idPedido, int status, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddKitchenOrder(idPedido, status, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public string EndAddKitchenOrder(System.IAsyncResult result)
+    {
+        return base.Channel.EndAddKitchenOrder(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddKitchenOrder(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        long idPedido = ((long)(inValues[0]));
+        int status = ((int)(inValues[1]));
+        return this.BeginAddKitchenOrder(idPedido, status, callback, asyncState);
+    }
+    
+    private object[] OnEndAddKitchenOrder(System.IAsyncResult result)
+    {
+        string retVal = this.EndAddKitchenOrder(result);
+        return new object[] {
+                retVal};
+    }
+    
+    private void OnAddKitchenOrderCompleted(object state)
+    {
+        if ((this.AddKitchenOrderCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddKitchenOrderCompleted(this, new AddKitchenOrderCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddKitchenOrderAsync(long idPedido, int status)
+    {
+        this.AddKitchenOrderAsync(idPedido, status, null);
+    }
+    
+    public void AddKitchenOrderAsync(long idPedido, int status, object userState)
+    {
+        if ((this.onBeginAddKitchenOrderDelegate == null))
+        {
+            this.onBeginAddKitchenOrderDelegate = new BeginOperationDelegate(this.OnBeginAddKitchenOrder);
+        }
+        if ((this.onEndAddKitchenOrderDelegate == null))
+        {
+            this.onEndAddKitchenOrderDelegate = new EndOperationDelegate(this.OnEndAddKitchenOrder);
+        }
+        if ((this.onAddKitchenOrderCompletedDelegate == null))
+        {
+            this.onAddKitchenOrderCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddKitchenOrderCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddKitchenOrderDelegate, new object[] {
+                    idPedido,
+                    status}, this.onEndAddKitchenOrderDelegate, this.onAddKitchenOrderCompletedDelegate, userState);
+    }
+    
     public void AddAditional(string descricao, double valor)
     {
         base.Channel.AddAditional(descricao, valor);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public System.IAsyncResult BeginAddAditional(string descricao, double valor, System.AsyncCallback callback, object asyncState)
+    {
+        return base.Channel.BeginAddAditional(descricao, valor, callback, asyncState);
+    }
+    
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    public void EndAddAditional(System.IAsyncResult result)
+    {
+        base.Channel.EndAddAditional(result);
+    }
+    
+    private System.IAsyncResult OnBeginAddAditional(object[] inValues, System.AsyncCallback callback, object asyncState)
+    {
+        string descricao = ((string)(inValues[0]));
+        double valor = ((double)(inValues[1]));
+        return this.BeginAddAditional(descricao, valor, callback, asyncState);
+    }
+    
+    private object[] OnEndAddAditional(System.IAsyncResult result)
+    {
+        this.EndAddAditional(result);
+        return null;
+    }
+    
+    private void OnAddAditionalCompleted(object state)
+    {
+        if ((this.AddAditionalCompleted != null))
+        {
+            InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+            this.AddAditionalCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+        }
+    }
+    
+    public void AddAditionalAsync(string descricao, double valor)
+    {
+        this.AddAditionalAsync(descricao, valor, null);
+    }
+    
+    public void AddAditionalAsync(string descricao, double valor, object userState)
+    {
+        if ((this.onBeginAddAditionalDelegate == null))
+        {
+            this.onBeginAddAditionalDelegate = new BeginOperationDelegate(this.OnBeginAddAditional);
+        }
+        if ((this.onEndAddAditionalDelegate == null))
+        {
+            this.onEndAddAditionalDelegate = new EndOperationDelegate(this.OnEndAddAditional);
+        }
+        if ((this.onAddAditionalCompletedDelegate == null))
+        {
+            this.onAddAditionalCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddAditionalCompleted);
+        }
+        base.InvokeAsync(this.onBeginAddAditionalDelegate, new object[] {
+                    descricao,
+                    valor}, this.onEndAddAditionalDelegate, this.onAddAditionalCompletedDelegate, userState);
     }
 }

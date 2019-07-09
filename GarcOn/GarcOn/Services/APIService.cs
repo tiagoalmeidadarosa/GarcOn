@@ -1,5 +1,6 @@
 ﻿using GarcOn.Models;
 using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
@@ -29,14 +30,14 @@ namespace GarcOn.Services
             return false;
         }
 
-        public string GetData()
+        public void GetData()
         {
-            return _garconClient.GetData();
+            _garconClient.GetData();
         }
 
         public string AddOrder(int numeroMesa, double valorTotal, string itensPedido)
         {
-            return _garconClient.AddOrder(numeroMesa, valorTotal, itensPedido);
+            return _garconClient.AddOrder(numeroMesa, valorTotal, null);
         }
 
         public string AddAccountRequest(int numeroMesa, double valorTotal, string sugestao)

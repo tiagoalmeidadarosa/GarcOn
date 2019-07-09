@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GarcOn.Models;
 using Newtonsoft.Json;
+using System.ServiceModel;
+using GarcOn.NativeDependency;
 
 namespace GarcOn.Pages
 {
@@ -185,7 +187,10 @@ namespace GarcOn.Pages
 
             if (completeOrder)
             {
-                var ip = await SecureStorage.GetAsync("ip_servidor");
+                //Executa loading
+                DependencyService.Get<IProgressDialog>().LoadingShow();
+
+                var ipServidor = await SecureStorage.GetAsync("ip_servidor");
                 var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
                 var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
 
@@ -200,23 +205,53 @@ namespace GarcOn.Pages
                     itensPedido.Add(itemPedido);
                 }
 
-                APIService apiService = new APIService(ip);
-                var errorMessage = apiService.AddOrder(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
+                var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
+                BasicHttpBinding bind = new BasicHttpBinding();
 
-                if (string.IsNullOrEmpty(errorMessage))
-                {
-                    App.ItensPedidosFinalizados.AddRange(App.ItensPedido);
+                //Buscar atualizações
+                var garconClient = new GarcOnClient(bind, address);
+                garconClient.AddOrderCompleted += GarconClient_AddOrderCompleted;
+                //garconClient.AddOrderAsync(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
 
-                    await DisplayAlert("CONFIRMAÇÃO DO PEDIDO", "Seu pedido foi cadastrado com sucesso.", "FECHAR");
+                //Todo: Arrumar essa chamada aqui
 
-                    App.ItensPedido = new List<OrderItem>();
-                    App.Current.MainPage = new MenuPage();
-                }
-                else
-                {
-                    await DisplayAlert("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
-                }
+                garconClient.AddOrderAsync(numeroMesa, valorTotal, new Dictionary<GarcOnServer.Model.Models.ItemPedido, int>());
             }
+        }
+
+        private void GarconClient_AddOrderCompleted(object sender, AddOrderCompletedEventArgs e)
+        {
+            var errorMessage = e.Result;
+            if (e.Error != null)
+            {
+                errorMessage = e.Error.Message;
+            }
+
+            if (string.IsNullOrEmpty(errorMessage))
+            {
+                App.ItensPedidosFinalizados.AddRange(App.ItensPedido);
+                App.ItensPedido = new List<OrderItem>();
+
+                DisplayAlertOnMainThread("CONFIRMAÇÃO DO PEDIDO", "Seu pedido foi cadastrado com sucesso.", "FECHAR");
+
+                App.Current.MainPage = new MenuPage();
+            }
+            else
+            {
+                DisplayAlertOnMainThread("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
+            }
+
+            //Retira barra de loading
+            Device.BeginInvokeOnMainThread(() => {
+                DependencyService.Get<IProgressDialog>().LoadingHide();
+            });
+        }
+
+        private void DisplayAlertOnMainThread(string title, string message, string cancel)
+        {
+            Device.BeginInvokeOnMainThread(() => {
+                DisplayAlert(title, message, cancel);
+            });
         }
 
         private void Orders_ItemSelected(object sender, SelectedItemChangedEventArgs e)
