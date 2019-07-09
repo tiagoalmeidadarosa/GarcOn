@@ -62,7 +62,7 @@
                                        BackgroundColor="{StaticResource accentColor}"
                                        TextColor="White"
                                        Text="Pedir a conta"
-                                       Image="accounting.png"
+                                       Image="bill.png"
                                        Padding="10, 0, 45, 0"
                                        FontSize="16"
                                        Clicked="FinalizeAccountButton_Clicked"
