@@ -116,7 +116,7 @@ namespace GarcOn.Pages
 
                 //Buscar atualizações
                 var garconClient = new GarcOnClient(bind, address);
-                garconClient.AddAccountRequestCompleted += new EventHandler<AddAccountRequestCompletedEventArgs>(GarconClient_AddAccountRequestCompleted);
+                garconClient.AddAccountRequestCompleted += GarconClient_AddAccountRequestCompleted;
                 garconClient.AddAccountRequest(numeroMesa, valorTotal, sugestao);
             }
         }
