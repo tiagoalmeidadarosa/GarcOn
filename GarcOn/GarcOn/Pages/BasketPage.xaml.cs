@@ -1,10 +1,7 @@
 ﻿using GarcOn.ViewModels;
-using GarcOn.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -208,14 +205,9 @@ namespace GarcOn.Pages
                 var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
                 BasicHttpBinding bind = new BasicHttpBinding();
 
-                //Buscar atualizações
                 var garconClient = new GarcOnClient(bind, address);
                 garconClient.AddOrderCompleted += GarconClient_AddOrderCompleted;
-                //garconClient.AddOrderAsync(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
-
-                //Todo: Arrumar essa chamada aqui
-
-                garconClient.AddOrderAsync(numeroMesa, valorTotal, new Dictionary<GarcOnServer.Model.Models.ItemPedido, int>());
+                garconClient.AddOrderAsync(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
             }
         }
 

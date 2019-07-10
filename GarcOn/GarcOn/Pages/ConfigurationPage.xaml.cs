@@ -1,13 +1,11 @@
 ﻿using GarcOn.Models;
 using GarcOn.NativeDependency;
-using GarcOn.Services;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ServiceModel;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

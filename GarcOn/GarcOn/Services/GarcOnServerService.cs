@@ -8,329 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GarcOnServer.Model.Models
-{
-    using System.Runtime.Serialization;
-    
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ItemPedido", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
-    public partial class ItemPedido : object, System.Runtime.Serialization.IExtensibleDataObject
-    {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private GarcOnServer.Model.Models.Adicional[] AdicionaisSelecionadosField;
-        
-        private long IDField;
-        
-        private long ID_PedidoField;
-        
-        private long ID_ProdutoField;
-        
-        private int QuantidadeField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return this.extensionDataField;
-            }
-            set
-            {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GarcOnServer.Model.Models.Adicional[] AdicionaisSelecionados
-        {
-            get
-            {
-                return this.AdicionaisSelecionadosField;
-            }
-            set
-            {
-                this.AdicionaisSelecionadosField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID
-        {
-            get
-            {
-                return this.IDField;
-            }
-            set
-            {
-                this.IDField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID_Pedido
-        {
-            get
-            {
-                return this.ID_PedidoField;
-            }
-            set
-            {
-                this.ID_PedidoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID_Produto
-        {
-            get
-            {
-                return this.ID_ProdutoField;
-            }
-            set
-            {
-                this.ID_ProdutoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Quantidade
-        {
-            get
-            {
-                return this.QuantidadeField;
-            }
-            set
-            {
-                this.QuantidadeField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Adicional", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
-    public partial class Adicional : object, System.Runtime.Serialization.IExtensibleDataObject
-    {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string DescricaoField;
-        
-        private long IDField;
-        
-        private GarcOnServer.Model.Models.ItemPedido[] ItemPedidoAdicionalField;
-        
-        private GarcOnServer.Model.Models.Produto[] ProdutosAdicionalField;
-        
-        private double ValorField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return this.extensionDataField;
-            }
-            set
-            {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Descricao
-        {
-            get
-            {
-                return this.DescricaoField;
-            }
-            set
-            {
-                this.DescricaoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID
-        {
-            get
-            {
-                return this.IDField;
-            }
-            set
-            {
-                this.IDField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GarcOnServer.Model.Models.ItemPedido[] ItemPedidoAdicional
-        {
-            get
-            {
-                return this.ItemPedidoAdicionalField;
-            }
-            set
-            {
-                this.ItemPedidoAdicionalField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GarcOnServer.Model.Models.Produto[] ProdutosAdicional
-        {
-            get
-            {
-                return this.ProdutosAdicionalField;
-            }
-            set
-            {
-                this.ProdutosAdicionalField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Valor
-        {
-            get
-            {
-                return this.ValorField;
-            }
-            set
-            {
-                this.ValorField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Produto", Namespace="http://schemas.datacontract.org/2004/07/GarcOnServer.Model.Models")]
-    public partial class Produto : object, System.Runtime.Serialization.IExtensibleDataObject
-    {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private GarcOnServer.Model.Models.Adicional[] AdicionaisField;
-        
-        private string DescricaoField;
-        
-        private byte[] FotoField;
-        
-        private long IDField;
-        
-        private long ID_CategoriaField;
-        
-        private string NomeField;
-        
-        private double ValorField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return this.extensionDataField;
-            }
-            set
-            {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GarcOnServer.Model.Models.Adicional[] Adicionais
-        {
-            get
-            {
-                return this.AdicionaisField;
-            }
-            set
-            {
-                this.AdicionaisField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Descricao
-        {
-            get
-            {
-                return this.DescricaoField;
-            }
-            set
-            {
-                this.DescricaoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] Foto
-        {
-            get
-            {
-                return this.FotoField;
-            }
-            set
-            {
-                this.FotoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID
-        {
-            get
-            {
-                return this.IDField;
-            }
-            set
-            {
-                this.IDField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long ID_Categoria
-        {
-            get
-            {
-                return this.ID_CategoriaField;
-            }
-            set
-            {
-                this.ID_CategoriaField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Nome
-        {
-            get
-            {
-                return this.NomeField;
-            }
-            set
-            {
-                this.NomeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Valor
-        {
-            get
-            {
-                return this.ValorField;
-            }
-            set
-            {
-                this.ValorField = value;
-            }
-        }
-    }
-}
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -363,10 +40,10 @@ public interface IGarcOn
     void EndAddProduct(System.IAsyncResult result);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
-    string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido);
+    string AddOrder(int mesa, double valorTotal, string itensPedido);
     
     [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGarcOn/AddOrder", ReplyAction="http://tempuri.org/IGarcOn/AddOrderResponse")]
-    System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, System.AsyncCallback callback, object asyncState);
+    System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, string itensPedido, System.AsyncCallback callback, object asyncState);
     
     string EndAddOrder(System.IAsyncResult result);
     
@@ -771,13 +448,13 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
                     adicionais}, this.onEndAddProductDelegate, this.onAddProductCompletedDelegate, userState);
     }
     
-    public string AddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido)
+    public string AddOrder(int mesa, double valorTotal, string itensPedido)
     {
         return base.Channel.AddOrder(mesa, valorTotal, itensPedido);
     }
     
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    public System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, System.AsyncCallback callback, object asyncState)
+    public System.IAsyncResult BeginAddOrder(int mesa, double valorTotal, string itensPedido, System.AsyncCallback callback, object asyncState)
     {
         return base.Channel.BeginAddOrder(mesa, valorTotal, itensPedido, callback, asyncState);
     }
@@ -792,7 +469,7 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
     {
         int mesa = ((int)(inValues[0]));
         double valorTotal = ((double)(inValues[1]));
-        System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido = ((System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int>)(inValues[2]));
+        string itensPedido = ((string)(inValues[2]));
         return this.BeginAddOrder(mesa, valorTotal, itensPedido, callback, asyncState);
     }
     
@@ -812,12 +489,12 @@ public partial class GarcOnClient : System.ServiceModel.ClientBase<IGarcOn>, IGa
         }
     }
     
-    public void AddOrderAsync(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido)
+    public void AddOrderAsync(int mesa, double valorTotal, string itensPedido)
     {
         this.AddOrderAsync(mesa, valorTotal, itensPedido, null);
     }
     
-    public void AddOrderAsync(int mesa, double valorTotal, System.Collections.Generic.Dictionary<GarcOnServer.Model.Models.ItemPedido, int> itensPedido, object userState)
+    public void AddOrderAsync(int mesa, double valorTotal, string itensPedido, object userState)
     {
         if ((this.onBeginAddOrderDelegate == null))
         {

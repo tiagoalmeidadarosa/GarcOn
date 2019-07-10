@@ -28,7 +28,7 @@ namespace GarcOn.Pages
                 var categoria = App.Categorias.FirstOrDefault(c => c.ID == idCategoria);
                 if (categoria != null)
                 {
-                    FoodsList.ItemsSource = categoria.Produtos.ToList();
+                    FoodsList.ItemsSource = categoria.Produtos;
                 }
             }
             else
@@ -36,7 +36,7 @@ namespace GarcOn.Pages
                 var produtos = new List<Produto>();
                 foreach (var categoria in App.Categorias)
                 {
-                    produtos.AddRange(categoria.Produtos.ToList());
+                    produtos.AddRange(categoria.Produtos);
                 }
 
                 FoodsList.ItemsSource = produtos;

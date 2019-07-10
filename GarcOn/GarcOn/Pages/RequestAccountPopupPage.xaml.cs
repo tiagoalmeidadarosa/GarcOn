@@ -1,11 +1,9 @@
 ﻿using GarcOn.ViewModels;
-using GarcOn.Services;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -114,10 +112,9 @@ namespace GarcOn.Pages
                 var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
                 BasicHttpBinding bind = new BasicHttpBinding();
 
-                //Buscar atualizações
                 var garconClient = new GarcOnClient(bind, address);
                 garconClient.AddAccountRequestCompleted += GarconClient_AddAccountRequestCompleted;
-                garconClient.AddAccountRequest(numeroMesa, valorTotal, sugestao);
+                garconClient.AddAccountRequestAsync(numeroMesa, valorTotal, sugestao);
             }
         }
 

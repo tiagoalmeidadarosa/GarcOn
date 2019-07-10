@@ -1,5 +1,4 @@
 ﻿using GarcOn.Models;
-using GarcOn.Services;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -8,9 +7,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,10 +29,12 @@ namespace GarcOn.Pages
         {
             if(App.ItensPedidosFinalizados.Count > 0)
             {
+                MenuItemsListView.Margin = new Thickness(0, 0, 0, 60);
                 btnFinalizeAccount.IsVisible = true;
             }
             else
             {
+                MenuItemsListView.Margin = new Thickness(0, 0, 0, 0);
                 btnFinalizeAccount.IsVisible = false;
             }
         }
