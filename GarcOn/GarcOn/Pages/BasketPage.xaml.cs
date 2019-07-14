@@ -9,12 +9,15 @@ using GarcOn.Models;
 using Newtonsoft.Json;
 using System.ServiceModel;
 using GarcOn.NativeDependency;
+using System.Threading;
 
 namespace GarcOn.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BasketPage : ContentPage
     {
+        private int _attempt = 0;
+
         const int MinValue = 1;
         const int MaxValue = 50;
 
@@ -187,62 +190,87 @@ namespace GarcOn.Pages
                 //Executa loading
                 DependencyService.Get<IProgressDialog>().LoadingShow();
 
-                var ipServidor = await SecureStorage.GetAsync("ip_servidor");
-                var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
-                var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
-
-                List<ItemPedido> itensPedido = new List<ItemPedido>();
-                foreach (var orderItem in App.ItensPedido)
-                {
-                    var itemPedido = new ItemPedido();
-                    itemPedido.ID_Produto = orderItem.Id;
-                    itemPedido.Quantidade = orderItem.Quantity;
-                    itemPedido.AdicionaisSelecionados = orderItem.SelectedAditionals;
-
-                    itensPedido.Add(itemPedido);
-                }
-
-                var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
-                BasicHttpBinding bind = new BasicHttpBinding();
-
-                var garconClient = new GarcOnClient(bind, address);
-                garconClient.AddOrderCompleted += GarconClient_AddOrderCompleted;
-                garconClient.AddOrderAsync(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
+                AddOrder();
             }
+        }
+
+        private async void AddOrder()
+        {
+            var ipServidor = await SecureStorage.GetAsync("ip_servidor");
+            var numeroMesa = Convert.ToInt32(await SecureStorage.GetAsync("numero_mesa"));
+            var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
+
+            List<ItemPedido> itensPedido = new List<ItemPedido>();
+            foreach (var orderItem in App.ItensPedido)
+            {
+                var itemPedido = new ItemPedido();
+                itemPedido.ID_Produto = orderItem.Id;
+                itemPedido.Quantidade = orderItem.Quantity;
+                itemPedido.AdicionaisSelecionados = orderItem.SelectedAditionals;
+
+                itensPedido.Add(itemPedido);
+            }
+
+            var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
+            BasicHttpBinding bind = new BasicHttpBinding();
+
+            var garconClient = new GarcOnClient(bind, address);
+            garconClient.AddOrderCompleted += GarconClient_AddOrderCompleted;
+            garconClient.AddOrderAsync(numeroMesa, valorTotal, JsonConvert.SerializeObject(itensPedido));
         }
 
         private void GarconClient_AddOrderCompleted(object sender, AddOrderCompletedEventArgs e)
         {
-            var errorMessage = e.Result;
-            if (e.Error != null)
-            {
+            var errorMessage = "";
+            if (e.Error == null)
+                errorMessage = e.Result;
+            else
                 errorMessage = e.Error.Message;
-            }
 
             if (string.IsNullOrEmpty(errorMessage))
             {
+                _attempt = 0;
+
                 App.ItensPedidosFinalizados.AddRange(App.ItensPedido);
                 App.ItensPedido = new List<OrderItem>();
 
                 DisplayAlertOnMainThread("CONFIRMAÇÃO DO PEDIDO", "Seu pedido foi cadastrado com sucesso.", "FECHAR");
 
+                HideProgressDialogOnMainThread();
+
                 App.Current.MainPage = new MenuPage();
             }
             else
             {
-                DisplayAlertOnMainThread("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
-            }
+                if (_attempt < 3)
+                {
+                    _attempt++;
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
 
-            //Retira barra de loading
-            Device.BeginInvokeOnMainThread(() => {
-                DependencyService.Get<IProgressDialog>().LoadingHide();
-            });
+                    AddOrder();
+                }
+                else
+                {
+                    _attempt = 0;
+
+                    DisplayAlertOnMainThread("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
+
+                    HideProgressDialogOnMainThread();
+                }
+            }
         }
 
         private void DisplayAlertOnMainThread(string title, string message, string cancel)
         {
             Device.BeginInvokeOnMainThread(() => {
                 DisplayAlert(title, message, cancel);
+            });
+        }
+
+        private void HideProgressDialogOnMainThread()
+        {
+            Device.BeginInvokeOnMainThread(() => {
+                DependencyService.Get<IProgressDialog>().LoadingHide();
             });
         }
 

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ServiceModel;
+using System.Threading;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +16,8 @@ namespace GarcOn.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ConfigurationPage : ContentPage, INotifyPropertyChanged
     {
+        private int _attempt = 0;
+
         public ConfigurationPage()
         {
             InitializeComponent();
@@ -71,13 +74,8 @@ namespace GarcOn.Pages
                 await SecureStorage.SetAsync("ip_servidor", ipServidor);
                 await SecureStorage.SetAsync("numero_mesa", txtNumeroMesa.Text);
 
-                var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
-                BasicHttpBinding bind = new BasicHttpBinding();
-
-                //Buscar atualizações
-                var garconClient = new GarcOnClient(bind, address);
-                garconClient.GetDataCompleted += GarconClient_GetDataCompleted;
-                garconClient.GetDataAsync();
+                //Buscar atualizações de categorias e produtos
+                GetData();
             }
             else
             {
@@ -85,10 +83,24 @@ namespace GarcOn.Pages
             }
         }
 
+        private void GetData()
+        {
+            var ipServidor = txtIP.Text;
+
+            var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
+            BasicHttpBinding bind = new BasicHttpBinding();
+            
+            var garconClient = new GarcOnClient(bind, address);
+            garconClient.GetDataCompleted += GarconClient_GetDataCompleted;
+            garconClient.GetDataAsync();
+        }
+
         private async void GarconClient_GetDataCompleted(object sender, GetDataCompletedEventArgs e)
         {
             if(e.Error == null)
             {
+                _attempt = 0;
+
                 var jsonData = e.Result;
 
                 if (!string.IsNullOrEmpty(jsonData))
@@ -100,13 +112,27 @@ namespace GarcOn.Pages
 
                     App.Current.MainPage = new MenuPage();
                 }
+
+                HideActivityIndicator();
             }
             else
             {
-                DisplayAlertOnMainThread("NÃO FOI POSSÍVEL OBTER AS INFORMAÇÕES", "Ocorreu um erro: " + e.Error.Message, "FECHAR");
-            }
+                if(_attempt < 3)
+                {
+                    _attempt++;
+                    Thread.Sleep(TimeSpan.FromSeconds(2));
 
-            HideActivityIndicator();
+                    GetData();
+                }
+                else
+                {
+                    _attempt = 0;
+
+                    DisplayAlertOnMainThread("NÃO FOI POSSÍVEL OBTER AS INFORMAÇÕES", "Ocorreu um erro: " + e.Error.Message, "FECHAR");
+
+                    HideActivityIndicator();
+                }
+            }
         }
 
         private void DisplayAlertOnMainThread(string title, string message, string cancel)
