@@ -21,7 +21,7 @@ namespace GarcOn.Pages
 
         private async void OnLoginButton(object sender, EventArgs e)
         {
-            if(txtPassword.Text == "GarcOnPass123")
+            if(txtPassword.Text == "admin")
             {
                 App.IsAdmin = true;
                 MessagingCenter.Send(this, "Refresh");

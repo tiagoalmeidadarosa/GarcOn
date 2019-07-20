@@ -119,9 +119,14 @@ namespace GarcOn.Pages
             var sugestao = editorSugestao.Text;
 
             var address = new EndpointAddress("http://" + ipServidor + "/GarcOnService");
-            BasicHttpBinding bind = new BasicHttpBinding();
+
+            var bind = new BasicHttpBinding();
+            bind.Security.Mode = BasicHttpSecurityMode.TransportCredentialOnly;
+            bind.Security.Transport.ClientCredentialType = HttpClientCredentialType.Basic;
 
             var garconClient = new GarcOnClient(bind, address);
+            garconClient.ClientCredentials.UserName.UserName = "admin";
+            garconClient.ClientCredentials.UserName.Password = "admin";
             garconClient.AddAccountRequestCompleted += GarconClient_AddAccountRequestCompleted;
             garconClient.AddAccountRequestAsync(numeroMesa, valorTotal, sugestao);
         }
