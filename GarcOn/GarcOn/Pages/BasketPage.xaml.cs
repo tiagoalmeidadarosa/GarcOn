@@ -258,7 +258,7 @@ namespace GarcOn.Pages
                 {
                     _attempt = 0;
 
-                    DisplayAlertOnMainThread("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
+                    DisplayAlertOnMainThread("ERRO NA CONFIRMAÇÃO DO PEDIDO", "Não foi possível cadastrar o pedido, talvez o servidor não esteja respondendo, tente novamente em alguns instantes.\n\nErro: " + errorMessage, "FECHAR");
 
                     HideProgressDialogOnMainThread();
                 }

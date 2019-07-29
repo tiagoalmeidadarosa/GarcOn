@@ -14,7 +14,9 @@ namespace GarcOn
 {
     public partial class App : Application
     {
-        public static bool IsAdmin { get; set; }
+        public static string User { get; set; }
+        public static string Password { get; set; }
+
         public static List<Categoria> Categorias { get; set; }
 
         public static List<OrderItem> ItensPedido { get; set; }
@@ -28,20 +30,7 @@ namespace GarcOn
             //Set default culture to get correct currency format
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 
-            Task.Run(async () => 
-            {
-                var jsonData = await SecureStorage.GetAsync("categorias_e_produtos");
-                if (string.IsNullOrEmpty(jsonData))
-                {
-                    Categorias = new List<Categoria>();
-                }
-                else
-                {
-                    Categorias = JsonConvert.DeserializeObject<List<Categoria>>(jsonData);
-                }
-
-            }).Wait();
-
+            Categorias = new List<Categoria>();
             ItensPedido = new List<OrderItem>();
             ItensPedidosFinalizados = new List<OrderItem>();
             ItensPedidosFinalizadosUltimaConta = new List<OrderItem>();

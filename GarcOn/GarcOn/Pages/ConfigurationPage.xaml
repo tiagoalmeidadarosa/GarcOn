@@ -1,44 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:GarcOn.Converters"
              x:Class="GarcOn.Pages.ConfigurationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Image Source="garcon.png"
+                   WidthRequest="350" />
+
             <Label Text="IP/PORTA DO SERVIDOR:" 
                    Style="{StaticResource MenuLabelStyle}"
-                   FontSize="20"
+                   FontSize="30"
                    TextColor="Black"/>
             <Entry x:Name="txtIP" 
-                   IsEnabled="False"
                    TextColor="Black"
-                   FontSize="30" />
+                   FontSize="40" />
+            
             <Label Text="NÚMERO DA MESA:" 
                    Style="{StaticResource MenuLabelStyle}"
-                   FontSize="20"
+                   FontSize="30"
                    TextColor="Black"/>
-            <Entry x:Name="txtNumeroMesa" 
-                   IsEnabled="False"
+            <Entry x:Name="txtNumeroMesa"
+                   HorizontalOptions="Start"
+                   WidthRequest="100"
                    TextColor="Black"
-                   FontSize="30" />
-            <Button x:Name="btnAtualizacoes"
-                    FontSize="Large"
-                    WidthRequest="300"
-                    Margin="0, 10, 0, 5"
-                    Text="Salvar e Buscar Atualizações"
-                    IsEnabled="False"
-                    Clicked="OnSaveAndGetUpdate"
+                   FontSize="40"
+                   Keyboard="Numeric"
+                   MaxLength="3"/>
+
+            <Button x:Name="btnConnect"
+                    FontSize="30"
+                    WidthRequest="450"
+                    Margin="0, 10, 0, 10"
+                    Text="Conectar"
+                    Clicked="BtnConnect_Clicked"
                     BackgroundColor="Red"
                     TextColor="White"
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
                     Style="{StaticResource MenuLabelStyle}"/>
-            <Button WidthRequest="300"
-                    FontSize="Large"
-                    Margin="0, 0, 0, 5"
-                    Text="Iniciar Aplicação"
-                    Clicked="OnJumpAndInitApplicationButton"
-                    BackgroundColor="Transparent"
-                    TextColor="Black"
-                    Style="{StaticResource MenuLabelStyle}"/>
-            
+
             <ActivityIndicator x:Name="actInd"
                                IsRunning="{Binding IsLoading}"
                                IsVisible="{Binding IsLoading}" 

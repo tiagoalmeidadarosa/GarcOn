@@ -167,7 +167,7 @@ namespace GarcOn.Pages
                 {
                     _attempt = 0;
 
-                    DisplayAlertOnMainThread("ERRO NO FECHAMENTO DA CONTA", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes. Erro: " + errorMessage, "FECHAR");
+                    DisplayAlertOnMainThread("ERRO NO FECHAMENTO DA CONTA", "Não foi possível cadastrar a solicitação, talvez o servidor não esteja respondendo, tente novamente em alguns instantes.\n\nErro: " + errorMessage, "FECHAR");
 
                     HideProgressDialogOnMainThread();
                 }
