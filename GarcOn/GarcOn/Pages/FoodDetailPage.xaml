@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Grid RowSpacing="0" ColumnSpacing="0"
-                AbsoluteLayout.LayoutBounds="0,0,1,.5"
+                AbsoluteLayout.LayoutBounds="0,0,1,.6"
                 AbsoluteLayout.LayoutFlags="All">
 
                 <Image HorizontalOptions="FillAndExpand"
