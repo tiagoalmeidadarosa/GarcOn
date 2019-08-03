@@ -17,7 +17,6 @@ namespace GarcOn.Pages
         const int MaxValue = 50;
 
         public Produto Produto;
-        public List<Adicional> AdicionaisSelecionados;
 
 		public FoodDetailPage(Produto produto)
 		{
@@ -27,25 +26,6 @@ namespace GarcOn.Pages
             NavigationBarView.Color = Color.Transparent;
 
             this.Produto = produto;
-            this.AdicionaisSelecionados = new List<Adicional>();
-
-            if (produto.Adicionais.Count > 0)
-            {
-                lblAdicionais.IsVisible = true;
-            }
-
-            foreach (var adicional in produto.Adicionais)
-            {
-                var checkBox = new CheckBox();
-                checkBox.AutomationId = adicional.ID.ToString();
-                checkBox.Type = CheckType.Check;
-                checkBox.Color = Color.Red;
-                checkBox.Text = adicional.Descricao + " (+ " + string.Format("{0:C}", adicional.Valor) + ")";
-                checkBox.Key = Convert.ToInt32(adicional.ID);
-                checkBox.CheckChanged += CheckBox_CheckChanged;
-
-                stkLytAdicionais.Children.Add(checkBox);
-            }
 
             lblTitle.Text = produto.Nome;
             lblPrice.Text = string.Format("{0:C}", produto.Valor);
@@ -53,6 +33,17 @@ namespace GarcOn.Pages
 
             lblQtd.Text = MinValue.ToString();
             lblTotalPrice.Text = string.Format("{0:C}", produto.Valor * MinValue);
+
+            if(produto.Adicionais.Count > 0)
+            {
+                btnSelectAditional.IsVisible = true;
+                btnAddToBasket.IsVisible = false;
+            }
+            else
+            {
+                btnSelectAditional.IsVisible = false;
+                btnAddToBasket.IsVisible = true;
+            }
         }
 
         protected override void OnAppearing()
@@ -67,39 +58,13 @@ namespace GarcOn.Pages
             var valor = Convert.ToDouble(lblPrice.Text.Replace("R$ ", ""));
             var quantidade = Convert.ToInt32(lblQtd.Text);
 
-            double valorTotal = 0;
-            foreach (var adicionalSelecionado in AdicionaisSelecionados)
-            {
-                valorTotal += adicionalSelecionado.Valor * quantidade;
-            }
-
-            valorTotal += valor * quantidade;
+            double valorTotal = valor * quantidade;
             lblTotalPrice.Text = string.Format("{0:C}", valorTotal);
         }
 
         #endregion
 
         #region Events
-
-        private void CheckBox_CheckChanged(object sender, EventArgs e)
-        {
-            var checkBox = (CheckBox)sender;
-
-            var adicional = Produto.Adicionais.FirstOrDefault(a => a.ID == Convert.ToInt64(checkBox.AutomationId));
-            if(adicional != null)
-            {
-                if(checkBox.IsChecked)
-                {
-                    AdicionaisSelecionados.Add(adicional);
-                }
-                else
-                {
-                    AdicionaisSelecionados.Remove(adicional);
-                }
-            }
-
-            CalculateTotalPrice();
-        }
 
         private async void PlusButton_OnClicked(object sender, EventArgs e)
         {
@@ -145,17 +110,17 @@ namespace GarcOn.Pages
             }
         }
 
-        private async void AddToBasketButton_Clicked(object sender, EventArgs e)
+        private async void BtnSelectAditional_Clicked(object sender, EventArgs e)
         {
             var quantidade = Convert.ToInt32(lblQtd.Text);
 
+            await Navigation.PushAsync(new FoodAditionalPage(Produto, quantidade));
+        }
+
+        private async void BtnAddToBasket_Clicked(object sender, EventArgs e)
+        {
             var descricao = "Sem adicionais";
-            if (AdicionaisSelecionados.Count > 0)
-            {
-                var adicionais = string.Join(", ", AdicionaisSelecionados.Select(a => a.Descricao));
-                descricao = adicionais.Length > 60 ? adicionais.Substring(0, 57) + "..." : adicionais;
-            }
-            
+            var quantidade = Convert.ToInt32(lblQtd.Text);         
             var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
 
             OrderItem orderItem = new OrderItem(Guid.NewGuid(),
@@ -165,7 +130,7 @@ namespace GarcOn.Pages
                                                 Produto.Valor,
                                                 quantidade,
                                                 valorTotal,
-                                                AdicionaisSelecionados.ToList()
+                                                new List<Adicional>()
                                                 //, Todo: Adicionar também a foto
                                                 );
 

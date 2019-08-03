@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GarcOn.Controls"
+             xmlns:views="clr-namespace:GarcOn.Views"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             x:Class="GarcOn.Pages.FoodAditionalPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.1, 1, AutoSize"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
+
+                <StackLayout x:Name="stkLytAdicionais"
+                             HorizontalOptions="Center" 
+                             Orientation="Vertical"
+                             Margin="5, 5, 5, 0"
+                             Spacing="0">
+
+                    <!--<input:CheckBox Text="Gelo (+ R$ 2,00)" Type="Check"/>-->
+
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                <controls:Divider />
+                
+                <StackLayout HorizontalOptions="Center" 
+                             Orientation="Horizontal">
+
+                    <Label Text="Preço total: "
+                           TextColor="{StaticResource grayDark}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center"
+                           FontSize="20" />
+                    <Label x:Name="lblTotalPrice"
+                           TextColor="{StaticResource grayDark}" 
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Center"
+                           FontSize="20" />
+
+                </StackLayout>
+
+                <Button WidthRequest="300"
+                        HorizontalOptions="Center"
+                        Command="{Binding AddToBasket}"
+                        Clicked="AddToBasketButton_Clicked"
+                        VerticalOptions="EndAndExpand"
+                        Margin="0, 0, 0, 10"
+                        Text="Adicionar ao pedido"
+                        TextColor="White"
+                        FontSize="16"
+                        BackgroundColor="{StaticResource accentColor}"/>
+                
+            </StackLayout>
+
+            <views:NavigationBarView x:Name="NavigationBarView"
+                                     AbsoluteLayout.LayoutBounds=".5, 0, AutoSize, AutoSize" 
+                                     AbsoluteLayout.LayoutFlags="PositionProportional"  />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

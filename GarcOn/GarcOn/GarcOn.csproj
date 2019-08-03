@@ -43,6 +43,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\FoodAditionalPage.xaml.cs">
+      <DependentUpon>FoodAditionalPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\MenuPageMenuItem.cs" />
   </ItemGroup>
 

@@ -14,13 +14,13 @@
                 AbsoluteLayout.LayoutFlags="All">
 
                 <Image HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Source="https://i.imgur.com/vAVUGtZm.jpg"
-                    Aspect="AspectFill" />
+                       VerticalOptions="FillAndExpand"
+                       Source="https://i.imgur.com/vAVUGtZm.jpg"
+                       Aspect="AspectFill" />
                 <!-- Source="{Binding Picture}" acima -->
 
                 <Grid Opacity=".5" BackgroundColor="{StaticResource asphaltDark}" HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
+                      VerticalOptions="FillAndExpand" />
 
                 <StackLayout Padding="10, 10, 10, 35" VerticalOptions="EndAndExpand">
                     <StackLayout Spacing="0" Padding="10">
@@ -47,39 +47,22 @@
                 </StackLayout>
             </Grid>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1, AutoSize"
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.8, 1, AutoSize"
                          AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
-
-                <Label x:Name="lblAdicionais"
-                       Text="Adicionais:"
-                       FontSize="18"
-                       TextColor="Black"
-                       Margin="20, 5, 0, 0"
-                       IsVisible="False"
-                       Style="{StaticResource FoodDetailDescriptionLabelStyle}"/>
-
-                <StackLayout x:Name="stkLytAdicionais"
-                             HorizontalOptions="Center" 
-                             Orientation="Horizontal"
-                             Margin="5, 0, 5, 0">
-
-                    <!--<input:CheckBox Text="Gelo (+ R$ 2,00)" Type="Check"/>-->
-
-                </StackLayout>
 
                 <StackLayout HorizontalOptions="Center" 
                              Orientation="Horizontal">
-                    
+
                     <Label Text="Preço total: "
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center"
-                           FontSize="18" />
+                           FontSize="20" />
                     <Label x:Name="lblTotalPrice"
                            TextColor="{StaticResource grayDark}" 
                            VerticalOptions="Center" 
                            HorizontalOptions="Center"
-                           FontSize="18" />
+                           FontSize="20" />
 
                 </StackLayout>
 
@@ -102,7 +85,7 @@
                                OutlineColor="Transparent" WidthRequest="30" />
 
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <Label TextColor="Black" x:Name="lblQtd" FontSize="18" />
+                            <Label TextColor="Black" x:Name="lblQtd" FontSize="20" />
                         </StackLayout>
                     </Grid>
 
@@ -117,18 +100,35 @@
                 <controls:Divider />
             </StackLayout>
 
-            <Button AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
+            <Button x:Name="btnSelectAditional"
+                    AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     WidthRequest="300"
                     HorizontalOptions="Center"
                     Command="{Binding AddToBasket}"
-                    Clicked="AddToBasketButton_Clicked"
+                    Clicked="BtnSelectAditional_Clicked"
+                    VerticalOptions="EndAndExpand"
+                    Margin="0, 0, 0, 10"
+                    Text="Selecionar adicionais"
+                    TextColor="White"
+                    FontSize="16"
+                    BackgroundColor="{StaticResource accentColor}"
+                    IsVisible="False"/>
+
+            <Button x:Name="btnAddToBasket"
+                    AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    WidthRequest="300"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddToBasket}"
+                    Clicked="BtnAddToBasket_Clicked"
                     VerticalOptions="EndAndExpand"
                     Margin="0, 0, 0, 10"
                     Text="Adicionar ao pedido"
                     TextColor="White"
                     FontSize="16"
-                    BackgroundColor="{StaticResource accentColor}"/>
+                    BackgroundColor="{StaticResource accentColor}"
+                    IsVisible="False"/>
 
             <views:NavigationBarView x:Name="NavigationBarView"
                                      AbsoluteLayout.LayoutBounds=".5, 0, AutoSize, AutoSize" 
