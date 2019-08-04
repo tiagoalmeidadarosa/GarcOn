@@ -101,6 +101,7 @@ namespace GarcOn.Pages
             }
             
             var valorTotal = Convert.ToDouble(lblTotalPrice.Text.Replace("R$ ", ""));
+            var imageDownArrow = Quantidade == 1 ? "remove.png" : "arrow_down.png";
 
             OrderItem orderItem = new OrderItem(Guid.NewGuid(),
                                                 Produto.ID,
@@ -109,7 +110,8 @@ namespace GarcOn.Pages
                                                 Produto.Valor,
                                                 Quantidade,
                                                 valorTotal,
-                                                AdicionaisSelecionados.ToList()
+                                                AdicionaisSelecionados.ToList(),
+                                                imageDownArrow
                                                 //, Todo: Adicionar também a foto
                                                 );
 

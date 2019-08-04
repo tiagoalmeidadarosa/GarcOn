@@ -72,6 +72,11 @@ namespace GarcOn.Pages
                 {
                     ob.TotalPrice += selectedAditional.Valor * ob.Quantity;
                 }
+
+                if (ob.Quantity == 1)
+                    ob.ImageDownArrow = "remove.png";
+                else
+                    ob.ImageDownArrow = "arrow_down.png";
             }
 
             //Recoloca os itens com mudanças na lista
@@ -91,7 +96,8 @@ namespace GarcOn.Pages
                                                  item.UnitPrice, 
                                                  item.Quantity, 
                                                  item.TotalPrice, 
-                                                 item.SelectedAditionals));
+                                                 item.SelectedAditionals,
+                                                 item.ImageDownArrow));
                 }
             }
 
@@ -138,6 +144,11 @@ namespace GarcOn.Pages
                 {
                     ob.TotalPrice += selectedAditional.Valor * ob.Quantity;
                 }
+
+                if (ob.Quantity == 1)
+                    ob.ImageDownArrow = "remove.png";
+                else
+                    ob.ImageDownArrow = "arrow_down.png";
             }
 
             //Recoloca os itens com mudanças na lista
@@ -158,7 +169,8 @@ namespace GarcOn.Pages
                                                  item.UnitPrice, 
                                                  item.Quantity, 
                                                  item.TotalPrice, 
-                                                 item.SelectedAditionals));
+                                                 item.SelectedAditionals,
+                                                 item.ImageDownArrow));
                 }
             }
 

@@ -15,8 +15,9 @@ namespace GarcOn.ViewModels
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
         public List<Adicional> SelectedAditionals { get; set; }
+        public string ImageDownArrow { get; set; }
 
-        public OrderItem(Guid uniqueId, long id, string name, string description, double unitPrice, int quantity, double totalPrice, List<Adicional> selectedAditionals)
+        public OrderItem(Guid uniqueId, long id, string name, string description, double unitPrice, int quantity, double totalPrice, List<Adicional> selectedAditionals, string imageDownArrow)
         {
             this.UniqueId = uniqueId;
             this.Id = id;
@@ -26,6 +27,7 @@ namespace GarcOn.ViewModels
             this.Quantity = quantity;
             this.TotalPrice = totalPrice;
             this.SelectedAditionals = selectedAditionals;
+            this.ImageDownArrow = imageDownArrow;
         }
 
         public override string ToString()
