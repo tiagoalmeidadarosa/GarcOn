@@ -36,7 +36,7 @@ namespace GarcOn
             ItensPedidosFinalizadosUltimaConta = new List<OrderItem>();
 
 #if DEBUG
-            HotReloader.Current.Start(this);
+            //HotReloader.Current.Start(this);
 #endif
             MainPage = new ConfigurationPage();
         }

@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.GarcOn" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.GarcOn" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+	<uses-permission android:name="android.permission.REORDER_TASKS" />
 	<application android:label="GarçOn" android:icon="@drawable/garcon_icon"></application>
 </manifest>
